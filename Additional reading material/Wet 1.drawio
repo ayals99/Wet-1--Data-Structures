@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2024-02-14T17:53:42.303Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/23.0.2 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="UogIYqDLfKcmxZxu9XOB" version="23.0.2" type="device">
-  <diagram name="Page-1" id="4H7O5t1QDAGb7dw0we2P">
-    <mxGraphModel dx="1036" dy="518" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+<mxfile host="Electron" modified="2024-02-15T09:37:01.025Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/23.0.2 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="EJS-tCGpBaCx5DiO1dJP" version="23.0.2" type="device">
+  <diagram name="Class digrams" id="4H7O5t1QDAGb7dw0we2P">
+    <mxGraphModel dx="1075" dy="598" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -23,10 +23,10 @@
           <mxGeometry y="30" width="180" height="100" as="geometry" />
         </mxCell>
         <mxCell id="T2zxaJ50x-dEuRoKM8ko-4" value="Contestant" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="425" y="340" width="220" height="200" as="geometry" />
+          <mxGeometry x="130" y="570" width="590" height="200" as="geometry" />
         </mxCell>
-        <mxCell id="T2zxaJ50x-dEuRoKM8ko-8" value="- int contestantID&lt;br&gt;- Sport sport&lt;br&gt;- int strength&lt;br&gt;- int countryID&lt;br&gt;- int TeamID[3]&lt;br&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="T2zxaJ50x-dEuRoKM8ko-4" vertex="1">
-          <mxGeometry x="5" y="50" width="110" height="90" as="geometry" />
+        <mxCell id="T2zxaJ50x-dEuRoKM8ko-8" value="- int contestantID&lt;br&gt;- Sport sport&lt;br&gt;- int strength&lt;br&gt;- int countryID&lt;br&gt;- Team* TeamID[3] - אי אפשר לעשות מספרים כי אין לנו מספר שאחנונ יכולים להתחייב שלא תהיה קבוצה עם המספר הזה" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="T2zxaJ50x-dEuRoKM8ko-4" vertex="1">
+          <mxGeometry y="40" width="590" height="90" as="geometry" />
         </mxCell>
         <mxCell id="T2zxaJ50x-dEuRoKM8ko-18" value="" style="triangle;whiteSpace=wrap;html=1;rotation=-90;" parent="1" vertex="1">
           <mxGeometry x="1160" y="230" width="60" height="80" as="geometry" />
@@ -46,17 +46,17 @@
         <mxCell id="T2zxaJ50x-dEuRoKM8ko-23" value="right" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="1445" y="190" width="50" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="N83IAVNiODU6X3ACAAQW-1" value="NODE" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="N83IAVNiODU6X3ACAAQW-1" value="NODE" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="690" y="90" width="220" height="200" as="geometry" />
         </mxCell>
-        <mxCell id="N83IAVNiODU6X3ACAAQW-2" value="Node* right&lt;br&gt;Node*&amp;nbsp;left&lt;br&gt;TYPE* data" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="N83IAVNiODU6X3ACAAQW-1">
-          <mxGeometry x="5" y="30" width="90" height="60" as="geometry" />
+        <mxCell id="N83IAVNiODU6X3ACAAQW-2" value="Node* right&lt;br&gt;Node*&amp;nbsp;left&lt;br&gt;TYPE* data&lt;br&gt;int height" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="N83IAVNiODU6X3ACAAQW-1" vertex="1">
+          <mxGeometry x="5" y="25" width="90" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="N83IAVNiODU6X3ACAAQW-3" value="SubtreeNode" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="N83IAVNiODU6X3ACAAQW-3" value="SubtreeNode" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="690" y="340" width="220" height="200" as="geometry" />
         </mxCell>
-        <mxCell id="N83IAVNiODU6X3ACAAQW-4" value="SubtreeNode* right&lt;br&gt;SubtreeNode* left&lt;br&gt;TYPE* data&lt;br&gt;SubtreeNode* parallel" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="N83IAVNiODU6X3ACAAQW-3">
-          <mxGeometry x="5" y="45" width="140" height="70" as="geometry" />
+        <mxCell id="N83IAVNiODU6X3ACAAQW-4" value="SubtreeNode* right&lt;br&gt;SubtreeNode* left&lt;br&gt;TYPE* data&lt;br&gt;int height&lt;br&gt;SubtreeNode* parallel" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="N83IAVNiODU6X3ACAAQW-3" vertex="1">
+          <mxGeometry x="5" y="35" width="140" height="90" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
