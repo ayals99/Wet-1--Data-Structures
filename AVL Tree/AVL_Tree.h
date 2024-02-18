@@ -4,6 +4,7 @@
 #include "AVL_Node.h"
 #include "wet1util.h"
 #include <cassert>
+#include <iostream>
 
 static const int LEFT_IMBALANCE = 2;
 static const int RIGHT_IMBALANCE = -2;
@@ -174,6 +175,15 @@ private:
         }
         return currentNode;
     }
+
+    void printInOrder(AVL_Node<T>* node) const{
+        if(node == nullptr){
+            return;
+        }
+        printInOrder(node->getLeft());
+        std::cout << *(node->getData()) << " ";
+        printInOrder(node->getRight());
+    }
 public:
 
     /** Constructors & Public Functions **/
@@ -215,6 +225,13 @@ public:
 
     }
 
+
+    void printTreeInOrder() const{
+        if(m_root == nullptr){
+            return;
+        }
+        printInOrder(m_root);
+    }
 
 
 };

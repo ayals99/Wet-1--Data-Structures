@@ -153,6 +153,8 @@ int main(){
     int d = 7;
     tree->insert(&d);
 
+    //tree->printTreeInOrder();
+
 
     return 0;
 }
