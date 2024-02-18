@@ -12,12 +12,18 @@ static const int EQUAL = 0;
 static const int FIRST_LARGER = 1;
 static const int FIRST_SMALLER = -1;
 
+
+
+
+
 template <class T, typename comparisonFunction>
 class AVL_Tree{
 private:
     AVL_Node<T>* m_root;
     comparisonFunction m_comparisonFunction;
     int m_size;
+
+    /**Rotation Utility Functions **/
 
     AVL_Node<T>* rightRotation(AVL_Node<T>* originalRoot){
         assert(originalRoot != nullptr);
@@ -85,6 +91,8 @@ private:
         root->updateHeight();
         return root;
     }
+
+    /** Insert & Remove Recursive Utility Functions **/
 
 
     AVL_Node<T>* AUX_find(AVL_Node<T>* currentNode, const T* dataToFind,
@@ -168,7 +176,9 @@ private:
     }
 public:
 
-    AVL_Tree(): m_root(nullptr), m_size(0){}
+    /** Constructors & Public Functions **/
+
+    AVL_Tree(): m_root(nullptr), m_size(ZERO){}
 
     AVL_Node<T>* find(const T* dataToFind) const{
         assert(dataToFind != nullptr);
@@ -201,6 +211,7 @@ public:
     }
 
     StatusType remove(T* data){
+        return StatusType::FAILURE;
 
     }
 
