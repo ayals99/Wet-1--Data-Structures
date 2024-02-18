@@ -184,11 +184,25 @@ private:
         std::cout << *(node->getData()) << " ";
         printInOrder(node->getRight());
     }
+
+    void deleteTree(AVL_Node<T>* node){
+        if(node == nullptr){
+            return;
+        }
+        deleteTree(node->getLeft());
+        deleteTree(node->getRight());
+        delete node;
+    }
+
 public:
 
     /** Constructors & Public Functions **/
 
     AVL_Tree(): m_root(nullptr), m_size(ZERO){}
+
+    ~AVL_Tree(){
+        deleteTree(m_root);
+    }
 
     AVL_Node<T>* find(const T* dataToFind) const{
         assert(dataToFind != nullptr);
