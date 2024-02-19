@@ -144,16 +144,14 @@ public:
 
 int main(){
     AVL_Tree<int, compare>* tree = new AVL_Tree<int, compare>;
-    int a = 5;
-    tree->insert(&a);
-
-    int c = 6;
-    tree->insert(&c);
-
-    int d = 7;
-    tree->insert(&d);
-
-    //tree->printTreeInOrder();
+    int array[1000];
+    for (int i = 0; i < 1000; i++){
+        array[i] = i;
+    }
+    for (int i = 0; i < 1000; i++){
+        tree->insert(&array[i]);
+    }
+    tree->printTreeInOrder();
 
 
     return 0;

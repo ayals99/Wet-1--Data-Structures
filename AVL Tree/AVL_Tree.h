@@ -197,7 +197,7 @@ private:
     AVL_Node<T>* AUX_insert(AVL_Node<T>* parent, AVL_Node<T>* currentNode, AVL_Node<T>* newNode,
                             comparisonFunction compare){
         // if newNode is larger than currentNode, we go left
-        if (compare(newNode->getData(), currentNode->getData()) == FIRST_LARGER) {
+        if (compare(currentNode->getData(), newNode->getData()) == FIRST_LARGER) {
             // if currentNode has no left child, we can insert newNode as its left child
             if (currentNode->getLeft() == nullptr) {
                 currentNode->setLeftChild(newNode);
@@ -205,7 +205,6 @@ private:
                 // if currentNode has a left child, we need to continue the recursion leftwards
             else {
                 currentNode->setLeftChild(AUX_insert(currentNode, currentNode->getLeft(), newNode, compare));
-
             }
             // balance the tree and return the new root of the subtree
             currentNode = balance_Node(currentNode);
@@ -252,23 +251,32 @@ public:
         return AUX_find(m_root, dataToFind, compare);
     }
 
+    bool exists_In_Tree(T* dataToInsert){
+        return (bool) find(dataToInsert);
+    }
+
     StatusType insert(T* dataToInsert){
         assert (dataToInsert != nullptr);
 
         comparisonFunction compare;
 
-        if (find(dataToInsert) != nullptr){// if data already exists (country/team/contestant are already in tree)
+        if (exists_In_Tree(dataToInsert)){// if data already exists (country/team/contestant are already in tree)
             return StatusType::FAILURE;
         }
 
         AVL_Node<T>* newNode = new AVL_Node<T>(dataToInsert);
+
+        if (newNode == nullptr){
+            return StatusType::ALLOCATION_ERROR;
+        }
+
         if(m_root == nullptr){
             m_root = newNode;
         }
         else {
             AVL_Node<T>* newRoot = AUX_insert(nullptr, m_root, newNode, compare);
             // Check if the root needs to be changed:
-            if (newRoot != nullptr) {
+            if (m_root != newRoot) {
                 m_root = newRoot;
             }
         }
