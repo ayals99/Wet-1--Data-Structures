@@ -95,7 +95,6 @@ private:
 
     /** Insert & Remove Recursive Utility Functions **/
 
-
     AVL_Node<T>* AUX_find(AVL_Node<T>* currentNode, const T* dataToFind,
                           comparisonFunction compare) const{
         if(currentNode == nullptr){
@@ -284,8 +283,12 @@ public:
         return StatusType::SUCCESS;
     }
 
-    StatusType remove(T* data){
-        return StatusType::FAILURE;
+
+
+    StatusType remove(T* dataToRemove){
+        if (!exists_In_Tree(dataToRemove)){
+            return StatusType::FAILURE;
+        }
 
     }
 

@@ -68,6 +68,15 @@ public:
     bool isLeaf() const{
         return m_left == nullptr && m_right == nullptr;
     }
+    bool hasLeftChildOnly() const{
+        return m_left != nullptr && m_right == nullptr;
+    }
+    bool hasRightChildOnly() const{
+        return m_left == nullptr && m_right != nullptr;
+    }
+    bool hasTwoChildren() const{
+        return m_left != nullptr && m_right != nullptr;
+    }
 
     AVL_Node(): m_left(nullptr), m_right(nullptr), m_data(nullptr), m_height(ZERO){}
     explicit AVL_Node(T* data): m_left(nullptr), m_right(nullptr), m_data(data),
