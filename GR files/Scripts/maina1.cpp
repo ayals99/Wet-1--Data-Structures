@@ -144,15 +144,23 @@ public:
 
 int main(){
     AVL_Tree<int, compare>* tree = new AVL_Tree<int, compare>;
-    int array[1000];
-    for (int i = 0; i < 1000; i++){
-        array[i] = i;
-    }
-    for (int i = 0; i < 1000; i++){
-        tree->insert(&array[i]);
-    }
+
+    int* a = new int(0);
+    int* b = new int(1);
+    int* c = new int(2);
+    int* d = new int(3);
+    int* e = new int(4);
+
+    tree->insert(a);
+    tree->insert(b);
+    tree->insert(c);
+    tree->insert(d);
+    tree->insert(e);
+
     tree->printTreeInOrder();
 
-
+    tree->remove(b);
+    std::cout << "\n" << std::endl;
+    tree->printTreeInOrder();
     return 0;
 }

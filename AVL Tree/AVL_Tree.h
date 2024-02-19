@@ -283,13 +283,67 @@ public:
         return StatusType::SUCCESS;
     }
 
+    AVL_Node<T>* find_Minimum_In_Subtree(AVL_Node<T>* currentNode){
+        while(currentNode->getLeft() != nullptr){
+            currentNode = currentNode->getLeft();
+        }
+        return currentNode;
+    }
+
+    void swapData(AVL_Node<T>* firstNode, AVL_Node<T>* secondNode){
+        if (firstNode == nullptr || secondNode == nullptr){
+            return;
+        }
+        T* temp = firstNode->getData();
+        firstNode->setData(secondNode->getData());
+        secondNode->setData(temp);
+    }
+
+    AVL_Node<T>* AUX_remove(AVL_Node<T>* currentNode, const T* dataToRemove, comparisonFunction compare) {
+        // Will only enter this function if the tree holds "dataToRemove"
+        if (currentNode == nullptr){ // if we didn't find the node we want to remove
+            return nullptr;
+        }
+        // currentNode is not null, we need to see if we arrived at the node we want to remove
+        if (compare(dataToRemove, currentNode->getData()) == FIRST_LARGER){ // need to search in the right subtree
+            currentNode->setRightChild(AUX_remove(currentNode->getRight(), dataToRemove, compare));
+        }
+        else if(compare(dataToRemove, currentNode->getData()) == FIRST_SMALLER){ // need to search in the left subtree
+            currentNode->setLeftChild(AUX_remove(currentNode->getLeft(), dataToRemove, compare));
+        }
+        else{ // if the data is equal. This means we've found our node to delete.
+            if (currentNode->isLeaf()){
+                delete currentNode;
+                return nullptr;
+            }
+            else if (currentNode->hasLeftChildOnly()){
+                AVL_Node<T>* replacement = currentNode->getLeft();
+                delete currentNode;
+                return replacement;
+            }
+            else if (currentNode->hasRightChildOnly()){
+                AVL_Node<T>* replacement = currentNode->getRight();
+                delete currentNode;
+                return replacement;
+            }
+            else{ // has two children
+                AVL_Node<T>* temp = find_Minimum_In_Subtree(currentNode->getRight());
+                swapData(currentNode, temp);
+                currentNode->setRightChild(AUX_remove(currentNode->getRight(), temp->getData(), compare));
+            }
+        }
+        return balance_Node(currentNode);
+    }
+
 
 
     StatusType remove(T* dataToRemove){
         if (!exists_In_Tree(dataToRemove)){
             return StatusType::FAILURE;
         }
-
+        comparisonFunction compare;
+        m_root = AUX_remove(m_root, dataToRemove, compare);
+        return StatusType::SUCCESS;
     }
 
 
