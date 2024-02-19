@@ -112,69 +112,68 @@ private:
         }
     }
 
-
-    AVL_Node<T>* AUX_insert(AVL_Node<T>* parent, AVL_Node<T>* currentNode, AVL_Node<T>* newNode,
-                            comparisonFunction compare){
-        int initialHeight = currentNode->getHeight();
-
-        if (compare(currentNode->getData(), newNode->getData()) == FIRST_LARGER ){
-            currentNode = leftRecursion(parent, currentNode, newNode, compare);
-        }
-        else{
-            currentNode = rightRecursion(parent, currentNode, newNode, compare);
-        }
-
-        if (currentNode->getHeight() != initialHeight || parent == nullptr){
-            return currentNode;
-        }
-        else{
-            return nullptr;
-        }
-    }
-
-    AVL_Node<T>* leftRecursion(AVL_Node<T>* parent, AVL_Node<T>* currentNode, AVL_Node<T>* newNode,
-                               comparisonFunction compare){
-        if (currentNode->getLeft() == nullptr){
-            currentNode->setLeftChild(newNode);
-            balance_Node(currentNode); // Will only update height, because an added node is always a leaf
-        }
-        else{
-            AVL_Node<T>* temp = AUX_insert(currentNode, currentNode->getLeft(), newNode, compare);
-            if(temp == nullptr){
-                return nullptr;
-            }
-            else{
-                currentNode->setLeftChild(temp);
-            }
-            currentNode = balance_Node(currentNode);
-            if (parent != nullptr){
-                parent->setLeftChild(currentNode);
-            }
-        }
-        return currentNode;
-    }
-
-    AVL_Node<T>* rightRecursion(AVL_Node<T>* parent, AVL_Node<T>* currentNode,
-                                AVL_Node<T>* newNode, comparisonFunction compare){
-        if (currentNode->getRight() == nullptr){
-            currentNode->setRightChild(newNode);
-            balance_Node(currentNode); // Will only update height, because an added node is always a leaf
-        }
-        else{
-            AVL_Node<T>* temp = AUX_insert(currentNode, currentNode->getRight(), newNode, compare);
-            if(temp == nullptr){
-                return nullptr;
-            }
-            else{
-                currentNode->setRightChild(temp);
-            }
-            currentNode = balance_Node(currentNode);
-            if (parent != nullptr){
-                parent->setRightChild(currentNode);
-            }
-        }
-        return currentNode;
-    }
+//    AVL_Node<T>* AUX_insert(AVL_Node<T>* parent, AVL_Node<T>* currentNode, AVL_Node<T>* newNode,
+//                            comparisonFunction compare){
+//        int initialHeight = currentNode->getHeight();
+//
+//        if (compare(currentNode->getData(), newNode->getData()) == FIRST_LARGER ){
+//            currentNode = leftRecursion(parent, currentNode, newNode, compare);
+//        }
+//        else{
+//            currentNode = rightRecursion(parent, currentNode, newNode, compare);
+//        }
+//
+//        if (currentNode->getHeight() != initialHeight || parent == nullptr){
+//            return currentNode;
+//        }
+//        else{
+//            return nullptr;
+//        }
+//    }
+//
+//    AVL_Node<T>* leftRecursion(AVL_Node<T>* parent, AVL_Node<T>* currentNode, AVL_Node<T>* newNode,
+//                               comparisonFunction compare){
+//        if (currentNode->getLeft() == nullptr){
+//            currentNode->setLeftChild(newNode);
+//            balance_Node(currentNode); // Will only update height, because an added node is always a leaf
+//        }
+//        else{
+//            AVL_Node<T>* temp = AUX_insert(currentNode, currentNode->getLeft(), newNode, compare);
+//            if(temp == nullptr){
+//                return nullptr;
+//            }
+//            else{
+//                currentNode->setLeftChild(temp);
+//            }
+//            currentNode = balance_Node(currentNode);
+//            if (parent != nullptr){
+//                parent->setLeftChild(currentNode);
+//            }
+//        }
+//        return currentNode;
+//    }
+//
+//    AVL_Node<T>* rightRecursion(AVL_Node<T>* parent, AVL_Node<T>* currentNode,
+//                                AVL_Node<T>* newNode, comparisonFunction compare){
+//        if (currentNode->getRight() == nullptr){
+//            currentNode->setRightChild(newNode);
+//            balance_Node(currentNode); // Will only update height, because an added node is always a leaf
+//        }
+//        else{
+//            AVL_Node<T>* temp = AUX_insert(currentNode, currentNode->getRight(), newNode, compare);
+//            if(temp == nullptr){
+//                return nullptr;
+//            }
+//            else{
+//                currentNode->setRightChild(temp);
+//            }
+//            currentNode = balance_Node(currentNode);
+//            if (parent != nullptr){
+//                parent->setRightChild(currentNode);
+//            }
+//        }
+//        return currentNode;
+//    }
 
     void printInOrder(AVL_Node<T>* node) const{
         if(node == nullptr){
@@ -192,6 +191,49 @@ private:
         deleteTree(node->getLeft());
         deleteTree(node->getRight());
         delete node;
+    }
+
+    // New implementation of AUX_insert
+    AVL_Node<T>* AUX_insert(AVL_Node<T>* parent, AVL_Node<T>* currentNode, AVL_Node<T>* newNode,
+                            comparisonFunction compare){
+        // if newNode is larger than currentNode, we go left
+        if (compare(newNode->getData(), currentNode->getData()) == FIRST_LARGER) {
+            // if currentNode has no left child, we can insert newNode as its left child
+            if (currentNode->getLeft() == nullptr) {
+                currentNode->setLeftChild(newNode);
+            }
+                // if currentNode has a left child, we need to continue the recursion leftwards
+            else {
+                currentNode->setLeftChild(AUX_insert(currentNode, currentNode->getLeft(), newNode, compare));
+
+            }
+            // balance the tree and return the new root of the subtree
+            currentNode = balance_Node(currentNode);
+            // if currentNode is NOT the root of the tree, we need to tell its parent that his children have changed
+            if (parent != nullptr){
+                parent->setLeftChild(currentNode);
+            }
+            // notice that if currentNode is the root of the tree, we don't need to tell anyone in this scope that the root has changed
+        }
+            // if newNode is smaller than currentNode, we go right
+        else{
+            // if currentNode has no right child, we can insert newNode as its right child
+            if (currentNode->getRight() == nullptr) {
+                currentNode->setRightChild(newNode);
+            }
+                // if currentNode has a right child, we need to continue the recursion rightwards
+            else {
+                currentNode->setRightChild(AUX_insert(currentNode, currentNode->getRight(), newNode, compare));
+            }
+            // balance the tree and return the new root of the subtree
+            currentNode = balance_Node(currentNode);
+            // if currentNode is NOT the root of the tree, we need to tell its parent that his children have changed
+            if (parent != nullptr){
+                parent->setRightChild(currentNode);
+            }
+            // notice that if currentNode is the root of the tree, we don't need to tell anyone in this scope that the root has changed
+        }
+        return currentNode;
     }
 
 public:
@@ -215,7 +257,7 @@ public:
 
         comparisonFunction compare;
 
-        if (find(dataToInsert) != nullptr){
+        if (find(dataToInsert) != nullptr){// if data already exists (country/team/contestant are already in tree)
             return StatusType::FAILURE;
         }
 
