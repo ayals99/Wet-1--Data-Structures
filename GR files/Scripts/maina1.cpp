@@ -160,7 +160,7 @@ int main(){
     tree->printTreeInOrder();
 
     tree->remove(b);
-    std::cout << "\n" << std::endl;
+    std::cout << std::endl;
     tree->printTreeInOrder();
     return 0;
 }

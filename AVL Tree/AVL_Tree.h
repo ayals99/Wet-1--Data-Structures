@@ -202,13 +202,6 @@ private:
             else {
                 currentNode->setLeftChild(AUX_insert(currentNode, currentNode->getLeft(), newNode, compare));
             }
-            // balance the tree and return the new root of the subtree
-            currentNode = balance_Node(currentNode);
-            // if currentNode is NOT the root of the tree, we need to tell its parent that his children have changed
-            if (parent != nullptr){
-                parent->setLeftChild(currentNode);
-            }
-            // notice that if currentNode is the root of the tree, we don't need to tell anyone in this scope that the root has changed
         }
         // if newNode is smaller than currentNode, we go right
         else{
@@ -220,22 +213,30 @@ private:
             else {
                 currentNode->setRightChild(AUX_insert(currentNode, currentNode->getRight(), newNode, compare));
             }
-            // balance the tree and return the new root of the subtree
-            currentNode = balance_Node(currentNode);
-            // if currentNode is NOT the root of the tree, we need to tell its parent that his children have changed
-            if (parent != nullptr){
+        }
+
+        // balance the tree and return the new root of the subtree
+        currentNode = balance_Node(currentNode);
+
+        // if currentNode is NOT the root of the tree, we need to tell its parent that his children have changed
+        if (parent != nullptr){
+            if (compare(parent->getData(), newNode->getData()) == FIRST_LARGER){
+                parent->setLeftChild(currentNode);
+            }
+            else{
                 parent->setRightChild(currentNode);
             }
-            // notice that if currentNode is the root of the tree, we don't need to tell anyone in this scope that the root has changed
         }
+        
+        // notice that if currentNode is the root of the tree, we don't need to tell anyone in this scope that the root has changed
+
         return currentNode;
     }
 
 public:
-
     /** Constructors & Public Functions **/
 
-    AVL_Tree(): m_root(nullptr), m_size(ZERO){}
+    AVL_Tree(): m_root(nullptr),m_comparisonFunction(), m_size(ZERO) {}
 
     ~AVL_Tree(){
         deleteTree(m_root);
