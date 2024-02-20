@@ -119,31 +119,12 @@
 
 
 #include "AVL_Tree.h"
-#include "AVL_Node.h"
-#include "wet1util.h"
+#include "../Classes/Team.h"
+#include <iostream>
 #include <functional>
 
-
-class compare{
-
-public:
-    compare() = default;
-
-    int operator()(const int* a,const int* b) const{
-        if (*a == *b){
-            return EQUAL;
-        }
-        else if  (*a > *b){
-            return FIRST_LARGER;
-        }
-        else{
-            return FIRST_SMALLER;
-        }
-    }
-};
-
-int main(){
-    AVL_Tree<int, compare>* tree = new AVL_Tree<int, compare>;
+void test_1(){
+    AVL_Tree<int>* tree = new AVL_Tree<int>;
 
     int* a = new int(0);
     int* b = new int(1);
@@ -157,10 +138,48 @@ int main(){
     tree->insert(e);
     tree->insert(c);
 
+    std::cout << "First Test, with int:"<<std::endl;
     tree->printTreeInOrder();
 
     tree->remove(b);
     std::cout << std::endl;
     tree->printTreeInOrder();
+}
+
+void test_2(){
+        std::cout << "Second Test, with Contestants:" << std::endl;
+        AVL_Tree<Contestant>* tree = new AVL_Tree<Contestant>;
+        Contestant* a = new Contestant(2029, 0, Sport::BOULDERING, 0);
+        Contestant* b = new Contestant(4039, 1, Sport::ACROBATICS, 1);
+        Contestant* c = new Contestant(191822, 2, Sport::ACROBATICS, 2);
+        Contestant* d = new Contestant(263832, 3, Sport::ACROBATICS, 3);
+        Contestant* e = new Contestant(483638, 4, Sport::ACROBATICS, 4);
+        Contestant* f = new Contestant(182723, 5, Sport::ACROBATICS, 5);
+
+        tree->insert(a);
+        tree->insert(b);
+        tree->insert(c);
+        tree->insert(d);
+        tree->insert(e);
+        tree->insert(f);
+
+        tree->printTreeInOrder();
+
+        tree->remove(d);
+
+        std::cout << std::endl;
+        tree->printTreeInOrder();
+
+        tree->remove(b);
+
+        std::cout << std::endl;
+
+        tree->printTreeInOrder();
+
+
+}
+
+int main(){
+
     return 0;
 }

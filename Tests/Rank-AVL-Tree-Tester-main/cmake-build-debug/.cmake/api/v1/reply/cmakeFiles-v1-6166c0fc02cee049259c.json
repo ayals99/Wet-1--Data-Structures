@@ -782,8 +782,8 @@
 	"kind" : "cmakeFiles",
 	"paths" : 
 	{
-		"build" : "C:/Users/ayals/OneDrive/Documents/GitHub/Wet-1--Data-Structures/cmake-build-debug",
-		"source" : "C:/Users/ayals/OneDrive/Documents/GitHub/Wet-1--Data-Structures"
+		"build" : "C:/Users/ayals/OneDrive/Documents/GitHub/Wet-1--Data-Structures/Tests/Rank-AVL-Tree-Tester-main/cmake-build-debug",
+		"source" : "C:/Users/ayals/OneDrive/Documents/GitHub/Wet-1--Data-Structures/Tests/Rank-AVL-Tree-Tester-main"
 	},
 	"version" : 
 	{

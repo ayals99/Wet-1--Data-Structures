@@ -16,4 +16,12 @@ add_executable(Wet_1__Data_Structures
         "AVL Tree/Contestant_Liaison.h"
         Classes/Contestant.cpp
         Classes/Contestant.h
+        Classes/Team.cpp
+        Classes/Team.h
+        Classes/Strength.cpp
+        Classes/Strength.h
+        Classes/Country.cpp
+        Classes/Country.h
+        Classes/ID.cpp
+        Classes/ID.h
 )

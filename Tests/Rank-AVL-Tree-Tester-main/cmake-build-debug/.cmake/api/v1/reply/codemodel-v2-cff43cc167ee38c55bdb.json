@@ -1,0 +1,60 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.27"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Rank_AVL_Tree_Tester_main",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "Rank_AVL_Tree_Tester_main::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Rank_AVL_Tree_Tester_main-Debug-7bf3920638e6a0e252be.json",
+					"name" : "Rank_AVL_Tree_Tester_main",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/ayals/OneDrive/Documents/GitHub/Wet-1--Data-Structures/Tests/Rank-AVL-Tree-Tester-main/cmake-build-debug",
+		"source" : "C:/Users/ayals/OneDrive/Documents/GitHub/Wet-1--Data-Structures/Tests/Rank-AVL-Tree-Tester-main"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}
