@@ -120,6 +120,7 @@
 
 #include "AVL_Tree.h"
 #include "../Classes/Team.h"
+#include "../../Classes/ID.h"
 #include <iostream>
 #include <functional>
 
@@ -147,14 +148,16 @@ void test_1(){
 }
 
 void test_2(){
+        std::cout << std::endl;
+        std::cout << std::endl;
         std::cout << "Second Test, with Contestants:" << std::endl;
         AVL_Tree<Contestant>* tree = new AVL_Tree<Contestant>;
-        Contestant* a = new Contestant(2029, 0, Sport::BOULDERING, 0);
-        Contestant* b = new Contestant(4039, 1, Sport::ACROBATICS, 1);
-        Contestant* c = new Contestant(191822, 2, Sport::ACROBATICS, 2);
-        Contestant* d = new Contestant(263832, 3, Sport::ACROBATICS, 3);
-        Contestant* e = new Contestant(483638, 4, Sport::ACROBATICS, 4);
-        Contestant* f = new Contestant(182723, 5, Sport::ACROBATICS, 5);
+        Contestant* a = new Contestant(2039374, 0, Sport::BOULDERING, 0);
+        Contestant* b = new Contestant(208622412, 9, Sport::ACROBATICS, 1);
+        Contestant* c = new Contestant(3, 30, Sport::ACROBATICS, 2);
+        Contestant* d = new Contestant(999999, 12, Sport::ACROBATICS, 3);
+        Contestant* e = new Contestant(1847, 4, Sport::ACROBATICS, 4);
+        Contestant* f = new Contestant(22, 7, Sport::ACROBATICS, 5);
 
         tree->insert(a);
         tree->insert(b);
@@ -175,11 +178,52 @@ void test_2(){
         std::cout << std::endl;
 
         tree->printTreeInOrder();
+}
+void Strength_and_ID_test(){
+    // I want to create strength nodes and ID nodes and see if they work
+    std::cout << std::endl;
+    std::cout << "Third test, with Strength and their parallel IDs" << std::endl;
 
+    AVL_Tree<Strength>* Strength_Tree = new AVL_Tree<Strength>;
+    Contestant* a = new Contestant(2039374, 0, Sport::BOULDERING, 0);
+    Contestant* b = new Contestant(208622412, 9, Sport::ACROBATICS, 1);
+    Contestant* c = new Contestant(3, 9, Sport::ACROBATICS, 2);
+    Contestant* d = new Contestant(999999, 12, Sport::ACROBATICS, 3);
+    Contestant* e = new Contestant(1847, 4, Sport::ACROBATICS, 4);
+    Contestant* f = new Contestant(22, 7, Sport::ACROBATICS, 5);
+
+    Strength* strength_a = new Strength(a);
+    Strength* strength_b = new Strength(b);
+    Strength* strength_c = new Strength(c);
+    Strength* strength_d = new Strength(d);
+    Strength* strength_e = new Strength(e);
+    Strength* strength_f = new Strength(f);
+
+    ID* id_a = new ID(a, strength_a);
+    ID* id_b = new ID(b, strength_b);
+    ID* id_c = new ID(c, strength_c);
+    ID* id_d = new ID(d, strength_d);
+    ID* id_e = new ID(e, strength_e);
+    ID* id_f = new ID(f, strength_f);
+
+    Strength_Tree->insert(strength_a);
+    Strength_Tree->insert(strength_d);
+    Strength_Tree->insert(strength_c);
+    Strength_Tree->insert(strength_f);
+    Strength_Tree->insert(strength_e);
+    Strength_Tree->insert(strength_b);
+
+    Strength_Tree->printTreeInOrder();
+
+    Strength_Tree->remove(strength_d);
+
+    std::cout << std::endl;
+    Strength_Tree->printTreeInOrder();
 
 }
-
 int main(){
-
+    test_1();
+    test_2();
+    Strength_and_ID_test();
     return 0;
 }

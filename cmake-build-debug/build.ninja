@@ -56,48 +56,6 @@ build CMakeFiles/Wet_1__Data_Structures.dir/GR_files/Scripts/maina1.cpp.obj: CXX
   OBJECT_DIR = CMakeFiles\Wet_1__Data_Structures.dir
   OBJECT_FILE_DIR = CMakeFiles\Wet_1__Data_Structures.dir\GR_files\Scripts
 
-build CMakeFiles/Wet_1__Data_Structures.dir/GR_files/Scripts/Olympicsa1.cpp.obj: CXX_COMPILER__Wet_1__Data_Structures_unscanned_Debug C$:/Users/ayals/OneDrive/Documents/GitHub/Wet-1--Data-Structures/GR$ files/Scripts/Olympicsa1.cpp || cmake_object_order_depends_target_Wet_1__Data_Structures
-  DEP_FILE = CMakeFiles\Wet_1__Data_Structures.dir\GR_files\Scripts\Olympicsa1.cpp.obj.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I"C:/Users/ayals/OneDrive/Documents/GitHub/Wet-1--Data-Structures/AVL Tree" -I"C:/Users/ayals/OneDrive/Documents/GitHub/Wet-1--Data-Structures/GR files/Scripts"
-  OBJECT_DIR = CMakeFiles\Wet_1__Data_Structures.dir
-  OBJECT_FILE_DIR = CMakeFiles\Wet_1__Data_Structures.dir\GR_files\Scripts
-
-build CMakeFiles/Wet_1__Data_Structures.dir/Classes/Contestant.cpp.obj: CXX_COMPILER__Wet_1__Data_Structures_unscanned_Debug C$:/Users/ayals/OneDrive/Documents/GitHub/Wet-1--Data-Structures/Classes/Contestant.cpp || cmake_object_order_depends_target_Wet_1__Data_Structures
-  DEP_FILE = CMakeFiles\Wet_1__Data_Structures.dir\Classes\Contestant.cpp.obj.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I"C:/Users/ayals/OneDrive/Documents/GitHub/Wet-1--Data-Structures/AVL Tree" -I"C:/Users/ayals/OneDrive/Documents/GitHub/Wet-1--Data-Structures/GR files/Scripts"
-  OBJECT_DIR = CMakeFiles\Wet_1__Data_Structures.dir
-  OBJECT_FILE_DIR = CMakeFiles\Wet_1__Data_Structures.dir\Classes
-
-build CMakeFiles/Wet_1__Data_Structures.dir/Classes/Team.cpp.obj: CXX_COMPILER__Wet_1__Data_Structures_unscanned_Debug C$:/Users/ayals/OneDrive/Documents/GitHub/Wet-1--Data-Structures/Classes/Team.cpp || cmake_object_order_depends_target_Wet_1__Data_Structures
-  DEP_FILE = CMakeFiles\Wet_1__Data_Structures.dir\Classes\Team.cpp.obj.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I"C:/Users/ayals/OneDrive/Documents/GitHub/Wet-1--Data-Structures/AVL Tree" -I"C:/Users/ayals/OneDrive/Documents/GitHub/Wet-1--Data-Structures/GR files/Scripts"
-  OBJECT_DIR = CMakeFiles\Wet_1__Data_Structures.dir
-  OBJECT_FILE_DIR = CMakeFiles\Wet_1__Data_Structures.dir\Classes
-
-build CMakeFiles/Wet_1__Data_Structures.dir/Classes/Strength.cpp.obj: CXX_COMPILER__Wet_1__Data_Structures_unscanned_Debug C$:/Users/ayals/OneDrive/Documents/GitHub/Wet-1--Data-Structures/Classes/Strength.cpp || cmake_object_order_depends_target_Wet_1__Data_Structures
-  DEP_FILE = CMakeFiles\Wet_1__Data_Structures.dir\Classes\Strength.cpp.obj.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I"C:/Users/ayals/OneDrive/Documents/GitHub/Wet-1--Data-Structures/AVL Tree" -I"C:/Users/ayals/OneDrive/Documents/GitHub/Wet-1--Data-Structures/GR files/Scripts"
-  OBJECT_DIR = CMakeFiles\Wet_1__Data_Structures.dir
-  OBJECT_FILE_DIR = CMakeFiles\Wet_1__Data_Structures.dir\Classes
-
-build CMakeFiles/Wet_1__Data_Structures.dir/Classes/Country.cpp.obj: CXX_COMPILER__Wet_1__Data_Structures_unscanned_Debug C$:/Users/ayals/OneDrive/Documents/GitHub/Wet-1--Data-Structures/Classes/Country.cpp || cmake_object_order_depends_target_Wet_1__Data_Structures
-  DEP_FILE = CMakeFiles\Wet_1__Data_Structures.dir\Classes\Country.cpp.obj.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I"C:/Users/ayals/OneDrive/Documents/GitHub/Wet-1--Data-Structures/AVL Tree" -I"C:/Users/ayals/OneDrive/Documents/GitHub/Wet-1--Data-Structures/GR files/Scripts"
-  OBJECT_DIR = CMakeFiles\Wet_1__Data_Structures.dir
-  OBJECT_FILE_DIR = CMakeFiles\Wet_1__Data_Structures.dir\Classes
-
-build CMakeFiles/Wet_1__Data_Structures.dir/Classes/ID.cpp.obj: CXX_COMPILER__Wet_1__Data_Structures_unscanned_Debug C$:/Users/ayals/OneDrive/Documents/GitHub/Wet-1--Data-Structures/Classes/ID.cpp || cmake_object_order_depends_target_Wet_1__Data_Structures
-  DEP_FILE = CMakeFiles\Wet_1__Data_Structures.dir\Classes\ID.cpp.obj.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I"C:/Users/ayals/OneDrive/Documents/GitHub/Wet-1--Data-Structures/AVL Tree" -I"C:/Users/ayals/OneDrive/Documents/GitHub/Wet-1--Data-Structures/GR files/Scripts"
-  OBJECT_DIR = CMakeFiles\Wet_1__Data_Structures.dir
-  OBJECT_FILE_DIR = CMakeFiles\Wet_1__Data_Structures.dir\Classes
-
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Wet_1__Data_Structures
@@ -106,7 +64,7 @@ build CMakeFiles/Wet_1__Data_Structures.dir/Classes/ID.cpp.obj: CXX_COMPILER__We
 #############################################
 # Link the executable Wet_1__Data_Structures.exe
 
-build Wet_1__Data_Structures.exe: CXX_EXECUTABLE_LINKER__Wet_1__Data_Structures_Debug CMakeFiles/Wet_1__Data_Structures.dir/GR_files/Scripts/maina1.cpp.obj CMakeFiles/Wet_1__Data_Structures.dir/GR_files/Scripts/Olympicsa1.cpp.obj CMakeFiles/Wet_1__Data_Structures.dir/Classes/Contestant.cpp.obj CMakeFiles/Wet_1__Data_Structures.dir/Classes/Team.cpp.obj CMakeFiles/Wet_1__Data_Structures.dir/Classes/Strength.cpp.obj CMakeFiles/Wet_1__Data_Structures.dir/Classes/Country.cpp.obj CMakeFiles/Wet_1__Data_Structures.dir/Classes/ID.cpp.obj
+build Wet_1__Data_Structures.exe: CXX_EXECUTABLE_LINKER__Wet_1__Data_Structures_Debug CMakeFiles/Wet_1__Data_Structures.dir/GR_files/Scripts/maina1.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Wet_1__Data_Structures.dir

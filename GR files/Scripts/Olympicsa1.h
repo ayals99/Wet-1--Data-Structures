@@ -22,6 +22,7 @@ private:
 	//
 	// Here you may add anything you want
 	//
+    
 	
 public:
 	// <DO-NOT-MODIFY> {

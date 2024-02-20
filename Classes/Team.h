@@ -3,7 +3,7 @@
 
 #include "wet1util.h"
 #include "Contestant.h"
-#include "AVL_tree.h"
+#include "AVL_Tree.h"
 
 class Team{
 private:

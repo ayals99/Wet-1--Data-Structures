@@ -30,12 +30,28 @@ public:
     int getCountryID() const{
         return m_countryID;
     }
+    friend std::ostream& operator<<(std::ostream& os, const Contestant& contestant);
+    bool operator>= (const Contestant& other) const{
+        return m_id >= other.m_id;
+    }
+    bool operator== (const Contestant& other) const{
+        return m_id == other.m_id;
+    }
 
+//    bool isInTeam(int teamID);
+//    bool registeredInATeam();
+//    StatusType registerWithTeam(int teamID);
+//    StatusType unregisterWithTeam(int teamID);
+//    bool isAvailable();
+//    bool sameSport(int teamID);
+//    bool sameCountry(int teamID)
+//    updateRegisteredTeamsStrengths();
 
 };
 
 std::ostream& operator<<(std::ostream& os, const Contestant& contestant){
-    os << "Contestant ID: " << contestant.getId() << ", Strength: " << contestant.getStrength() << std::endl;
+    os << "Contestant ID: " << contestant.m_id << ", Strength: " << contestant.m_strength << std::endl;
     return os;
 }
+
 #endif //WET_1_DATA_STRUCTURES_CONTESTANT_H

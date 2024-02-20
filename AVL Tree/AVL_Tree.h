@@ -95,10 +95,10 @@ private:
         if(currentNode == nullptr){
             return nullptr;
         }
-        if( dataToFind == currentNode->getData()){
+        if( *(dataToFind) == *(currentNode->getData())){
             return currentNode;
         }
-        else if ( dataToFind >= currentNode->getData()){
+        else if ( *dataToFind >= *(currentNode->getData())){
             return AUX_find(currentNode->getRight(), dataToFind);
         }
         else{
@@ -127,7 +127,7 @@ private:
     // New implementation of AUX_insert
     AVL_Node<T>* AUX_insert(AVL_Node<T>* parent, AVL_Node<T>* currentNode, AVL_Node<T>* newNode){
         // if newNode is larger than currentNode, we go left
-        if ( currentNode->getData() >= newNode->getData()) {
+        if ( *(currentNode->getData()) >= *(newNode->getData())) {
             // if currentNode has no left child, we can insert newNode as its left child
             if (currentNode->getLeft() == nullptr) {
                 currentNode->setLeftChild(newNode);
@@ -154,7 +154,7 @@ private:
 
         // if currentNode is NOT the root of the tree, we need to tell its parent that his children have changed
         if (parent != nullptr){
-            if ( parent->getData() >= newNode->getData()){
+            if ( *(parent->getData()) >= *(newNode->getData())){
                 parent->setLeftChild(currentNode);
             }
             else{
@@ -242,7 +242,7 @@ public:
             return nullptr;
         }
         // currentNode is not null, we need to see if we arrived at the node we want to remove
-        if ( dataToRemove >= currentNode->getData()){
+        if ( *(dataToRemove) >= *(currentNode->getData())){
             // if the data is equal. This means we've found our node to delete.
             if (currentNode->isLeaf()){
                 delete currentNode;
@@ -265,7 +265,7 @@ public:
                 currentNode->setRightChild(AUX_remove(currentNode->getRight(), temp->getData()));
             }
         }
-        else if ( dataToRemove >= currentNode->getData()) {
+        else if ( *(dataToRemove) >= *(currentNode->getData())) {
             // need to search in the right subtree
             currentNode->setRightChild(AUX_remove(currentNode->getRight(), dataToRemove));
         }
