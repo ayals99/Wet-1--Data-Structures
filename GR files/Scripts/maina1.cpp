@@ -152,10 +152,10 @@ int main(){
     int* e = new int(4);
 
     tree->insert(a);
-    tree->insert(b);
-    tree->insert(c);
     tree->insert(d);
+    tree->insert(b);
     tree->insert(e);
+    tree->insert(c);
 
     tree->printTreeInOrder();
 

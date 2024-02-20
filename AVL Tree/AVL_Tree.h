@@ -14,9 +14,6 @@ static const int FIRST_LARGER = 1;
 static const int FIRST_SMALLER = -1;
 
 
-
-
-
 template <class T, typename comparisonFunction>
 class AVL_Tree{
 private:
@@ -201,7 +198,7 @@ private:
             if (currentNode->getLeft() == nullptr) {
                 currentNode->setLeftChild(newNode);
             }
-                // if currentNode has a left child, we need to continue the recursion leftwards
+            // if currentNode has a left child, we need to continue the recursion leftwards
             else {
                 currentNode->setLeftChild(AUX_insert(currentNode, currentNode->getLeft(), newNode, compare));
             }
@@ -213,13 +210,13 @@ private:
             }
             // notice that if currentNode is the root of the tree, we don't need to tell anyone in this scope that the root has changed
         }
-            // if newNode is smaller than currentNode, we go right
+        // if newNode is smaller than currentNode, we go right
         else{
             // if currentNode has no right child, we can insert newNode as its right child
             if (currentNode->getRight() == nullptr) {
                 currentNode->setRightChild(newNode);
             }
-                // if currentNode has a right child, we need to continue the recursion rightwards
+            // if currentNode has a right child, we need to continue the recursion rightwards
             else {
                 currentNode->setRightChild(AUX_insert(currentNode, currentNode->getRight(), newNode, compare));
             }
@@ -259,28 +256,28 @@ public:
 
         comparisonFunction compare;
 
-        if (exists_In_Tree(dataToInsert)){// if data already exists (country/team/contestant are already in tree)
+        // if data already exists (country/team/contestant are already in tree)
+        if (exists_In_Tree(dataToInsert)){
             return StatusType::FAILURE;
         }
-
-        AVL_Node<T>* newNode = new AVL_Node<T>(dataToInsert);
-
-        if (newNode == nullptr){
+        try {
+            AVL_Node<T>* newNode = new AVL_Node<T>(dataToInsert);
+            if(m_root == nullptr){
+                m_root = newNode;
+            }
+            else {
+                AVL_Node<T>* newRoot = AUX_insert(nullptr, m_root, newNode, compare);
+                // Check if the root needs to be changed:
+                if (m_root != newRoot) {
+                    m_root = newRoot;
+                }
+            }
+            m_size++;
+            return StatusType::SUCCESS;
+        }
+        catch (std::bad_alloc& error){
             return StatusType::ALLOCATION_ERROR;
         }
-
-        if(m_root == nullptr){
-            m_root = newNode;
-        }
-        else {
-            AVL_Node<T>* newRoot = AUX_insert(nullptr, m_root, newNode, compare);
-            // Check if the root needs to be changed:
-            if (m_root != newRoot) {
-                m_root = newRoot;
-            }
-        }
-        m_size++;
-        return StatusType::SUCCESS;
     }
 
     AVL_Node<T>* find_Minimum_In_Subtree(AVL_Node<T>* currentNode){
@@ -289,6 +286,14 @@ public:
         }
         return currentNode;
     }
+
+    AVL_Node<T>* find_Maximum_In_Subtree(AVL_Node<T>* currentNode){
+        while(currentNode->getRight() != nullptr){
+            currentNode = currentNode->getRight();
+        }
+        return currentNode;
+    }
+
 
     void swapData(AVL_Node<T>* firstNode, AVL_Node<T>* secondNode){
         if (firstNode == nullptr || secondNode == nullptr){
@@ -305,13 +310,8 @@ public:
             return nullptr;
         }
         // currentNode is not null, we need to see if we arrived at the node we want to remove
-        if (compare(dataToRemove, currentNode->getData()) == FIRST_LARGER){ // need to search in the right subtree
-            currentNode->setRightChild(AUX_remove(currentNode->getRight(), dataToRemove, compare));
-        }
-        else if(compare(dataToRemove, currentNode->getData()) == FIRST_SMALLER){ // need to search in the left subtree
-            currentNode->setLeftChild(AUX_remove(currentNode->getLeft(), dataToRemove, compare));
-        }
-        else{ // if the data is equal. This means we've found our node to delete.
+        if (compare(dataToRemove, currentNode->getData()) == EQUAL){
+            // if the data is equal. This means we've found our node to delete.
             if (currentNode->isLeaf()){
                 delete currentNode;
                 return nullptr;
@@ -327,25 +327,37 @@ public:
                 return replacement;
             }
             else{ // has two children
+                // find the smallest value in right subtree
                 AVL_Node<T>* temp = find_Minimum_In_Subtree(currentNode->getRight());
                 swapData(currentNode, temp);
                 currentNode->setRightChild(AUX_remove(currentNode->getRight(), temp->getData(), compare));
             }
         }
+        else if (compare(dataToRemove, currentNode->getData()) == FIRST_LARGER){
+            // need to search in the right subtree
+            currentNode->setRightChild(AUX_remove(currentNode->getRight(), dataToRemove, compare));
+        }
+        else{
+            // need to search in the left subtree
+            currentNode->setLeftChild(AUX_remove(currentNode->getLeft(), dataToRemove, compare));
+        }
+
         return balance_Node(currentNode);
     }
-
-
 
     StatusType remove(T* dataToRemove){
         if (!exists_In_Tree(dataToRemove)){
             return StatusType::FAILURE;
         }
         comparisonFunction compare;
-        m_root = AUX_remove(m_root, dataToRemove, compare);
+        try{
+            m_root = AUX_remove(m_root, dataToRemove, compare);
+        }
+        catch (std::bad_alloc& error){
+            return StatusType::ALLOCATION_ERROR;
+        }
         return StatusType::SUCCESS;
     }
-
 
     void printTreeInOrder() const{
         if(m_root == nullptr){
@@ -353,7 +365,6 @@ public:
         }
         printInOrder(m_root);
     }
-
 
 };
 
