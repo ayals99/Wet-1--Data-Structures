@@ -1,13 +1,12 @@
 # ninja log v5
-3	515	7301679233228325	CMakeFiles/Wet_1__Data_Structures.dir/GR_files/Scripts/maina1.cpp.obj	831018badabc36b0
-463	561	7301666589369045	Wet_1__Data_Structures.exe	7a4adeec6120696
+2	412	7302430492795518	CMakeFiles/Wet_1__Data_Structures.dir/GR_files/Scripts/maina1.cpp.obj	831018badabc36b0
+380	465	7302427593613127	Wet_1__Data_Structures.exe	7a4adeec6120696
 5	382	7301677896207381	CMakeFiles/Wet_1__Data_Structures.dir/Classes/Strength.cpp.obj	4e82b12c0921d5de
-0	129	7301679424790874	build.ninja	ba77d4b7f14717c
-3	476	7301679450533972	CMakeFiles/Wet_1__Data_Structures.dir/GR_files/Scripts/maina1.cpp.obj	831018badabc36b0
-3	496	7301680090883146	CMakeFiles/Wet_1__Data_Structures.dir/GR_files/Scripts/maina1.cpp.obj	831018badabc36b0
-3	551	7301680887720309	CMakeFiles/Wet_1__Data_Structures.dir/GR_files/Scripts/maina1.cpp.obj	831018badabc36b0
-552	661	7301680888764419	Wet_1__Data_Structures.exe	7a4adeec6120696
-4	545	7301681215845684	CMakeFiles/Wet_1__Data_Structures.dir/GR_files/Scripts/maina1.cpp.obj	831018badabc36b0
-545	645	7301681216794647	Wet_1__Data_Structures.exe	7a4adeec6120696
-3	551	7301681444768934	CMakeFiles/Wet_1__Data_Structures.dir/GR_files/Scripts/maina1.cpp.obj	831018badabc36b0
-551	651	7301681445711103	Wet_1__Data_Structures.exe	7a4adeec6120696
+0	129	7302431931896514	build.ninja	ba77d4b7f14717c
+0	154	7302431931896514	build.ninja	ba77d4b7f14717c
+3	482	7302432406390467	CMakeFiles/Wet_1__Data_Structures.dir/GR_files/Scripts/maina1.cpp.obj	831018badabc36b0
+482	567	7302432407203603	Wet_1__Data_Structures.exe	7a4adeec6120696
+5	1232	7302432854551148	CMakeFiles/Wet_1__Data_Structures.dir/GR_files/Scripts/maina1.cpp.obj	831018badabc36b0
+1233	1351	7302432855755085	Wet_1__Data_Structures.exe	7a4adeec6120696
+7	2044	7302433341513900	CMakeFiles/Wet_1__Data_Structures.dir/GR_files/Scripts/maina1.cpp.obj	831018badabc36b0
+2046	2232	7302433343416127	Wet_1__Data_Structures.exe	7a4adeec6120696

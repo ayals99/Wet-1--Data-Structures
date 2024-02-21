@@ -124,7 +124,7 @@
 #include <iostream>
 #include <functional>
 
-void test_1(){
+bool test_1(){
     AVL_Tree<int>* tree = new AVL_Tree<int>;
 
     int* a = new int(0);
@@ -140,14 +140,19 @@ void test_1(){
     tree->insert(c);
 
     std::cout << "First Test, with int:"<<std::endl;
-    tree->printTreeInOrder();
+    if (!tree->printTreeInOrder()){
+        return false;
+    };
 
     tree->remove(b);
     std::cout << std::endl;
-    tree->printTreeInOrder();
+    if (!tree->printTreeInOrder()){
+        return false;
+    }
+    return true;
 }
 
-void test_2(){
+bool test_2(){
         std::cout << std::endl;
         std::cout << std::endl;
         std::cout << "Second Test, with Contestants:" << std::endl;
@@ -166,20 +171,28 @@ void test_2(){
         tree->insert(e);
         tree->insert(f);
 
-        tree->printTreeInOrder();
+        if (!tree->printTreeInOrder()){
+            return false;
+        }
 
         tree->remove(d);
 
         std::cout << std::endl;
-        tree->printTreeInOrder();
+        if (!tree->printTreeInOrder()){
+            return false;
+        }
 
         tree->remove(b);
 
         std::cout << std::endl;
 
-        tree->printTreeInOrder();
+        if (!tree->printTreeInOrder()){
+            return false;
+        }
+        return true;
 }
-void Strength_and_ID_test(){
+
+bool Strength_and_ID_test(){
     // I want to create strength nodes and ID nodes and see if they work
     std::cout << std::endl;
     std::cout << "Third test, with Strength and their parallel IDs" << std::endl;
@@ -213,17 +226,64 @@ void Strength_and_ID_test(){
     Strength_Tree->insert(strength_e);
     Strength_Tree->insert(strength_b);
 
-    Strength_Tree->printTreeInOrder();
+    std::cout << std::endl;
+    if(!Strength_Tree->printTreeInOrder()){
+        return false;
+    }
+    std::cout << std::endl;
 
     Strength_Tree->remove(strength_d);
 
+    std::cout << std::endl << std::endl;
+    if(!Strength_Tree->printTreeInOrder()){
+        return false;
+    }
     std::cout << std::endl;
-    Strength_Tree->printTreeInOrder();
 
+    AVL_Tree<ID>* ID_Tree = new AVL_Tree<ID>;
+
+    ID_Tree->insert(id_a);
+    ID_Tree->insert(id_d);
+    ID_Tree->insert(id_c);
+    ID_Tree->insert(id_f);
+    ID_Tree->insert(id_e);
+    ID_Tree->insert(id_b);
+
+    std::cout << std::endl;
+    if(! (ID_Tree->printTreeInOrder())){
+        return false;
+    }
+    std::cout << std::endl;
+
+    ID_Tree->remove(id_d);
+    if(! (ID_Tree->printTreeInOrder())){
+        return false;
+    }
+    std::cout << std::endl;
+
+    ID_Tree->remove(id_f);
+
+    std::cout << std::endl;
+    if(! (ID_Tree->printTreeInOrder())){
+        return false;
+    }
+    std::cout << std::endl;
+
+
+    return true;
 }
+
 int main(){
-    test_1();
-    test_2();
-    Strength_and_ID_test();
+    if(!test_1()){
+        std::cout << "Test 1 failed" << std::endl;
+    }
+
+    if(!test_2()){
+        std::cout << "Test 2 failed" << std::endl;
+    }
+    if (!Strength_and_ID_test()){
+        std::cout << "Strength_and_ID_test failed" << std::endl;
+    }
+
     return 0;
 }

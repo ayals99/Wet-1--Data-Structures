@@ -38,7 +38,7 @@ public:
         return m_id == other.m_id;
     }
 
-//    bool isInTeam(int teamID);
+//    bool isInTeam(int teamID); // Checks if registered in a specific team
 //    bool registeredInATeam();
 //    StatusType registerWithTeam(int teamID);
 //    StatusType unregisterWithTeam(int teamID);

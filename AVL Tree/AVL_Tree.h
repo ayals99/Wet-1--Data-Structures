@@ -106,13 +106,33 @@ private:
         }
     }
 
-    void printInOrder(AVL_Node<T>* node) const{
+    bool printInOrder(AVL_Node<T>* node) const{
         if(node == nullptr){
-            return;
+            return true;
         }
-        printInOrder(node->getLeft());
+        int currentBalanceFactor = node->getBalanceFactor();
+
+        if (currentBalanceFactor == LEFT_IMBALANCE || currentBalanceFactor == RIGHT_IMBALANCE)
+        {
+            return false;
+        }
+
+        if (node->getLeft() != nullptr){
+            if ( !( *(node->getData() ) >= *(node->getLeft()->getData() ) ) ){
+                return false;
+            }
+        }
+
+        if(node->getRight() != nullptr)
+        {
+            if ( !( *(node->getRight()->getData() ) >=  *(node->getData()) ) ){
+                return false;
+            }
+        }
+        bool leftStatus = printInOrder(node->getLeft());
         std::cout << *(node->getData()) << " ";
-        printInOrder(node->getRight());
+        bool rightStatus = printInOrder(node->getRight());
+        return leftStatus && rightStatus;
     }
 
     void deleteTree(AVL_Node<T>* node){
@@ -167,75 +187,19 @@ private:
         return currentNode;
     }
 
-public:
-    /** Constructors & Public Functions **/
-
-    AVL_Tree(): m_root(nullptr), m_size(ZERO) {}
-
-    ~AVL_Tree(){
-        deleteTree(m_root);
-    }
-
-    AVL_Node<T>* find(const T* dataToFind) const{
-        assert(dataToFind != nullptr);
-        return AUX_find(m_root, dataToFind);
-    }
-
-    bool exists_In_Tree(T* dataToInsert){
-        return (bool) find(dataToInsert);
-    }
-
-    StatusType insert(T* dataToInsert){
-        assert (dataToInsert != nullptr);
-
-        // if data already exists (country/team/contestant are already in tree)
-        if (exists_In_Tree(dataToInsert)){
-            return StatusType::FAILURE;
-        }
-        try {
-            AVL_Node<T>* newNode = new AVL_Node<T>(dataToInsert);
-            if(m_root == nullptr){
-                m_root = newNode;
-            }
-            else {
-                AVL_Node<T>* newRoot = AUX_insert(nullptr, m_root, newNode);
-                // Check if the root needs to be changed:
-                if (m_root != newRoot) {
-                    m_root = newRoot;
-                }
-            }
-            m_size++;
-            return StatusType::SUCCESS;
-        }
-        catch (std::bad_alloc& error){
-            return StatusType::ALLOCATION_ERROR;
-        }
-    }
-
-    AVL_Node<T>* find_Minimum_In_Subtree(AVL_Node<T>* currentNode){
+    AVL_Node<T>* AUX_find_Minimum_In_Subtree(AVL_Node<T>* currentNode){
         while(currentNode->getLeft() != nullptr){
             currentNode = currentNode->getLeft();
         }
         return currentNode;
     }
 
-    AVL_Node<T>* find_Maximum_In_Subtree(AVL_Node<T>* currentNode){
+    AVL_Node<T>* AUX_find_Maximum_In_Subtree(AVL_Node<T>* currentNode){
         while(currentNode->getRight() != nullptr){
             currentNode = currentNode->getRight();
         }
         return currentNode;
     }
-
-
-    void swapData(AVL_Node<T>* firstNode, AVL_Node<T>* secondNode){
-        if (firstNode == nullptr || secondNode == nullptr){
-            return;
-        }
-        T* temp = firstNode->getData();
-        firstNode->setData(secondNode->getData());
-        secondNode->setData(temp);
-    }
-
     AVL_Node<T>* AUX_remove(AVL_Node<T>* currentNode, const T* dataToRemove) {
         // Will only enter this function if the tree holds "dataToRemove"
         if (currentNode == nullptr){ // if we didn't find the node we want to remove
@@ -277,6 +241,71 @@ public:
         return balance_Node(currentNode);
     }
 
+    void swapData(AVL_Node<T>* firstNode, AVL_Node<T>* secondNode){
+        if (firstNode == nullptr || secondNode == nullptr){
+            return;
+        }
+        T* temp = firstNode->getData();
+        firstNode->setData(secondNode->getData());
+        secondNode->setData(temp);
+    }
+
+public:
+    /** Constructors & Public Functions **/
+
+    AVL_Tree(): m_root(nullptr), m_size(ZERO) {}
+
+    ~AVL_Tree(){
+        deleteTree(m_root);
+    }
+
+    T* find(const T* dataToFind) const{
+        assert(dataToFind != nullptr);
+        return AUX_find(m_root, dataToFind)->getData();
+    }
+
+    bool exists_In_Tree(T* dataToInsert){
+        return (bool) find(dataToInsert);
+    }
+
+    StatusType insert(T* dataToInsert){
+        assert (dataToInsert != nullptr);
+
+        // if data already exists (country/team/contestant are already in tree)
+        if (exists_In_Tree(dataToInsert)){
+            return StatusType::FAILURE;
+        }
+        try {
+            AVL_Node<T>* newNode = new AVL_Node<T>(dataToInsert);
+            if(m_root == nullptr){
+                m_root = newNode;
+            }
+            else {
+                AVL_Node<T>* newRoot = AUX_insert(nullptr, m_root, newNode);
+                // Check if the root needs to be changed:
+                if (m_root != newRoot) {
+                    m_root = newRoot;
+                }
+            }
+            m_size++;
+            return StatusType::SUCCESS;
+        }
+        catch (std::bad_alloc& error){
+            return StatusType::ALLOCATION_ERROR;
+        }
+    }
+
+
+    T* find_Minimum_In_Subtree(AVL_Node<T>* currentNode){
+        return AUX_find_Minimum_In_Subtree(currentNode)->getData();
+    }
+    T* find_Maximum_In_Subtree(AVL_Node<T>* currentNode){
+        return AUX_find_Maximum_In_Subtree(currentNode)->getData();
+    }
+
+
+
+
     StatusType remove(T* dataToRemove){
         if (!exists_In_Tree(dataToRemove)){
             return StatusType::FAILURE;
@@ -290,11 +319,11 @@ public:
         return StatusType::SUCCESS;
     }
 
-    void printTreeInOrder() const{
+    bool printTreeInOrder() const{
         if(m_root == nullptr){
-            return;
+            return true;
         }
-        printInOrder(m_root);
+        return printInOrder(m_root);
     }
 
 };

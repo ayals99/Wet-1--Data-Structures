@@ -12,9 +12,9 @@ add_executable(Wet_1__Data_Structures
         "GR files/Scripts/Olympicsa1.h"
         "GR files/Scripts/wet1util.h"
         "AVL Tree/AVL_Tree.h"
-        Classes/Contestant.h
+        "Classes/Contestant.h"
         "Classes/Team.h"
-        Classes/Strength.h
-        Classes/Country.h
-        Classes/ID.h
+        "Classes/Strength.h"
+        "Classes/Country.h"
+        "Classes/ID.h"
 )
