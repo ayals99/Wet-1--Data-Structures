@@ -5,7 +5,9 @@
 #include "Team.h"
 #include <iostream>
 
-const static int NUMBER_OF_TEAMS_ALLOWED_PER_PERSON = 3;
+const static int NUMBER_OF_TEAMS_ALLOWED_PER_PLAYER = 3;
+
+class Team;
 
 class Contestant{
 private:
@@ -14,6 +16,9 @@ private:
     Sport m_sport;
     int m_countryID;
 
+    // TODO: check if this problem in Tam is because the include is circular
+    Team* m_teams[NUMBER_OF_TEAMS_ALLOWED_PER_PLAYER];
+
 public:
     Contestant(int id, int strength, Sport sport, int countryID) : m_id(id), m_strength(strength),m_sport(sport),
                                                                    m_countryID(countryID){};
@@ -21,6 +26,7 @@ public:
     int getId() const{
         return m_id;
     }
+
     int getStrength() const{
         return m_strength;
     }
@@ -38,6 +44,7 @@ public:
         return m_id == other.m_id;
     }
 
+// TODO: implement the following functions in the cpp file! otherwise it will be a circular include and we can't access members of Team
 //    bool isInTeam(int teamID); // Checks if registered in a specific team
 //    bool registeredInATeam();
 //    StatusType registerWithTeam(int teamID);

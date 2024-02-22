@@ -24,12 +24,17 @@ private:
     AVL_Tree<Strength>* m_RIGHT_Strength_Tree;
 
 public:
+    Team() = default;
 
-//    void balanceTrees(){
+//        void balanceTrees(){
 //      psuedo-code;
 //      check if number of contestants in each tree is 0 mod3
 //            if it isn't, return.
 //    }
+
+    int getID() const{
+        return m_id;
+    }
 
 //    StatusType insertContestant(Contestant* contestantToRegister){// O(log n)
 //        Pseudo-code;
@@ -62,7 +67,7 @@ public:
 //            m_RIGHT_Strength_Tree->insert(strength);
 //        }
 //    }
-//};
+};
 
 
 #endif //WET_1_DATA_STRUCTURES_TEAM_H

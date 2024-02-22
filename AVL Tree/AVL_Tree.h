@@ -106,6 +106,22 @@ private:
         }
     }
 
+    //// NOTE: This function assumes that T implements the getID() function
+    AVL_Node<T>* AUX_find(AVL_Node<T>* currentNode, int Key) const{
+        if(currentNode == nullptr){
+            return nullptr;
+        }
+        if( Key == currentNode->getData()->getID()){
+            return currentNode;
+        }
+        else if ( Key >= currentNode->getData()->getID()){
+            return AUX_find(currentNode->getRight(), Key);
+        }
+        else{
+            return AUX_find(currentNode->getLeft(), Key);
+        }
+    }
+
     bool printInOrder(AVL_Node<T>* node) const{
         if(node == nullptr){
             return true;
@@ -262,6 +278,10 @@ public:
     T* find(const T* dataToFind) const{
         assert(dataToFind != nullptr);
         return AUX_find(m_root, dataToFind)->getData();
+    }
+
+    T* find(int Key) const{
+        return AUX_find(m_root, Key)->getData();
     }
 
     bool exists_In_Tree(T* dataToInsert){

@@ -1,8 +1,23 @@
-//
-// Created by ayals on 2/20/2024.
-//
+#ifndef WET_1_DATA_STRUCTURES_COUNTRY_H
+#define WET_1_DATA_STRUCTURES_COUNTRY_H
 
-#ifndef WET_1__DATA_STRUCTURES_COUNTRY_H
-#define WET_1__DATA_STRUCTURES_COUNTRY_H
+class Country{
+private:
+    int m_countryID;
+    int m_numberOfContestants;
+    int m_numberOfTeams;
+    int m_medals;
 
-#endif //WET_1__DATA_STRUCTURES_COUNTRY_H
+public:
+    Country(int id) : m_countryID(id), m_numberOfContestants(0), m_numberOfTeams(0){};
+
+    int getID() const{
+        return m_countryID;
+    }
+
+    void addMedal(){
+        m_medals++;
+    }
+
+};
+#endif //WET_1_DATA_STRUCTURES_COUNTRY_H

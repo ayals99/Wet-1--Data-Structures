@@ -19,6 +19,7 @@ public:
     int getStrength() const;
     subtreePosition getPosition() const;
     void setPosition(subtreePosition position);
+    Contestant* getContestant() const;
 
     bool operator >= (const Strength& other) const{
         if (this->m_contestant->getStrength() == other.m_contestant->getStrength()){
@@ -36,6 +37,7 @@ public:
             return false;
         }
     }
+
     bool operator == (const Strength& other) const{
         if (*this >= other && other >= *this){
             return true;
@@ -44,6 +46,7 @@ public:
             return false;
         }
     }
+
     friend std::ostream& operator<<(std::ostream& os, const Strength& strength);
 };
 

@@ -12,6 +12,19 @@ private:
 public:
     explicit ID(Contestant* contestant) : m_contestant(contestant), parallel_strength(nullptr){};
     ID(Contestant* contestant, Strength* parallel) : m_contestant(contestant), parallel_strength(parallel){};
+
+    int getID() const{
+        return m_contestant->getId();
+    }
+
+    Contestant* getContestant() const{
+        return m_contestant;
+    }
+
+    Strength* getParallelStrength() const{
+        return parallel_strength;
+    }
+
     bool operator==(const ID& other) const{
         if (this->m_contestant->getId() == other.m_contestant->getId()){
             return true;
