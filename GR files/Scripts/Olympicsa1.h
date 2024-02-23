@@ -15,14 +15,17 @@
 #ifndef STREAMINGDBA1_H_
 #define STREAMINGDBA1_H_
 
+#include "../../Classes/Team.h"
+#include "../../Classes/Country.h"
+#include "../../Classes/Contestant.h"
+
 #include "wet1util.h"
 class Olympics {
 private:
-	//
-	// Here you may add anything you want
-	//
-    
-	
+    Country* countryTree;
+    Team* teamTree;
+    Contestant* contestantTree;
+
 public:
 	// <DO-NOT-MODIFY> {
 	

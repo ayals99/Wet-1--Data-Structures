@@ -160,6 +160,17 @@ private:
         delete node;
     }
 
+    void AUX_removeDataFromTree(AVL_Node<T>* node){ // O(n_team_ID2)
+        if(node == nullptr){
+            return;
+        }
+        AUX_removeDataFromTree(node->getLeft());
+        AUX_removeDataFromTree(node->getRight());
+        node->setData(nullptr);
+    }
+
+
+
     // New implementation of AUX_insert
     AVL_Node<T>* AUX_insert(AVL_Node<T>* parent, AVL_Node<T>* currentNode, AVL_Node<T>* newNode){
         // if newNode is larger than currentNode, we go left
@@ -216,6 +227,7 @@ private:
         }
         return currentNode;
     }
+
     AVL_Node<T>* AUX_remove(AVL_Node<T>* currentNode, const T* dataToRemove) {
         // Will only enter this function if the tree holds "dataToRemove"
         if (currentNode == nullptr){ // if we didn't find the node we want to remove
@@ -315,15 +327,17 @@ public:
         }
     }
 
-
-    T* find_Minimum_In_Subtree(AVL_Node<T>* currentNode){
-        return AUX_find_Minimum_In_Subtree(currentNode)->getData();
-    }
-    T* find_Maximum_In_Subtree(AVL_Node<T>* currentNode){
-        return AUX_find_Maximum_In_Subtree(currentNode)->getData();
+    T* find_Minimum_In_Subtree(){
+        return AUX_find_Minimum_In_Subtree(m_root)->getData();
     }
 
+    T* find_Maximum_In_Subtree(){
+        return AUX_find_Maximum_In_Subtree(m_root)->getData();
+    }
 
+    int getSize() const{
+        return m_size;
+    }
 
 
     StatusType remove(T* dataToRemove){
@@ -336,6 +350,7 @@ public:
         catch (std::bad_alloc& error){
             return StatusType::ALLOCATION_ERROR;
         }
+        m_size--;
         return StatusType::SUCCESS;
     }
 
@@ -345,6 +360,10 @@ public:
         }
         return printInOrder(m_root);
     }
+
+    void removeDataFromTree(){
+        AUX_removeDataFromTree(m_root);
+    };
 
 };
 
