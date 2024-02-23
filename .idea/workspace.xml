@@ -22,22 +22,11 @@
   <component name="ChangeListManager">
     <list default="true" id="ee6379aa-e38b-43ed-b738-6074c08a537a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AVL Tree/AVL_Tree.h" beforeDir="false" afterPath="$PROJECT_DIR$/AVL Tree/AVL_Tree.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Classes/Team.h" beforeDir="false" afterPath="$PROJECT_DIR$/Classes/Team.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GR files/Scripts/Olympicsa1.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/GR files/Scripts/Olympicsa1.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GR files/Scripts/Olympicsa1.h" beforeDir="false" afterPath="$PROJECT_DIR$/GR files/Scripts/Olympicsa1.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/rules.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/rules.ninja" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
     </list>
     <list id="03773ba4-af21-45a8-a46a-f0c82d655b7f" name="Changes by Administrator" comment="" />
-    <list id="4a348711-4b6d-4534-9607-8bd66a84583e" name="Changes by Shani Sazbon" comment="">
-      <change beforePath="$PROJECT_DIR$/GR files/Scripts/Olympicsa1.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/GR files/Scripts/Olympicsa1.cpp" afterDir="false" />
-    </list>
+    <list id="4a348711-4b6d-4534-9607-8bd66a84583e" name="Changes by Shani Sazbon" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,54 +38,6 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/GR files/Scripts/Olympicsa1.cpp">
-      <ranges>
-        <range start1="3" end1="3" start2="3" end2="4" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
-        <range start1="73" end1="74" start2="74" end2="75" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
-        <range start1="147" end1="148" start2="148" end2="149" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
-        <range start1="149" end1="152" start2="150" end2="155" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
-        <range start1="153" end1="153" start2="156" end2="160" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
-        <range start1="154" end1="156" start2="161" end2="162" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
-        <range start1="157" end1="164" start2="163" end2="163" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
-        <range start1="165" end1="167" start2="164" end2="165" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
-        <range start1="169" end1="169" start2="167" end2="168" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
-        <range start1="180" end1="181" start2="179" end2="180" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
-        <range start1="195" end1="198" start2="194" end2="201" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
-        <range start1="199" end1="201" start2="202" end2="203" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
-        <range start1="214" end1="216" start2="216" end2="218" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
-        <range start1="225" end1="226" start2="227" end2="234" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
-        <range start1="227" end1="229" start2="235" end2="238" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
-        <range start1="230" end1="231" start2="239" end2="242" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
-        <range start1="232" end1="232" start2="243" end2="245" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
-        <range start1="245" end1="248" start2="258" end2="261" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
-        <range start1="260" end1="261" start2="273" end2="274" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
-        <range start1="262" end1="264" start2="275" end2="276" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
-        <range start1="277" end1="278" start2="289" end2="290" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
-        <range start1="279" end1="281" start2="291" end2="292" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
-        <range start1="288" end1="290" start2="299" end2="301" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
-        <range start1="307" end1="307" start2="318" end2="319" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
-        <range start1="308" end1="308" start2="320" end2="322" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
-        <range start1="309" end1="309" start2="323" end2="324" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
-        <range start1="310" end1="311" start2="325" end2="329" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
-        <range start1="313" end1="317" start2="331" end2="338" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
-        <range start1="318" end1="319" start2="339" end2="340" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
-        <range start1="320" end1="323" start2="341" end2="360" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
-        <range start1="327" end1="330" start2="364" end2="370" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
-        <range start1="332" end1="333" start2="372" end2="372" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
-        <range start1="336" end1="336" start2="375" end2="379" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
-        <range start1="338" end1="342" start2="381" end2="389" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
-        <range start1="347" end1="347" start2="394" end2="396" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
-        <range start1="350" end1="351" start2="399" end2="400" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
-        <range start1="369" end1="371" start2="418" end2="420" changelist="4a348711-4b6d-4534-9607-8bd66a84583e" />
-        <range start1="372" end1="373" start2="421" end2="422" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
-        <range start1="374" end1="375" start2="423" end2="424" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
-        <range start1="376" end1="378" start2="425" end2="425" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
-        <range start1="385" end1="385" start2="432" end2="433" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
-        <range start1="387" end1="391" start2="435" end2="451" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
-      </ranges>
-    </file>
   </component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
@@ -112,32 +53,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;CMake Application.Wet_1__Data_Structures.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "CMake Application.Wet_1__Data_Structures.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/ayals/OneDrive/Documents/GitHub/Wet-1--Data-Structures/CMakeLists.txt",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+    <configuration name="Wet_1__Data_Structures" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Wet_1__Data_Structures" TARGET_NAME="Wet_1__Data_Structures" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Wet_1__Data_Structures" RUN_TARGET_NAME="Wet_1__Data_Structures">
       <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Wet_1__Data_Structures" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Wet_1__Data_Structures" TARGET_NAME="Wet_1__Data_Structures" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Wet_1__Data_Structures" RUN_TARGET_NAME="Wet_1__Data_Structures">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -156,6 +98,7 @@
       <workItem from="1708590900350" duration="933000" />
       <workItem from="1708591851197" duration="6007000" />
       <workItem from="1708609415175" duration="11760000" />
+      <workItem from="1708696301425" duration="5182000" />
     </task>
     <servers />
   </component>
