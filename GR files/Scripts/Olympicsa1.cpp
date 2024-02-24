@@ -2,12 +2,18 @@
 
 
 static const int MINIMUM_AUSTERITY_TEAM_SIZE = 3;
+static const int NOT_FOUND = -1;
 
 Olympics::Olympics(){ //O(1)
+    m_countryTree = new AVL_Tree<Country>(); // O(1)
+    m_teamTree = new AVL_Tree<Team>(); // O(1)
+    m_contestantTree = new AVL_Tree<Contestant>(); // O(1)
 }
 
 Olympics::~Olympics(){ // O(n+k+m)
-
+    delete m_countryTree; // O(k)
+    delete m_teamTree; // O(m)
+    delete m_contestantTree; // O(n)
 }
 	
 StatusType Olympics::add_country(int countryId, int medals){ // O(log k)
@@ -30,7 +36,7 @@ StatusType Olympics::add_country(int countryId, int medals){ // O(log k)
     }
 }
 
-//     Pseudo code:
+//     Pseudocode:
 //        check if medals <= 0 and if countryId <= 0
 //             If it does, return INVALID_INPUT.
 //        Check if countryId exists already.
@@ -38,8 +44,8 @@ StatusType Olympics::add_country(int countryId, int medals){ // O(log k)
 //        in a try block:
 //            Create a new country with no teams.
 //            assign medals to the country.
-//            intialize the country's team count to 0.
-//            intialize the country's contestant count to 0.
+//            initialize the country's team count to 0.
+//            initialize the country's contestant count to 0.
 //            return StatusType::SUCCESS.
 //        if allocation failed, return StatusType::ALLOCATION_ERROR.
 
@@ -65,7 +71,7 @@ StatusType Olympics::remove_country(int countryId){ // O(log k)
     return StatusType::SUCCESS;
 }
 
-//     Pseudo code:
+//     Pseudocode:
 //      check if countryId <= 0
 //           If it does, return INVALID_INPUT.
 //        in a try block:
@@ -101,7 +107,7 @@ StatusType Olympics::add_team(int teamId,int countryId,Sport sport){ // O(log m 
     }
 }
 
-// Pseudo code:
+// Pseudocode:
 //      Check if teamId <= 0 or countryId <= 0
 //          If it does, return StatusType::INVALID_INPUT.
 //       in a try block:
@@ -109,11 +115,11 @@ StatusType Olympics::add_team(int teamId,int countryId,Sport sport){ // O(log m 
 //          If it does, return StatusType::FAILURE.
 //          Find the countryId and save a pointer to the country’s instance.
 //          If country does not exist, return StatusType::FAILURE.
-//          All of the id done in the constructor of Team:
+//          All the id done in the constructor of Team:
 //          Create a new team with no members.
-//          intialize m_teamSize to 0.
-//          intialize m_teamStrength to 0.
-//          intialize m_austerityMeasures to 0.
+//          initialize m_teamSize to 0.
+//          initialize m_teamStrength to 0.
+//          initialize m_austerityMeasures to 0.
 //          Create all six Contestant Subtrees - three for ID ad three for Strength.
 //          assign the team to the country by saving the country's pointer in m_countryPointer.
 //      if allocation failed, return StatusType::ALLOCATION_ERROR.
@@ -145,7 +151,7 @@ StatusType Olympics::remove_team(int teamId) { // O(log m)
     }
 }
 
-//     Pseudo-code:
+//     Pseudocode:
 //      Check if teamId <= 0
 //        If it does, return StatusType::INVALID_INPUT.
 //      in a try block:
@@ -158,9 +164,6 @@ StatusType Olympics::remove_team(int teamId) { // O(log m)
 //we need to remove the team from the team tree and delete the team
 
 
-
-
-	
 StatusType Olympics::add_contestant(int contestantId ,int countryId,Sport sport,int strength){  // O(log n + log k)
     if (contestantId <= ZERO || countryId <= ZERO || strength < ZERO){
         return StatusType::INVALID_INPUT;
@@ -186,7 +189,7 @@ StatusType Olympics::add_contestant(int contestantId ,int countryId,Sport sport,
     }
 }
 
-//     Pseudo-code:
+//     Pseudocode:
 //      Check if contestantId <= 0 or countryId <= 0 or strength < 0
 //          If it does, return StatusType::INVALID_INPUT.
 //      in a try block:
@@ -234,7 +237,7 @@ StatusType Olympics::remove_contestant(int contestantId){ // O(log n)
 
 }
 
-//     Pseudo-code:
+//     Pseudocode:
 //      Check if contestantId <= 0
 //          If it does, return StatusType::INVALID_INPUT.
 //      in a try block:
@@ -247,7 +250,6 @@ StatusType Olympics::remove_contestant(int contestantId){ // O(log n)
 //          olympics->m_contestantTree->remove(contestantToDelete); // will also delete the Contestant's instance
 //      if allocation failed, return StatusType::ALLOCATION_ERROR.
 //      return StatusType::SUCCESS;
-
 
 StatusType Olympics::add_contestant_to_team(int teamId,int contestantId){ // O(log n + log m)
 
@@ -287,7 +289,7 @@ StatusType Olympics::add_contestant_to_team(int teamId,int contestantId){ // O(l
     }
 }
 
-//     Pseudo-code:
+//     Pseudocode:
 //          Check if teamId <= 0 or contestantId <= 0
 //              If it does, return StatusType::INVALID_INPUT.
 //          in a try block:
@@ -307,7 +309,6 @@ StatusType Olympics::add_contestant_to_team(int teamId,int contestantId){ // O(l
 //                            return StatusType::FAILURE
 //               if (contestantToRegister->isAvailable() == FALSE) // O(1)
 //       	        return StatusType::FAILURE;
-
 
 StatusType Olympics::remove_contestant_from_team(int teamId,int contestantId) { // O(log n + log m)
 
@@ -334,7 +335,7 @@ StatusType Olympics::remove_contestant_from_team(int teamId,int contestantId) { 
     }
 }
 
-//      Pseudo-code:
+//      Pseudocode:
 //      Check if teamId <= 0 or contestantId <= 0
 //          If it does, return StatusType::INVALID_INPUT.
 //      in a try block:
@@ -356,7 +357,6 @@ StatusType Olympics::remove_contestant_from_team(int teamId,int contestantId) { 
 //              draftingTeam->updateAusterity();  // O(log n)
 //      if allocation failed, return StatusType::ALLOCATION_ERROR.
 //      return StatusType::SUCCESS;
-
 
 void removeContestantFromAllTeamSubtrees(Contestant* contestant){ // O(log n)
     for (int i = 0; i < NUMBER_OF_TEAMS_ALLOWED_PER_PLAYER; i++){ // constant amount of iterations
@@ -399,7 +399,7 @@ StatusType Olympics::update_contestant_strength(int contestantId ,int change){ /
     }
 }
 
-//     Pseudo-code:
+//     Pseudocode:
 //      if contestantId <= 0
 //          return StatusType::INVALID_INPUT.
 //     in a try block:
@@ -408,7 +408,7 @@ StatusType Olympics::update_contestant_strength(int contestantId ,int change){ /
 //                  return FAILURE.
 //         if change == 0
 //             return StatusType::SUCCESS
-//        if (contestantToUpdate->getStength() - change < 0) { // O(1)
+//        if (contestantToUpdate->getStrength() - change < 0) { // O(1)
 //            return StatusType::FAILURE;
 //        }
 //         removeContestantFromAllTeamSubtrees(contestantId); // O(log n + log m)
@@ -419,8 +419,6 @@ StatusType Olympics::update_contestant_strength(int contestantId ,int change){ /
 //    catch allocation errors
 //          return StatusType::ALLOCATION_ERROR.
 //    return StatusType::SUCCESS;
-
-
 
 output_t<int> Olympics::get_strength(int contestantId){ // O(log n)
     if(contestantId <= ZERO){
@@ -437,7 +435,8 @@ output_t<int> Olympics::get_strength(int contestantId){ // O(log n)
         return output_t<int>(StatusType::ALLOCATION_ERROR);
     }
 }
-//     Pseudo-code:
+
+//     Pseudocode:
 //     if contestantId  <= 0
 //          return INVALID_INPUT.
 //     in try{} catch{} block:
@@ -446,8 +445,6 @@ output_t<int> Olympics::get_strength(int contestantId){ // O(log n)
 //                  return FAILURE.
 //         return output_t<int>(Contestant->getStrength());
 //     If allocation failed, return output_t<int>(StatusType::FAILURE).
-
-
 
 output_t<int> Olympics::get_medals(int countryId){ // O(log k)
     if (countryId <= ZERO){
@@ -464,7 +461,8 @@ output_t<int> Olympics::get_medals(int countryId){ // O(log k)
         return output_t<int>(StatusType::ALLOCATION_ERROR);
     }
 }
-//     Pseudo-code:
+
+//     Pseudocode:
 //      if countryId  <= 0
 //          return INVALID_INPUT.
 //      try{} catch{} block:
@@ -473,8 +471,6 @@ output_t<int> Olympics::get_medals(int countryId){ // O(log k)
 //                  return FAILURE.
 //          return output_t<int>(country->getMedals()); // O(1)
 //    If allocation failed, return output_t<int>(StatusType::FAILURE).
-
-
 
 output_t<int> Olympics::get_team_strength(int teamId){ // O(log m)
     if (teamId <= ZERO){
@@ -491,7 +487,8 @@ output_t<int> Olympics::get_team_strength(int teamId){ // O(log m)
         return output_t<int>(StatusType::ALLOCATION_ERROR); // O(1)
     }
 }
-//	 Pseudo-code:
+
+//	 Pseudocode:
 //     if teamId  <= 0
 //         return INVALID_INPUT.
 //     in try{} catch{} block:
@@ -510,82 +507,274 @@ int ceilDivisionByThree(int n){
     return (n / 3) + ( (n % 3) != 0); // O(1)
 }
 
+int findArrayLength(ID** array){ // O(n)
+    int i = 0;
+    while (array[i] != nullptr){
+        i++;
+    }
+    return i;
+}
+
+int findArrayLength(Strength** array){ // O(n)
+    int i = 0;
+    while (array[i] != nullptr){
+        i++;
+    }
+    return i;
+}
+
+ID** mergeArrays(ID** sortedId1, ID** sortedId2){
+    ID** mergedIdArray = new ID*[findArrayLength(sortedId1) + findArrayLength(sortedId2)]; // O(n_team_ID1 + n_team_ID2)
+    int i = 0;
+    int j = 0;
+    int k = 0;
+    while (sortedId1[i] != nullptr && sortedId2[j] != nullptr){
+        if (sortedId2[j]->getID() >= sortedId1[i]->getID()){
+            mergedIdArray[k] = sortedId1[i];
+            i++;
+        }
+        else{
+            mergedIdArray[k] = sortedId2[j];
+            j++;
+        }
+        k++;
+    }
+    while (sortedId1[i] != nullptr){
+        mergedIdArray[k] = sortedId1[i];
+        i++;
+        k++;
+    }
+    while (sortedId2[j] != nullptr){
+        mergedIdArray[k] = sortedId2[j];
+        j++;
+        k++;
+    }
+
+    // delete only the pointer to the elements of array, not the instances of ID
+    delete[] sortedId1;
+    delete[] sortedId2;
+    return mergedIdArray;
+}
+
+Strength** mergeArrays(Strength** sortedStrength1, Strength** sortedStrength2){
+    Strength** mergedStrengthArray = new Strength*[findArrayLength(sortedStrength1) + findArrayLength(sortedStrength2)]; // O(n_team_ID1 + n_team_ID2)
+    int i = 0;
+    int j = 0;
+    int k = 0;
+    while (sortedStrength1[i] != nullptr && sortedStrength2[j] != nullptr){
+        if (sortedStrength2[j]->getStrength() >= sortedStrength1[i]->getStrength()){
+            mergedStrengthArray[k] = sortedStrength1[i];
+            i++;
+        }
+        else{
+            mergedStrengthArray[k] = sortedStrength2[j];
+            j++;
+        }
+        k++;
+    }
+    while (sortedStrength1[i] != nullptr){
+        mergedStrengthArray[k] = sortedStrength1[i];
+        i++;
+        k++;
+    }
+    while (sortedStrength2[j] != nullptr){
+        mergedStrengthArray[k] = sortedStrength2[j];
+        j++;
+        k++;
+    }
+
+    // delete only the pointer to the elements of array, not the instances of Strength
+    delete[] sortedStrength1;
+    delete[] sortedStrength2;
+    return mergedStrengthArray;
+}
+
+int findTeamIndex(Contestant* contestant, int teamId) { // O(1)
+    for (int i = 0; i < NUMBER_OF_TEAMS_ALLOWED_PER_PLAYER; i++) {
+        if (contestant->getTeam(i) != nullptr) {
+            if (contestant->getTeam(i)->getID() == teamId) {
+                return i;
+            }
+        }
+    }
+    return NOT_FOUND;
+}
+
+int findAmountOfIdNonDuplicates(ID** ArrayWithDuplicates, int teamId2){
+    int i = 0;
+    int counter = 0;
+    while (ArrayWithDuplicates[i] != nullptr){
+        if (findTeamIndex(ArrayWithDuplicates[i]->getContestant(), teamId2) == NOT_FOUND){
+            counter++;
+        }
+        i++;
+    }
+    return counter;
+}
+
+int findAmountOfStrengthNonDuplicates(Strength** ArrayWithDuplicates, int teamId2){
+    int counter = 0;
+    int i = 0;
+    while (ArrayWithDuplicates[i] != nullptr){
+        // a Non-duplicate in sortedStrength2 will be registered in team2
+        if (findTeamIndex(ArrayWithDuplicates[i]->getContestant(), teamId2) != NOT_FOUND){
+            counter++;
+        }
+        i++;
+    }
+    return counter;
+}
+
+// explain deleteDuplicates:
+// deleteDuplicates loops through sortedId2 and if a contestant is in both teams
+// it removes the registration from team2 and leaves only him registered only in team1
+// it then creates a new array with the remaining contestants which are not duplicates
+// deleting the duplicate ID's instances from sortedId2WithDuplicates while doing that.
+
+ID** deleteDuplicates(ID** ArrayWithDuplicates, int teamId2, int teamId1) { // O(n_team_ID2)
+    int i = 0;
+
+    // remove the registration from team2 and leaves only him registered only in team1
+    while (ArrayWithDuplicates[i] != nullptr) {
+        Contestant* contestant = ArrayWithDuplicates[i]->getContestant();
+        // if he is registered in team1 as well, he is a duplicate:
+        if (findTeamIndex(contestant, teamId1) != NOT_FOUND){
+            int teamId2InArray = findTeamIndex(contestant, teamId2);
+            contestant->removeTeam(teamId2InArray);
+        }
+        i++;
+    }
+
+    // create a new array with the remaining contestants which are not duplicates
+    ID** sortedId2 = new ID*[findAmountOfIdNonDuplicates(ArrayWithDuplicates, teamId2)]; // O(n_team_ID2)
+
+    int j = 0;
+    while (ArrayWithDuplicates[j] != nullptr) {
+        if (findTeamIndex(ArrayWithDuplicates[j]->getContestant(), teamId2) == NOT_FOUND){
+            sortedId2[j] = ArrayWithDuplicates[j];
+        }
+        if (findTeamIndex(ArrayWithDuplicates[j]->getContestant(), teamId1) != NOT_FOUND){
+            delete ArrayWithDuplicates[j]; // delete the instance of the ID.
+        }
+        j++;
+    }
+    return sortedId2;
+}
+
+Strength** deleteDuplicates(Strength** sortedStrength2, int teamId2, int teamId1) { // O(n_team_ID2)
+// we run this function after we have already deleted the duplicates from the ID array
+// we can recognize a duplicate in sortedStrength2 by checking if the contestant is registered in teamId1
+
+    int i = 0;
+
+    while (sortedStrength2[i] != nullptr) {
+        if (findTeamIndex(sortedStrength2[i]->getContestant(), teamId1) != NOT_FOUND) {
+            delete sortedStrength2[i]; // delete the instance of the Strength, because it is a duplicate
+        }
+        i++;
+    }
+
+    int newLength =  findAmountOfStrengthNonDuplicates(sortedStrength2, teamId2);
+    Strength** sortedStrength2WithoutDuplicates = new Strength*[newLength]; // O(n_team_ID2)
+
+    int j = 0;
+    while (sortedStrength2[j] != nullptr) {
+        if (findTeamIndex(sortedStrength2[j]->getContestant(), teamId2) != NOT_FOUND){
+            sortedStrength2WithoutDuplicates[j] = sortedStrength2[j];
+        }
+        j++;
+    }
+
+    return sortedStrength2WithoutDuplicates;
+}
+
+void moveIDsToTeam1(ID** sortedId2, int teamId2, Team* team1) { // O(n_team_ID2)
+    int i = 0;
+    while (sortedId2[i] != nullptr) {
+        Contestant* contestant = sortedId2[i]->getContestant();
+        contestant->setTeam(findTeamIndex(contestant, teamId2), team1);
+        i++;
+    }
+}
+
+// explain mergeIDsToArray:
+ID** mergeIDsToArray(Team* team1, Team* team2) { // O(n_team_ID1 + n_team_ID2) // need to take care of duplicates
+
+    // gets a sorted array of IDs from each team a
+    ID** sortedId1 = team1->getSortedIdArray(); // O(n_team_ID1)
+    ID** sortedId2WithDuplicates = team2->getSortedIdArray(); // O(n_team_ID2)
+
+    // deleteDuplicates loops through sortedId2 and if a contestant is in both teams
+    // it removes the registration from team2 and leaves only him registered only in team1
+    // it then creates a new array with the remaining contestants which are not duplicates
+    // deleting the duplicate IDs from sortedId2WithDuplicates while doing that.
+
+    ID** sortedId2 = deleteDuplicates(sortedId2WithDuplicates, team2->getID(), team1->getID()); // O(n_team_ID2)
+    delete[] sortedId2WithDuplicates; // O(n_team_ID2)
+
+    // set all the contestants in sortedId2 to be registered in team1:
+    moveIDsToTeam1(sortedId2, team2->getID(), team1); // O(n_team_ID2)
+
+    // notice now that sorted Id2 is an array of non-duplicates only
+    return mergeArrays(sortedId1, sortedId2); // O(n_team_ID1 + n_team_ID2) // need to take care of duplicates
+}
+
+// explain mergeStrengthsToArray:
+    Strength** mergeStrengthsToArray(Team* team1, Team* team2){ // O(n_team_ID1 + n_team_ID2){
+          Strength** sortedStrength1 = team1->getSortedStrengthArray(); // O(n_team_ID1)
+          Strength** sortedStrength2WithDuplicates = team2->getSortedStrengthArray(); // O(n_team_ID2)
+          Strength** sortedStrength2 = deleteDuplicates(sortedStrength2WithDuplicates, team2->getID(),team1->getID()); // O(n_team_ID2)
+          delete[] sortedStrength2WithDuplicates; // O(n_team_ID2)
+          return mergeArrays(sortedStrength1, sortedStrength2); // O(n_team_ID1 + n_team_ID2)
+    }
+
 // TODO: check if better to make mergeTeams a member function of Team class
 //         return mergeTeams(team1, team2); // O(n_team_ID1 + n_team_ID2)
 
-StatusType mergeTeams(Team* team1,Team*  team2){}
-//       in a try block:
+StatusType mergeTeams(Team* team1,Team*  team2) {
+    try {
+        ID** mergedIdArray = mergeIDsToArray(team1, team2); // O(n)
+        Strength** mergedStrengthArray = mergeStrengthsToArray(team1, team2); // O(n)
 
-//            ID** mergedIdArray = mergeIDsToArray(team1, team2); // O(n_team_ID1 + n_team_ID2) // mergeIDsToArray needs to take care of duplicates
-//            Strength** mergedStrengthArray = mergeStrengthsToArray(team1, team2); // O(n_team_ID1 + n_team_ID2) // mergeStrengthsToArray needs to take care of duplicates
+        int newTeamSize = findArrayLength(mergedIdArray); // O(n)
+        int newStrengthArraySize = findArrayLength(mergedStrengthArray); // O(n)
+        assert(newTeamSize == newStrengthArraySize);
 
-//            int newTeamSize = findArrayLength(mergedIdArray) // O(n)
-
-//            int newStrengthArraySize = findArrayLength(mergedStrengthArray) // O(n)
-
-//            assert(newTeamSize == newStrengthArraySize)
-
-//            //loop through mergedIdArray and for each ID, assign position to each parallelStrength:
-//                for (int i = 0; i < newTeamSize; i++){ // O(n)
-//                    Position currentPosition = UNASSIGNED;
-//                    if (i < ceilDivisionByThree(newTeamSize)){
-//                      currentPosition = LEFT;
-//                    }
-//                    else if (i < 2 * ceilDivisionByThree(newTeamSize)){
-//                      currentPosition = MIDDLE;
-//                    }
-//                    else{
-//                      currentPosition = RIGHT;
-//                    }
-//                    mergedIdArray[i]->getParallelStrength()->setPosition(currentPosition); // O(1)
-//                 }
+        //loop through mergedIdArray and for each ID, assign position to each parallelStrength:
+        for (int i = 0; i < newTeamSize; i++){ // O(n)
+            subtreePosition currentPosition = UNASSIGNED;
+            if (i < ceilDivisionByThree(newTeamSize)){
+              currentPosition = LEFT;
+            }
+            else if (i < 2 * ceilDivisionByThree(newTeamSize)){
+              currentPosition = MIDDLE;
+            }
+            else{
+              currentPosition = RIGHT;
+            }
+            mergedIdArray[i]->getParallelStrength()->setPosition(currentPosition); // O(1)
+        }
 
 //        create three almost full ID subtrees //O(n_team_ID1 + n_team_ID2)
 //              move all of mergedIdArray into the subtrees according to their m_position //O(n_team_ID1 + n_team_ID2)
 //        create three almost full Strength subtrees  //O(n_team_ID1 + n_team_ID2)
 //              move all of mergedStrengthArray into the subtrees according to their m_position //O(n_team_ID1 + n_team_ID2)
 
-//        update the new team's strength // O( log (n_team_ID1 + n_team_ID2) )
-//        update the new team's austerity // O( log (n_team_ID1 + n_team_ID2) )
 
-//         team2->removeDataFromSubtrees(); // O(n_team_ID2)
-//         delete team2;
-//         team1->removeDataFromSubtrees(); // O(n_team_ID1)
-//         team1->deleteSubtrees // O(n_team_ID1)
+         team2->removeDataFromSubtrees(); // O(n_team_ID2)
+         delete team2;
+         team1->removeDataFromSubtrees(); // O(n_team_ID1)
+         team1->deleteSubtrees(); // O(n_team_ID1)
 
-//         team1->assignNewSubtrees(ALL TREES) // O(1)
-
-//      if allocation failed
-//              return StatusType::ALLOCATION_ERROR
-//      return StatusType::SUCCESS;
-
-
-
-
-
-
-// explain mergeIDsToArray:
-    // ID** mergeIDsToArray(Team* team1, Team* team2); // O(n_team_ID1 + n_team_ID2) // need to take care of duplicates
-    //        ID** sortedId1 = team1->getSortedArray(); // O(n_team_ID1)
-    //        ID** sortedId2 = team2->getSortedArray(); // O(n_team_ID2)
-
-    //        deleteDuplicates(sortedId2, team1->getID()); // O(n_team_ID2)
-    //        moveIDsToTeam1(sortedId2, team1); // O(n_team_ID2) // switches the country pointer of the contestants to team1 instead of team 2
-
-    //        return mergeArrays(sortedId1, sortedId2); // O(n_team_ID1 + n_team_ID2) // need to take care of duplicates
-
-// explain mergeStrengthsToArray:
-//                Strength** mergeStrengthsToArray(Team* team1, Team* team2){ // O(n_team_ID1 + n_team_ID2){
-//                      Strength** sortedStrength1 = team1->getSortedArray(); // O(n_team_ID1) // need to take care of duplicates
-//                      Strength** sortedStrength2 = team2->getSortedArray(); // O(n_team_ID2) // need to take care of duplicates
-
-//                      deleteDuplicates(sortedStrength2, team1->getID()); // O(n_team_ID2)
-//                      return mergeArrays(sortedStrength1, sortedStrength2); // O(n_team_ID1 + n_team_ID2) // need to take care of duplicates
-//                }
-//       }
-//   }
-
-
+//         team1->assignNewSubtrees(ALL TREES); // O(1)
+         team1->updateTeamStrength(); // O(log n)
+         team1->updateAusterity(); // O(log n)
+    }catch(std::bad_alloc & e)
+    {
+        return StatusType::ALLOCATION_ERROR;
+    }
+    return StatusType::SUCCESS;
+}
 
 StatusType Olympics::unite_teams(int teamId1,int teamId2) { // O(log m + n_team_ID1 + n_team_ID2)
     if (teamId1 <= ZERO || teamId2 <= ZERO || teamId1 == teamId2) {
@@ -613,8 +802,7 @@ StatusType Olympics::unite_teams(int teamId1,int teamId2) { // O(log m + n_team_
     }
 }
 
-
-//     Pseudo-code:
+//     Pseudocode:
 //      if teamId1 <= 0 or teamId2 <= 0 or teamId1 == teamId2
 //          return StatusType::INVALID_INPUT
 //      in a try block:
@@ -628,10 +816,6 @@ StatusType Olympics::unite_teams(int teamId1,int teamId2) { // O(log m + n_team_
 //              return StatusType::FAILURE
 //          if team1->getSport() != team2->getSport() // O(1)
 //              return StatusType::FAILURE
-
-
-
-
 
 StatusType Olympics::play_match(int teamId1, int teamId2) { // O(log k + log m)
     if (teamId1 <= ZERO || teamId2 <= ZERO || teamId1 == teamId2) {
@@ -664,7 +848,7 @@ StatusType Olympics::play_match(int teamId1, int teamId2) { // O(log k + log m)
     }
 }
 
-//     Pseudo-code:
+//     Pseudocode:
 //      Check if teamId1 <= 0 or teamId2 <= 0 or teamId1 == teamId2
 //          If it does, return StatusType::INVALID_INPUT.
 //      in a try block:
@@ -685,8 +869,6 @@ StatusType Olympics::play_match(int teamId1, int teamId2) { // O(log k + log m)
 // if allocation failed, return StatusType::ALLOCATION_ERROR.
 // return StatusType::SUCCESS
 
-
-
 output_t<int> Olympics::austerity_measures(int teamId) { // O(log m)
     if (teamId <= ZERO) {
         return output_t<int>(StatusType::INVALID_INPUT);
@@ -705,7 +887,7 @@ output_t<int> Olympics::austerity_measures(int teamId) { // O(log m)
     }
 }
 
-//     Pseudo-code:
+//     Pseudocode:
 //      if teamId <= 0
 //          return output_t<int>(StatusType::INVALID_INPUT).
 //      in a try block:
@@ -716,6 +898,3 @@ output_t<int> Olympics::austerity_measures(int teamId) { // O(log m)
 //              return output_t<int>(StatusType::FAILURE).
 //          return output_t<int>(team->getAusterityMeasures()); // O(1)
 //    If allocation failed, return output_t<int>(StatusType::FAILURE).
-
-
-

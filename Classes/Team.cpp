@@ -1,5 +1,8 @@
 #include "Team.h"
 
+Team::~Team(){
+    deleteSubtrees();
+}
 
 void Team::removeContestantFromTeam(Contestant *contestant) {
     //pseudo code:

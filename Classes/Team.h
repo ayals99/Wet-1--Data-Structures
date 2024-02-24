@@ -11,9 +11,9 @@
 #include "Country.h"
 
 static const int TEAM_STRENGTH_NOT_MOD_3 = 0;
-static const int THREE = 3;
+//static const int THREE = 3;
 
-//Added the predeclaration of the Contestant class to "avoid" circular includes
+//Added the pre declaration of the Contestant class to "avoid" circular includes
 class Contestant;
 
 class Team{
@@ -38,19 +38,20 @@ private:
     AVL_Tree<Strength>* m_RIGHT_Strength_Tree;
 
 public:
-    Team(int id,int countryID, Sport sport, Country* teamsCountry) : m_id(id),
-                                              m_countryID(countryID),
-                                              m_sport(sport), m_strength(ZERO),
-                                              m_austerity(ZERO), m_size(ZERO),
-                                              m_country(teamsCountry),
-                                              m_LEFT_ID_Tree(new AVL_Tree<ID>),
-                                              m_MIDDLE_ID_Tree(new AVL_Tree<ID>),
-                                              m_RIGHT_ID_Tree(new AVL_Tree<ID>),
-                                              m_LEFT_Strength_Tree(new AVL_Tree<Strength>),
-                                              m_MIDDLE_Strength_Tree(new AVL_Tree<Strength>),
-                                              m_RIGHT_Strength_Tree(new AVL_Tree<Strength>){}
+    Team(int id,int countryID, Sport sport, Country* teamsCountry)
+        :   m_id(id),
+            m_countryID(countryID),
+            m_sport(sport), m_strength(ZERO),
+            m_austerity(ZERO), m_size(ZERO),
+            m_country(teamsCountry),
+            m_LEFT_ID_Tree(new AVL_Tree<ID>),
+            m_MIDDLE_ID_Tree(new AVL_Tree<ID>),
+            m_RIGHT_ID_Tree(new AVL_Tree<ID>),
+            m_LEFT_Strength_Tree(new AVL_Tree<Strength>),
+            m_MIDDLE_Strength_Tree(new AVL_Tree<Strength>),
+            m_RIGHT_Strength_Tree(new AVL_Tree<Strength>){}
 
-
+    ~Team();
 
     int getID() const{
         return m_id;
@@ -86,49 +87,43 @@ public:
 
 
 
-//        void balanceTrees(){
-//      psuedo-code;
-//      check if number of contestants in each tree is 0 mod3
-//            if it isn't, return.
-//    }
-
-
 // TODO: use these functions in the implementation of Team::insertContestant() // O(log n)
 //               draftingTeam->updateTeamStrength; // O(log n)
 //               draftingTeam->updateAusterity();  // O(log n)
+
     StatusType insertContestant(Contestant* contestantToRegister){// O(log n)
 //        Pseudo-code;
-//            Strength* strength = new Strength(contestantToRegister, UNASSIGNED);
-//            ID* id = new ID(contestantToRegister, strength);
-//            assignInSubtrees(id, strength); // a lot of if statements
-//            balanceTrees();
-            }
+            Strength* strength = new Strength(contestantToRegister, UNASSIGNED);
+            ID* id = new ID(contestantToRegister, strength);
+            assignInSubtrees(id, strength); // a lot of if statements
+            balanceTrees();
+    }
 
     void assignInSubtrees(ID* id, Strength* strength) {
 //       Pseudo-code:
-//        int max_left_ID = m_LEFT_ID_Tree->find_Maximum_In_Subtree()->getContestantID;
-//        int max_middle_ID = m_MIDDLE_ID_Tree->find_Maximum_In_Subtree()->getContestantID;
-//
-//        if (id->getContestantID() < max_left_ID){
-//            m_LEFT_ID_Tree->insert(id);
-//            strength->setPosition(LEFT);
-//            m_LEFT_Strength_Tree->insert(strength);
-//        }
-//        else if (id->getContestantID() < max_middle){
-//            m_MIDDLE_ID_Tree->insert(id);
-//            strength->setPosition(MIDDLE);
-//            m_MIDDLE_Strength_Tree->insert(strength);
-//        }
-//        else{
-//            m_RIGHT_ID_Tree->insert(id);
-//            strength->setPosition(RIGHT);
-//            m_RIGHT_Strength_Tree->insert(strength);
-//        }
-//        m_size++;
+        int max_left_ID = m_LEFT_ID_Tree->find_Maximum_In_Subtree()->getID();
+        int max_middle_ID = m_MIDDLE_ID_Tree->find_Maximum_In_Subtree()->getID();
+
+        if (id->getID() < max_left_ID){
+            m_LEFT_ID_Tree->insert(id);
+            strength->setPosition(LEFT);
+            m_LEFT_Strength_Tree->insert(strength);
+        }
+        else if (id->getID() < max_middle_ID){
+            m_MIDDLE_ID_Tree->insert(id);
+            strength->setPosition(MIDDLE);
+            m_MIDDLE_Strength_Tree->insert(strength);
+        }
+        else{
+            m_RIGHT_ID_Tree->insert(id);
+            strength->setPosition(RIGHT);
+            m_RIGHT_Strength_Tree->insert(strength);
+        }
+        m_size++;
 
     }
 
-//    void balanceTrees(){ // (1)
+    void balanceTrees(){ // (1)
 //        if (this->m_size % 3 != 0){
 //            return;
 //        }
@@ -138,7 +133,7 @@ public:
 //
 //      if (left size - middle size == 1 && left size - right size == 2){
 //        {
-//          tranfer largest in left tree to middle
+//          transfer largest in left tree to middle
 //          then transfer largest in middle to right
 //        }
 //      if (left size - middle size == 3 && left size - right size == 3){
@@ -171,7 +166,7 @@ public:
 //      transfer smallest in right to middle
 //      transfer smallest in middle to left
 //     }
-//}
+}
 
 
 
@@ -221,7 +216,7 @@ public:
 
 //                int k = AUSTERITY_REMOVALS - i - j;
 //
-///                // remove k contestants from the right subtree while saving their Contestant* in an array in order to use insterContestant later on to reinsert them. make sure to use m_size-- after every removal
+///                // remove k contestants from the right subtree while saving their Contestant* in an array in order to use insertContestant later on to reinsert them. make sure to use m_size-- after every removal
 //
 //                int currentStrength = calculateTeamStrength();
 //                if (calculateTeamStrength() > maxPossibleStrength){
@@ -236,9 +231,9 @@ public:
 //              // insert all k contestants in the array back to the right subtree, using insertContestant
 
 //              // insert all j contestants in the array back to the middle subtree, using insertContestant
-//            }
 //
-//        }
+//
+//
 //        // insert i contestants back to the left subtree
 //        m_austerity = maxPossibleStrength;
     }
@@ -306,8 +301,6 @@ Contestant** delete_k_from_RightTree(int k){
         }
     }
 
-
-
     void removeDataFromSubtrees(){
         m_LEFT_ID_Tree->removeDataFromTree();
         m_MIDDLE_ID_Tree->removeDataFromTree();
@@ -338,6 +331,16 @@ Contestant** delete_k_from_RightTree(int k){
         m_RIGHT_Strength_Tree = RIGHT_Strength_Tree;
     }
 
+    ID** getSortedIdArray(){
+        ID** sortedIDArray = new ID*[m_size];
+        int index = 0;
+
+    }
+
+    Strength** getSortedStrengthArray() const{
+        Strength** sortedStrengthArray = new Strength*[m_size];
+        return sortedStrengthArray;
+    }
 };
 
 

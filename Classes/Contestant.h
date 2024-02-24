@@ -34,6 +34,12 @@ public:
     Team* getTeam(int index) const{
         return m_teams[index];
     }
+    void removeTeam(int index){
+        m_teams[index] = nullptr;
+    }
+    void setTeam(int index, Team* team){
+        m_teams[index] = team;
+    }
 
     int getStrength() const{
         return m_strength;
@@ -74,8 +80,6 @@ public:
     bool registeredInATeam();
     bool isAvailable();
     bool isRegisteredInTeam(int teamID);
-
-
 };
 
 std::ostream& operator<<(std::ostream& os, const Contestant& contestant){
