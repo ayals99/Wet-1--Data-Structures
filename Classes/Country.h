@@ -26,6 +26,10 @@ public:
         m_medals += medals;
     }
 
+    int getMedals() const{
+        return m_medals;
+    }
+
     int getTeamCounter() const{
         return m_numberOfTeams;
     }

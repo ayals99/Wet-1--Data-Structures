@@ -13,8 +13,13 @@
 static const int TEAM_STRENGTH_NOT_MOD_3 = 0;
 static const int THREE = 3;
 
+//Added the predeclaration of the Contestant class to "avoid" circular includes
+class Contestant;
+
 class Team{
 private:
+
+
     int m_id;
     int m_countryID;
     Sport m_sport;
@@ -76,12 +81,21 @@ public:
         return m_id >= other.m_id;
     }
 
+    void removeContestantFromTeam(Contestant* contestant);
+    void removeContestantFromSubtrees(Contestant* contestant);
+
+
+
 //        void balanceTrees(){
 //      psuedo-code;
 //      check if number of contestants in each tree is 0 mod3
 //            if it isn't, return.
 //    }
 
+
+// TODO: use these functions in the implementation of Team::insertContestant() // O(log n)
+//               draftingTeam->updateTeamStrength; // O(log n)
+//               draftingTeam->updateAusterity();  // O(log n)
     StatusType insertContestant(Contestant* contestantToRegister){// O(log n)
 //        Pseudo-code;
 //            Strength* strength = new Strength(contestantToRegister, UNASSIGNED);
@@ -291,7 +305,6 @@ Contestant** delete_k_from_RightTree(int k){
             this->insertContestant(RIGHT_removedContestants[n]);
         }
     }
-
 
 
 

@@ -2,7 +2,6 @@
 #define WET_1_DATA_STRUCTURES_CONTESTANT_H
 
 #include "wet1util.h"
-
 #include "Team.h"
 #include <iostream>
 
@@ -70,8 +69,11 @@ public:
 //    bool sameCountry(int teamID)
 //    updateRegisteredTeamsStrengths();
 
+
+    void updateStrength(int change);
     bool registeredInATeam();
     bool isAvailable();
+    bool isRegisteredInTeam(int teamID);
 
 
 };
