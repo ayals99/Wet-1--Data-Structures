@@ -252,7 +252,7 @@ private:
             }
             else{ // has two children
                 // find the smallest value in right subtree
-                AVL_Node<T>* temp = find_Minimum_In_Subtree(currentNode->getRight());
+                AVL_Node<T>* temp = AUX_find_Minimum_In_Subtree(currentNode->getRight());
                 swapData(currentNode, temp);
                 currentNode->setRightChild(AUX_remove(currentNode->getRight(), temp->getData()));
             }

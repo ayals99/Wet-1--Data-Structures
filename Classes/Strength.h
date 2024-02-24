@@ -1,9 +1,11 @@
 #ifndef WET_1_DATA_STRUCTURES_STRENGTH_H
 #define WET_1_DATA_STRUCTURES_STRENGTH_H
+
 #include "Contestant.h"
 #include <iostream>
 
 enum subtreePosition {UNASSIGNED, LEFT, MIDDLE, RIGHT};
+
 
 class Strength {
 private:

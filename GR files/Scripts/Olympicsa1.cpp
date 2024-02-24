@@ -16,13 +16,13 @@ StatusType Olympics::add_country(int countryId, int medals){ // O(log k)
         return StatusType::INVALID_INPUT;
     }
 
-    if (m_countryTree->find(countryId) != nullptr){
+    if (m_countryTree->find(countryId) != nullptr){ //  O(log k)
         return StatusType::FAILURE;
     }
 
     try {
         Country* newCountry = new Country(countryId, medals);
-        m_countryTree->insert(newCountry);
+        m_countryTree->insert(newCountry); // O(log k)
         return StatusType::SUCCESS;
     }
     catch (std::bad_alloc& e){
@@ -49,12 +49,12 @@ StatusType Olympics::remove_country(int countryId){ // O(log k)
         return StatusType::INVALID_INPUT;
     }
     try {
-        Country* countryToDelete = m_countryTree->find(countryId);
+        Country* countryToDelete = m_countryTree->find(countryId); // O(log k)
         if (countryToDelete == nullptr){
             return StatusType::FAILURE;
 
-    }
-        if (countryToDelete->getTeamCounter() != ZERO || countryToDelete->getContestantCounter() != ZERO){
+        }
+        if (countryToDelete->getTeamCounter() != ZERO || countryToDelete->getContestantCounter() != ZERO){ // O(1)
             return StatusType::FAILURE;
         }
         delete countryToDelete;
@@ -84,23 +84,23 @@ StatusType Olympics::add_team(int teamId,int countryId,Sport sport){ // O(log m 
     if (teamId <= 0 || countryId <= 0){
         return StatusType::INVALID_INPUT;
     }
-    if (m_teamTree->find(teamId) != nullptr){
+    if (m_teamTree->find(teamId) != nullptr){ // O(log m)
         return StatusType::FAILURE;
     }
     try {
-        Country* country = m_countryTree->find(countryId);
+        Country* country = m_countryTree->find(countryId); // O(log k)
         if (country == nullptr){
             return StatusType::FAILURE;
         }
         Team* newTeam = new Team(teamId, countryId, sport, country);
-        m_teamTree->insert(newTeam);
+        m_teamTree->insert(newTeam); // O(log m)
         return StatusType::SUCCESS;
-
     }
     catch (std::bad_alloc& e){
         return StatusType::ALLOCATION_ERROR;
     }
 }
+
 // Pseudo code:
 //      Check if teamId <= 0 or countryId <= 0
 //          If it does, return StatusType::INVALID_INPUT.
@@ -124,20 +124,23 @@ StatusType Olympics::remove_team(int teamId) { // O(log m)
         return StatusType::INVALID_INPUT;
     }
     try {
-        Team *teamToDelete = m_teamTree->find(teamId);
+        Team *teamToDelete = m_teamTree->find(teamId); // O(log m)
         if (teamToDelete == nullptr) {
             return StatusType::FAILURE;
         }
-        if (teamToDelete->getSize() != ZERO) {
+        if (teamToDelete->getSize() != ZERO) { // O(1)
             return StatusType::FAILURE;
         }
-        teamToDelete->getCountry()->decreaseTeamCounter();
+        teamToDelete->getCountry()->decreaseTeamCounter(); // O(1)
         //TODO: We need to make sure logic is right here
-        m_teamTree->remove(teamToDelete);
-        //TODO: Make sure we do need to delete the team
-        delete teamToDelete;
+        m_teamTree->remove(teamToDelete); // O(log m)
+
+//        TODO: Make sure we do need to delete the team
+//        delete teamToDelete;
+
         return StatusType::SUCCESS;
-    }catch (std::bad_alloc& e){
+    }
+    catch (std::bad_alloc& e){
         return StatusType::ALLOCATION_ERROR;
     }
 }
@@ -164,17 +167,17 @@ StatusType Olympics::add_contestant(int contestantId ,int countryId,Sport sport,
     }
     try {
 
-        Country* country = m_countryTree->find(countryId);
+        Country* country = m_countryTree->find(countryId); // O(log k)
         if (country == nullptr){
             return StatusType::FAILURE;
         }
-        if (m_contestantTree->find(contestantId) != nullptr){
+        if (m_contestantTree->find(contestantId) != nullptr){ // O(log n)
             return StatusType::FAILURE;
         }
         Contestant* newContestant = new Contestant(contestantId, countryId, sport, strength);
-        newContestant->setCountryPointer(country);
-        m_contestantTree->insert(newContestant);
-        country->increaseContestantCounter();
+        newContestant->setCountryPointer(country); // O(1)
+        m_contestantTree->insert(newContestant); // O(log n)
+        country->increaseContestantCounter(); // O(1)
         return StatusType::SUCCESS;
     }
     catch (std::bad_alloc& e){
@@ -206,22 +209,29 @@ StatusType Olympics::remove_contestant(int contestantId){ // O(log n)
         return StatusType::INVALID_INPUT;
     }
     try {
-        Contestant *contestantToDelete = m_contestantTree->find(contestantId);
+        Contestant* contestantToDelete = m_contestantTree->find(contestantId); // O(log n)
         if (contestantToDelete == nullptr) {
             return StatusType::FAILURE;
         }
-        if (contestantToDelete->registeredInATeam()) {
+        if (contestantToDelete->registeredInATeam()) { // O(1)
             return StatusType::FAILURE;
         }
-        contestantToDelete->getCountryPointer()->decreaseContestantCounter();
-        m_contestantTree->remove(contestantToDelete);
-        //TODO: Make sure we do need to delete the contestant
-        delete contestantToDelete;
+        contestantToDelete->getCountryPointer()->decreaseContestantCounter(); // O(1)
+        m_contestantTree->remove(contestantToDelete); // O(log n)
+
+//        TODO: Make sure we do need to delete the contestant
+//         AYAL: Notice that if we use remove(), then the instance of contestantToDelete is deleted
+//        delete contestantToDelete;
+
         return StatusType::SUCCESS;
-        }catch (std::bad_alloc& e){
+        }
+        catch (std::bad_alloc& e){
             return StatusType::ALLOCATION_ERROR;
         }
-        return StatusType::FAILURE;
+
+        //        AYAL: I don't think we need this option of return FAILURE:
+        //        return StatusType::FAILURE;
+
 }
 
 //     Pseudo-code:
@@ -245,33 +255,34 @@ StatusType Olympics::add_contestant_to_team(int teamId,int contestantId){ // O(l
         return StatusType::INVALID_INPUT;
     }
     try {
-        Contestant *contestantToRegister = m_contestantTree->find(contestantId);
+        Contestant* contestantToRegister = m_contestantTree->find(contestantId);
         if (contestantToRegister == nullptr) {
             return StatusType::FAILURE;
         }
-        Team *draftingTeam = m_teamTree->find(teamId);
+        Team *draftingTeam = m_teamTree->find(teamId); // O(log m)
         if (draftingTeam == nullptr) {
             return StatusType::FAILURE;
         }
-        if (draftingTeam->getCountryID() != contestantToRegister->getCountryID()) {
+        if (draftingTeam->getCountryID() != contestantToRegister->getCountryID()) { // O(1)
             return StatusType::FAILURE;
         }
-        if (draftingTeam->getSport() != contestantToRegister->getSport()) {
+        if (draftingTeam->getSport() != contestantToRegister->getSport()) { // O(1)
             return StatusType::FAILURE;
         }
-        for (int i = ZERO; i < NUMBER_OF_TEAMS_ALLOWED_PER_PLAYER; i++) {
+        for (int i = ZERO; i < NUMBER_OF_TEAMS_ALLOWED_PER_PLAYER; i++) { // constant amount of iterations
             if (contestantToRegister->getTeam(i) != nullptr) {
-                if (contestantToRegister->getTeam(i)->getID() == teamId) {
+                if (contestantToRegister->getTeam(i)->getID() == teamId) { // O(1)
                     return StatusType::FAILURE;
                 }
             }
         }
-        if (!contestantToRegister->isAvailable()) {
+        if (!contestantToRegister->isAvailable()) { // O(1)
             return StatusType::FAILURE;
         }
-        draftingTeam->insertContestant(contestantToRegister);
+        draftingTeam->insertContestant(contestantToRegister); // O(log n)
         return StatusType::SUCCESS;
-    }catch(std::bad_alloc& e){
+    }
+    catch(std::bad_alloc& e){
         return StatusType::ALLOCATION_ERROR;
     }
 }
@@ -304,24 +315,25 @@ StatusType Olympics::remove_contestant_from_team(int teamId,int contestantId) { 
         return StatusType::INVALID_INPUT;
     }
     try {
-        Contestant *contestantToUnregister = m_contestantTree->find(contestantId);
+        Contestant* contestantToUnregister = m_contestantTree->find(contestantId); // O(log n)
         if (contestantToUnregister == nullptr) {
             return StatusType::FAILURE;
         }
-        Team *draftingTeam = m_teamTree->find(teamId);
+        Team *draftingTeam = m_teamTree->find(teamId); // O(log m)
         if (draftingTeam == nullptr) {
             return StatusType::FAILURE;
         }
-        if (!contestantToUnregister->isRegisteredInTeam(teamId)) {
+        if (!contestantToUnregister->isRegisteredInTeam(teamId)){ // O(1)
             return StatusType::FAILURE;
         }
-        //TODO: we need to impolment removeContestantFromTeam in Team.cpp
-        draftingTeam->removeContestantFromTeam(contestantToUnregister);
+        //TODO: we need to implement removeContestantFromTeam in Team.cpp
+        draftingTeam->removeContestantFromTeam(contestantToUnregister); // O(log n)
         return StatusType::SUCCESS;
     }catch (std::bad_alloc& e){
         return StatusType::ALLOCATION_ERROR;
     }
 }
+
 //      Pseudo-code:
 //      Check if teamId <= 0 or contestantId <= 0
 //          If it does, return StatusType::INVALID_INPUT.
@@ -346,12 +358,12 @@ StatusType Olympics::remove_contestant_from_team(int teamId,int contestantId) { 
 //      return StatusType::SUCCESS;
 
 
-void removeContestantFromAllTeamSubtrees(Contestant* contestant){
-    for (int i = 0; i < NUMBER_OF_TEAMS_ALLOWED_PER_PLAYER; i++){
+void removeContestantFromAllTeamSubtrees(Contestant* contestant){ // O(log n)
+    for (int i = 0; i < NUMBER_OF_TEAMS_ALLOWED_PER_PLAYER; i++){ // constant amount of iterations
         if (contestant->getTeam(i) != nullptr){
-            //TODO: we need to impolment removeContestant in Team.cpp
-            //RemoveContestant should remove the data and then remove the node and balance the tree
-            contestant->getTeam(i)->removeContestantFromSubtrees(contestant);
+            //TODO: we need to implement removeContestant in Team.cpp
+            //removeContestantFromSubtrees should remove the data and then remove the node and balance the tree
+            contestant->getTeam(i)->removeContestantFromSubtrees(contestant); // O(log n)
         }
     }
 }
@@ -361,7 +373,7 @@ StatusType Olympics::update_contestant_strength(int contestantId ,int change){ /
         return StatusType::INVALID_INPUT;
     }
     try {
-        Contestant *contestantToUpdate = m_contestantTree->find(contestantId);
+        Contestant* contestantToUpdate = m_contestantTree->find(contestantId); // O(log n)
         if (contestantToUpdate == nullptr) {
             return StatusType::FAILURE;
         }
@@ -371,13 +383,13 @@ StatusType Olympics::update_contestant_strength(int contestantId ,int change){ /
         if (contestantToUpdate->getStrength() - change < ZERO) {
             return StatusType::FAILURE;
         }
-        //TODO:Need yo implement removeContestantFromAllTeamSubtrees
+        //TODO:Need to implement removeContestantFromAllTeamSubtrees
         //The function should just remove contestant from all team subtrees
-        removeContestantFromAllTeamSubtrees(contestantToUpdate);
+        removeContestantFromAllTeamSubtrees(contestantToUpdate); // O(log n)
         contestantToUpdate->updateStrength(change);
-        for (int i = 0; i < NUMBER_OF_TEAMS_ALLOWED_PER_PLAYER; i++) {
+        for (int i = 0; i < NUMBER_OF_TEAMS_ALLOWED_PER_PLAYER; i++) { // constant amount of iterations
             if (contestantToUpdate->getTeam(i) != nullptr) {
-                contestantToUpdate->getTeam(i)->insertContestant(contestantToUpdate);
+                contestantToUpdate->getTeam(i)->insertContestant(contestantToUpdate); // O(log n)
             }
         }
         return StatusType::SUCCESS;
@@ -469,14 +481,14 @@ output_t<int> Olympics::get_team_strength(int teamId){ // O(log m)
         return StatusType::INVALID_INPUT;
     }
     try {
-        Team *team = m_teamTree->find(teamId); // O(log m)
+        Team* team = m_teamTree->find(teamId); // O(log m)
         if (team == nullptr) {
             return StatusType::FAILURE;
         }
-        return output_t<int>(team->getStrength());
+        return output_t<int>(team->getStrength()); // O(1)
     }
     catch (std::bad_alloc& e){
-        return output_t<int>(StatusType::ALLOCATION_ERROR);
+        return output_t<int>(StatusType::ALLOCATION_ERROR); // O(1)
     }
 }
 //	 Pseudo-code:
@@ -675,23 +687,23 @@ StatusType Olympics::play_match(int teamId1, int teamId2) { // O(log k + log m)
 
 
 
-    output_t<int> Olympics::austerity_measures(int teamId) { // O(log m)
-        if (teamId <= ZERO) {
-            return output_t<int>(StatusType::INVALID_INPUT);
-        }
-        try {
-            Team *team = m_teamTree->find(teamId); // O(log m)
-            if (team == nullptr) {
-                return output_t<int>(StatusType::FAILURE);
-            }
-            if (team->getSize() < MINIMUM_AUSTERITY_TEAM_SIZE) {
-                return output_t<int>(StatusType::FAILURE);
-            }
-            return output_t<int>(team->getAusterity()); // O(1)
-        } catch (std::bad_alloc &e) {
-            return output_t<int>(StatusType::ALLOCATION_ERROR);
-        }
+output_t<int> Olympics::austerity_measures(int teamId) { // O(log m)
+    if (teamId <= ZERO) {
+        return output_t<int>(StatusType::INVALID_INPUT);
     }
+    try {
+        Team *team = m_teamTree->find(teamId); // O(log m)
+        if (team == nullptr) {
+            return output_t<int>(StatusType::FAILURE);
+        }
+        if (team->getSize() < MINIMUM_AUSTERITY_TEAM_SIZE) { // O(1)
+            return output_t<int>(StatusType::FAILURE);
+        }
+        return output_t<int>(team->getAusterity()); // O(1)
+    } catch (std::bad_alloc &e) {
+        return output_t<int>(StatusType::ALLOCATION_ERROR);
+    }
+}
 
 //     Pseudo-code:
 //      if teamId <= 0

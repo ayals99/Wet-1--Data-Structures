@@ -26,8 +26,10 @@ bool Contestant::isAvailable() {
 
 bool Contestant::isRegisteredInTeam(int teamID) {
     for (int i = 0; i < NUMBER_OF_TEAMS_ALLOWED_PER_PLAYER; ++i) {
-        if (m_teams[i] != nullptr && m_teams[i]->getID() == teamID){
-            return true;
+        if (m_teams[i] != nullptr){
+            if (m_teams[i]->getID() == teamID){
+                return true;
+            }
         }
     }
     return false;

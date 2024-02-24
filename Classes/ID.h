@@ -4,6 +4,8 @@
 #include "Contestant.h"
 #include "Strength.h"
 
+class Contestant;
+
 class ID{
 private:
     Contestant* m_contestant;

@@ -105,7 +105,7 @@ public:
             }
 
     void assignInSubtrees(ID* id, Strength* strength) {
-//       Psuedo-code:
+//       Pseudo-code:
 //        int max_left_ID = m_LEFT_ID_Tree->find_Maximum_In_Subtree()->getContestantID;
 //        int max_middle_ID = m_MIDDLE_ID_Tree->find_Maximum_In_Subtree()->getContestantID;
 //
@@ -143,7 +143,7 @@ public:
 //        }
 //      if (left size - middle size == 3 && left size - right size == 3){
 //        transfer two from left to middle
-//        then trasfer one from middle to right
+//        then transfer one from middle to right
 //      }
 //      if (left size - middle size == 2 && left size - right size == 1){
 //          transfer largest in left to middle
@@ -200,13 +200,13 @@ public:
 // Pseudocode:
 //        for (int i = 0; i < AUSTERITY_REMOVALS; i++){ // LEFT_SUBTREE
 //
-//            // remove i contestants from the left subtree, while saving their Contestant* in an array in order to use insterContestant later on to reinsert them. make sure to use m_size-- after every removal
+//            // remove i contestants from the left subtree, while saving their Contestant* in an array in order to use insertContestant later on to reinsert them. make sure to use m_size-- after every removal
 //
 //            for (int j = 0 < AUSTERITY_REMOVALS - i; j++){ // MIDDLE_SUBTREE
 //
 ///                // remove j contestants from the middle subtree
 ///                // while saving their Contestant* in an array
-///                // in order to use insterContestant later on to reinsert them.
+///                // in order to use insertContestant later on to reinsert them.
 ///                // make sure to use m_size-- after every removal
 ///
 ///                // add two cases here: if (j == 1 && i == 2) OR (j == 1 && i == 0, because then k == 2)
