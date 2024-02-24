@@ -1,7 +1,7 @@
 #include "Olympicsa1.h"
 
 
-const static int MINIMUM_AUSTERITY_TEAM_SIZE = 3;
+static const int MINIMUM_AUSTERITY_TEAM_SIZE = 3;
 
 Olympics::Olympics(){ //O(1)
 }
@@ -14,14 +14,28 @@ StatusType Olympics::add_country(int countryId, int medals){ // O(log k)
 //     Pseudo code:
 //        check if medals <= 0 and if countryId <= 0
 //             If it does, return INVALID_INPUT.
+    if (medals <= ZERO || countryId <= ZERO){
+        return StatusType::INVALID_INPUT;
+    }
 //        Check if countryId exists already.
 //             If it does, return FAILURE.
+    if (m_countryTree->find(countryId) != nullptr){
+        return StatusType::FAILURE;
+    }
 //        in a try block:
 //            Create a new country with no teams.
 //            assign medals to the country.
 //            intialize the country's team count to 0.
 //            intialize the country's contestant count to 0.
 //            return StatusType::SUCCESS.
+    try {
+        Country* newCountry = new Country(countryId, medals);
+        m_countryTree->insert(newCountry);
+        return StatusType::SUCCESS;
+    }
+    catch (std::bad_alloc& e){
+        return StatusType::ALLOCATION_ERROR;
+    }
 //        if allocation failed, return StatusType::ALLOCATION_ERROR.
 
 
@@ -32,29 +46,65 @@ StatusType Olympics::remove_country(int countryId){ // O(log k)
 //     Pseudo code:
 //      check if countryId <= 0
 //           If it does, return INVALID_INPUT.
+    if (countryId <= 0){
+        return StatusType::INVALID_INPUT;
+    }
 //        in a try block:
 //        Country* countryToDelete = find countryId in country tree.
-//
 //            If countryToDelete == nullptr, then countryId doesn't exist
 //                return FAILURE.
+    try {
+        Country* countryToDelete = m_countryTree->find(countryId);
+        if (countryToDelete == nullptr){
+            return StatusType::FAILURE;
+
+    }
 //            if countryToDelete->getTeamCounter() is not ZERO or countryToDelete->getContestantCounter is not ZERO
 //            return FAILURE.
+        if (countryToDelete->getTeamCounter() != ZERO || countryToDelete->getContestantCounter() != ZERO){
+            return StatusType::FAILURE;
+        }
+        delete countryToDelete;
+
 //          delete countryToDelete.
 //        if allocation failed, return StatusType::ALLOCATION_ERROR.
+    }
+    catch (std::bad_alloc& e){
+        return StatusType::ALLOCATION_ERROR;
+    }
 //            return StatusType::SUCCESS.
-
-    return StatusType::FAILURE;
+    return StatusType::SUCCESS;
 }
 
 StatusType Olympics::add_team(int teamId,int countryId,Sport sport){ // O(log m + log k)
 // Pseudo code:
 //      Check if teamId <= 0 or countryId <= 0
 //          If it does, return StatusType::INVALID_INPUT.
+    if (teamId <= 0 || countryId <= 0){
+        return StatusType::INVALID_INPUT;
+    }
 //      Check if teamId exists already.
 //          If it does, return StatusType::FAILURE.
+    if (m_teamTree->find(teamId) != nullptr){
+        return StatusType::FAILURE;
+    }
 //       in a try block:
-//      Find the countryId and save a pointer to the country’s instance.
+try {
+//          Find the countryId and save a pointer to the country’s instance.
 //          If country does not exist, return StatusType::FAILURE.
+
+    Country* country = m_countryTree->find(countryId);
+    if (country == nullptr){
+        return StatusType::FAILURE;
+    }
+    Team* newTeam = new Team(teamId, countryId, sport, country);
+    m_teamTree->insert(newTeam);
+    return StatusType::SUCCESS;
+}
+catch (std::bad_alloc& e){
+    return StatusType::ALLOCATION_ERROR;
+}
+
 //          Create a new team with no members.
 //          intialize m_teamSize to 0.
 //          intialize m_teamStrength to 0.
@@ -126,7 +176,7 @@ StatusType Olympics::remove_contestant(int contestantId){ // O(log n)
 //              return FAILURE.
 
 //          go to contestantToDelete->m_countryPointer and decrease country's contestant count by 1.
-//          olympics->contestantTree->remove(contestantToDelete); // will also delete the Contestant's instance
+//          olympics->m_contestantTree->remove(contestantToDelete); // will also delete the Contestant's instance
 
 //      if allocation failed, return StatusType::ALLOCATION_ERROR.
 

@@ -22,9 +22,9 @@
 #include "wet1util.h"
 class Olympics {
 private:
-    Country* countryTree;
-    Team* teamTree;
-    Contestant* contestantTree;
+    AVL_Tree<Country>* m_countryTree;
+    AVL_Tree<Team>* m_teamTree;
+    AVL_Tree<Contestant>* m_contestantTree;
 
 public:
 	// <DO-NOT-MODIFY> {

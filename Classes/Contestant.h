@@ -37,6 +37,7 @@ public:
         return m_countryID;
     }
     friend std::ostream& operator<<(std::ostream& os, const Contestant& contestant);
+
     bool operator>= (const Contestant& other) const{
         return m_id >= other.m_id;
     }
