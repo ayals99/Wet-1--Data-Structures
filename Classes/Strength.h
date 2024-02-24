@@ -23,7 +23,7 @@ public:
 
     bool operator >= (const Strength& other) const{
         if (this->m_contestant->getStrength() == other.m_contestant->getStrength()){
-            if (this->m_contestant->getId() >= other.m_contestant->getId()){
+            if (this->m_contestant->getID() >= other.m_contestant->getID()){
                 return true;
             }
             else{
@@ -51,7 +51,7 @@ public:
 };
 
 std::ostream& operator<<(std::ostream& os, const Strength& strength){
-    os << "Contestant ID: " << strength.m_contestant->getId() << ", Strength: " << strength.m_contestant->getStrength() << std::endl;
+    os << "Contestant ID: " << strength.m_contestant->getID() << ", Strength: " << strength.m_contestant->getStrength() << std::endl;
     return os;
 }
 

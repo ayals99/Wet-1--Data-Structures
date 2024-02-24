@@ -7,6 +7,9 @@
 #include "ID.h"
 #include "Strength.h"
 
+// I added country to the include list to add the country field to the team
+#include "Country.h"
+
 static const int TEAM_STRENGTH_NOT_MOD_3 = 0;
 static const int THREE = 3;
 
@@ -19,6 +22,8 @@ private:
     int m_austerity;
     int m_size;
 
+    Country* m_country;
+
     AVL_Tree<ID>* m_LEFT_ID_Tree;
     AVL_Tree<ID>* m_MIDDLE_ID_Tree;
     AVL_Tree<ID>* m_RIGHT_ID_Tree;
@@ -28,13 +33,19 @@ private:
     AVL_Tree<Strength>* m_RIGHT_Strength_Tree;
 
 public:
-    Team() = default;
+    Team(int id,int countryID, Sport sport, Country* teamsCountry) : m_id(id),
+                                              m_countryID(countryID),
+                                              m_sport(sport), m_strength(ZERO),
+                                              m_austerity(ZERO), m_size(ZERO),
+                                              m_country(teamsCountry),
+                                              m_LEFT_ID_Tree(new AVL_Tree<ID>),
+                                              m_MIDDLE_ID_Tree(new AVL_Tree<ID>),
+                                              m_RIGHT_ID_Tree(new AVL_Tree<ID>),
+                                              m_LEFT_Strength_Tree(new AVL_Tree<Strength>),
+                                              m_MIDDLE_Strength_Tree(new AVL_Tree<Strength>),
+                                              m_RIGHT_Strength_Tree(new AVL_Tree<Strength>){}
 
-//        void balanceTrees(){
-//      psuedo-code;
-//      check if number of contestants in each tree is 0 mod3
-//            if it isn't, return.
-//    }
+
 
     int getID() const{
         return m_id;
@@ -51,6 +62,25 @@ public:
     int getSize() const{
         return m_size;
     }
+    int getAusterity() const{
+        return m_austerity;
+    }
+    Country* getCountry() const{
+        return m_country;
+    }
+
+    bool operator== (const Team& other) const{
+        return m_id == other.m_id;
+    }
+    bool operator>= (const Team& other) const{
+        return m_id >= other.m_id;
+    }
+
+//        void balanceTrees(){
+//      psuedo-code;
+//      check if number of contestants in each tree is 0 mod3
+//            if it isn't, return.
+//    }
 
     StatusType insertContestant(Contestant* contestantToRegister){// O(log n)
 //        Pseudo-code;
@@ -244,23 +274,23 @@ Contestant** delete_k_from_RightTree(int k){
     return RIGHT_removedContestants;
 }
 
-void reinsert_i_to_LeftTree(Contestant** LEFT_removedContestants, int i){
-    for(int t = 0; t < i; t++){
-        this->insertContestant(LEFT_removedContestants[t]);
+    void reinsert_i_to_LeftTree(Contestant** LEFT_removedContestants, int i){
+        for(int t = 0; t < i; t++){
+            this->insertContestant(LEFT_removedContestants[t]);
+        }
     }
-}
 
-void reinsert_j_to_MiddleTree(Contestant** MIDDLE_removedContestants, int j){
-    for(int m = 0; m < j; m++){
-        this->insertContestant(MIDDLE_removedContestants[m]);
+    void reinsert_j_to_MiddleTree(Contestant** MIDDLE_removedContestants, int j){
+        for(int m = 0; m < j; m++){
+            this->insertContestant(MIDDLE_removedContestants[m]);
+        }
     }
-}
 
-void reinsert_k_to_RightTree(Contestant** RIGHT_removedContestants, int k){
-    for (int n = 0; n < k; n++){
-        this->insertContestant(RIGHT_removedContestants[n]);
+    void reinsert_k_to_RightTree(Contestant** RIGHT_removedContestants, int k){
+        for (int n = 0; n < k; n++){
+            this->insertContestant(RIGHT_removedContestants[n]);
+        }
     }
-}
 
 
 

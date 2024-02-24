@@ -34,6 +34,22 @@ public:
         return m_numberOfContestants;
     }
 
+    void decreaseTeamCounter(){
+        m_numberOfTeams--;
+    }
+
+    void decreaseContestantCounter(){
+        m_numberOfContestants--;
+    }
+
+    void increaseTeamCounter(){
+        m_numberOfTeams++;
+    }
+
+    void increaseContestantCounter(){
+        m_numberOfContestants++;
+    }
+
     bool operator== (const Country& other) const{
         return m_countryID == other.m_countryID;
     }

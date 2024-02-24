@@ -19,4 +19,5 @@ add_executable(Wet_1__Data_Structures
         "Classes/ID.h"
         "GR files/Scripts/Olympicsa1.cpp"
         "GR files/Scripts/Olympicsa1.cpp"
+        Classes/Contestant.cpp
 )

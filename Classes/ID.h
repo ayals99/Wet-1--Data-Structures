@@ -14,7 +14,7 @@ public:
     ID(Contestant* contestant, Strength* parallel) : m_contestant(contestant), parallel_strength(parallel){};
 
     int getID() const{
-        return m_contestant->getId();
+        return m_contestant->getID();
     }
 
     Contestant* getContestant() const{
@@ -26,7 +26,7 @@ public:
     }
 
     bool operator==(const ID& other) const{
-        if (this->m_contestant->getId() == other.m_contestant->getId()){
+        if (this->m_contestant->getID() == other.m_contestant->getID()){
             return true;
         }
         else{
@@ -34,7 +34,7 @@ public:
         }
     }
     bool operator>=(const ID& other) const{
-        if (this->m_contestant->getId() >= other.m_contestant->getId()){
+        if (this->m_contestant->getID() >= other.m_contestant->getID()){
             return true;
         }
         else{
@@ -45,7 +45,7 @@ public:
 };
 
 std::ostream &operator<<(std::ostream &os, const ID &id) {
-    os << "Contestant ID: " << id.m_contestant->getId() << std::endl;
+    os << "Contestant ID: " << id.m_contestant->getID() << std::endl;
     return os;
 }
 

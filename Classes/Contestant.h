@@ -2,6 +2,7 @@
 #define WET_1_DATA_STRUCTURES_CONTESTANT_H
 
 #include "wet1util.h"
+
 #include "Team.h"
 #include <iostream>
 
@@ -11,20 +12,28 @@ class Team;
 
 class Contestant{
 private:
+
     int m_id;
     int m_strength;
     Sport m_sport;
     int m_countryID;
+    Country* m_country;
 
-    // TODO: check if this problem in Tam is because the include is circular
-    Team* m_teams[NUMBER_OF_TEAMS_ALLOWED_PER_PLAYER];
+
+
+    // TODO: check if this problem in Team is because the include is circular
+    Team* m_teams[NUMBER_OF_TEAMS_ALLOWED_PER_PLAYER]{};
 
 public:
-    Contestant(int id, int strength, Sport sport, int countryID) : m_id(id), m_strength(strength),m_sport(sport),
-                                                                   m_countryID(countryID){};
+    Contestant(int id, int countryID, Sport sport, int strength);
 
-    int getId() const{
+
+    int getID() const{
         return m_id;
+    }
+
+    Team* getTeam(int index) const{
+        return m_teams[index];
     }
 
     int getStrength() const{
@@ -35,6 +44,12 @@ public:
     }
     int getCountryID() const{
         return m_countryID;
+    }
+    Country* getCountryPointer() const{
+        return m_country;
+    }
+    void setCountryPointer(Country* country){
+        m_country = country;
     }
     friend std::ostream& operator<<(std::ostream& os, const Contestant& contestant);
 
@@ -54,6 +69,10 @@ public:
 //    bool sameSport(int teamID);
 //    bool sameCountry(int teamID)
 //    updateRegisteredTeamsStrengths();
+
+    bool registeredInATeam();
+    bool isAvailable();
+
 
 };
 

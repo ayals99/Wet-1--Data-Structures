@@ -1,4 +1,27 @@
-//
-// Created by ayals on 2/18/2024.
-//
+#include "Contestant.h"
 
+bool Contestant::registeredInATeam() {
+    for (int i = ZERO; i < NUMBER_OF_TEAMS_ALLOWED_PER_PLAYER; i++){
+        if (m_teams[i] != nullptr){
+            return true;
+        }
+    }
+    return false;
+}
+
+
+
+Contestant::Contestant(int id, int countryID, Sport sport, int strength) : m_id(id), m_countryID(countryID), m_sport(sport), m_strength(strength), m_country(nullptr){
+    for (int i = 0; i < NUMBER_OF_TEAMS_ALLOWED_PER_PLAYER; i++){
+        m_teams[i] = nullptr;
+    }
+}
+
+bool Contestant::isAvailable() {
+    for (int i = 0; i < NUMBER_OF_TEAMS_ALLOWED_PER_PLAYER; ++i) {
+        if (m_teams[i] == nullptr){
+            return true;
+        }
+    }
+    return false;
+}

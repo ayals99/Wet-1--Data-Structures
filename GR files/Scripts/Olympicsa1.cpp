@@ -89,35 +89,33 @@ StatusType Olympics::add_team(int teamId,int countryId,Sport sport){ // O(log m 
         return StatusType::FAILURE;
     }
 //       in a try block:
-try {
+    try {
 //          Find the countryId and save a pointer to the country’s instance.
 //          If country does not exist, return StatusType::FAILURE.
 
-    Country* country = m_countryTree->find(countryId);
-    if (country == nullptr){
-        return StatusType::FAILURE;
-    }
-    Team* newTeam = new Team(teamId, countryId, sport, country);
-    m_teamTree->insert(newTeam);
-    return StatusType::SUCCESS;
-}
-catch (std::bad_alloc& e){
-    return StatusType::ALLOCATION_ERROR;
-}
+        Country* country = m_countryTree->find(countryId);
+        if (country == nullptr){
+            return StatusType::FAILURE;
+        }
+        Team* newTeam = new Team(teamId, countryId, sport, country);
+        m_teamTree->insert(newTeam);
+        return StatusType::SUCCESS;
 
+//          All of the id done in the constructor of Team:
 //          Create a new team with no members.
 //          intialize m_teamSize to 0.
 //          intialize m_teamStrength to 0.
 //          intialize m_austerityMeasures to 0.
 //          Create all six Contestant Subtrees - three for ID ad three for Strength.
 //          assign the team to the country by saving the country's pointer in m_countryPointer.
+    }
+    catch (std::bad_alloc& e){
+        return StatusType::ALLOCATION_ERROR;
+    }
 //      if allocation failed, return StatusType::ALLOCATION_ERROR.
-//            return StatusType::SUCCESS.
-
-    return StatusType::FAILURE;
 }
 
-StatusType Olympics::remove_team(int teamId){ // O(log m)
+StatusType Olympics::remove_team(int teamId) { // O(log m)
 //     Pseudo-code:
 //      Check if teamId <= 0
 //        If it does, return StatusType::INVALID_INPUT.
@@ -126,46 +124,84 @@ StatusType Olympics::remove_team(int teamId){ // O(log m)
 //          If teamToDelete == nullptr then teamId doesn't exist
 //              return FAILURE.
 //      go to m_country pointer and decrease country's team count by 1.
-//      Delete team but make sure not to delete the contestants, because they are still in the system.
 //    if allocation failed, return StatusType::ALLOCATION_ERROR.
 //    return StatusType::SUCCESS.
 
-    return StatusType::FAILURE;
+    if (teamId <= 0) {
+        return StatusType::INVALID_INPUT;
+    }
+    try {
+        Team *teamToDelete = m_teamTree->find(teamId);
+        if (teamToDelete == nullptr) {
+            return StatusType::FAILURE;
+        }
+        if (teamToDelete->getSize() != ZERO) {
+            return StatusType::FAILURE;
+        }
+        teamToDelete->getCountry()->decreaseTeamCounter();
+        //we need to remove the team from the team tree and delete the team
+        //TODO: We need to make sure logic is right here
+        m_teamTree->remove(teamToDelete);
+        //TODO: Make sure we do need to delete the team
+        delete teamToDelete;
+        return StatusType::SUCCESS;
+
+    }catch (std::bad_alloc& e){
+        return StatusType::ALLOCATION_ERROR;
+    }
 }
+
+
 	
 StatusType Olympics::add_contestant(int contestantId ,int countryId,Sport sport,int strength){  // O(log n + log k)
 //     Pseudo-code:
 //      Check if contestantId <= 0 or countryId <= 0 or strength < 0
 //          If it does, return StatusType::INVALID_INPUT.
-
+    if (contestantId <= ZERO || countryId <= ZERO || strength < ZERO){
+        return StatusType::INVALID_INPUT;
+    }
 //      in a try block:
-
+    try {
 //          Country* country = find(countryId) // save a pointer to the country’s instance in order to insert to m_countryPointer field
 //              If country == nullptr, country does not exist
 //                  return StatusType::FAILURE.
-
+//
 //          Check if contestantId exists in contestant tree
 //              If it does:
 //                  return StatusType::FAILURE.
-
+//
 //          Create a new contestant with the given parameters.
 //          insert a pointer to newContestant into Olympic -> contestant tree.
 //          increase country's contestant count by 1.
+//          return StatusType::SUCCESS.
 
+        Country* country = m_countryTree->find(countryId);
+        if (country == nullptr){
+            return StatusType::FAILURE;
+        }
+        if (m_contestantTree->find(contestantId) != nullptr){
+            return StatusType::FAILURE;
+        }
+        Contestant* newContestant = new Contestant(contestantId, countryId, sport, strength);
+        newContestant->setCountryPointer(country);
+        m_contestantTree->insert(newContestant);
+        country->increaseContestantCounter();
+        return StatusType::SUCCESS;
+    }
+    catch (std::bad_alloc& e){
+        return StatusType::ALLOCATION_ERROR;
+
+    }
 //      if allocation failed, return StatusType::ALLOCATION_ERROR.
-
-//      return StatusType::SUCCESS.
-
-
-    return StatusType::FAILURE;
 }
 	
 StatusType Olympics::remove_contestant(int contestantId){ // O(log n)
 //     Pseudo-code:
-
 //      Check if contestantId <= 0
 //          If it does, return StatusType::INVALID_INPUT.
-
+    if (contestantId <= ZERO){
+        return StatusType::INVALID_INPUT;
+    }
 //      in a try block:
 //          Contestant* contestantToDelete = find(contestantId) in contestant tree.
 
@@ -181,6 +217,22 @@ StatusType Olympics::remove_contestant(int contestantId){ // O(log n)
 //      if allocation failed, return StatusType::ALLOCATION_ERROR.
 
 //      return StatusType::SUCCESS;
+try {
+    Contestant *contestantToDelete = m_contestantTree->find(contestantId);
+    if (contestantToDelete == nullptr) {
+        return StatusType::FAILURE;
+    }
+    if (contestantToDelete->registeredInATeam()) {
+        return StatusType::FAILURE;
+    }
+    contestantToDelete->getCountryPointer()->decreaseContestantCounter();
+    m_contestantTree->remove(contestantToDelete);
+    //TODO: Make sure we do need to delete the contestant
+    delete contestantToDelete;
+    return StatusType::SUCCESS;
+    }catch (std::bad_alloc& e){
+        return StatusType::ALLOCATION_ERROR;
+    }
 	return StatusType::FAILURE;
 }
 	
@@ -189,6 +241,10 @@ StatusType Olympics::add_contestant_to_team(int teamId,int contestantId){ // O(l
 //          Check if teamId <= 0 or contestantId <= 0
 //              If it does, return StatusType::INVALID_INPUT.
 //          in a try block:
+    if (teamId <= ZERO || contestantId <= ZERO){
+        return StatusType::INVALID_INPUT;
+    }
+    try {
 
 //               Contestant* contestantToRegister =  find(contestantId) in contestant tree. //O(log n)
 //                    if contestantToRegister == nullptr so contestant doesn't exist
@@ -210,21 +266,41 @@ StatusType Olympics::add_contestant_to_team(int teamId,int contestantId){ // O(l
 //                            return StatusType::FAILURE
 
 //               if (contestantToRegister->isAvailable() == FALSE) // O(1)
-//                      return StatusType::FAILURE
+//       	        return StatusType::FAILURE;
 
-//               if (draftingTeam->insertContestant(contestantToRegister) != SUCCESS) // O(log n)
-//                      return StatusType::FAILURE
-
+        Contestant *contestantToRegister = m_contestantTree->find(contestantId);
+        if (contestantToRegister == nullptr) {
+            return StatusType::FAILURE;
+        }
+        Team *draftingTeam = m_teamTree->find(teamId);
+        if (draftingTeam == nullptr) {
+            return StatusType::FAILURE;
+        }
+        if (draftingTeam->getCountryID() != contestantToRegister->getCountryID()) {
+            return StatusType::FAILURE;
+        }
+        if (draftingTeam->getSport() != contestantToRegister->getSport()) {
+            return StatusType::FAILURE;
+        }
+        for (int i = ZERO; i < NUMBER_OF_TEAMS_ALLOWED_PER_PLAYER; i++) {
+            if (contestantToRegister->getTeam(i) != nullptr) {
+                if (contestantToRegister->getTeam(i)->getID() == teamId) {
+                    return StatusType::FAILURE;
+                }
+            }
+        }
+        if (!contestantToRegister->isAvailable()) {
+            return StatusType::FAILURE;
+        }
+        draftingTeam->insertContestant(contestantToRegister);
+        return StatusType::SUCCESS;
+    }catch(std::bad_alloc& e){
+        return StatusType::ALLOCATION_ERROR;
+    }
 // TODO: use these functions in the implementation of Team::insertContestant() // O(log n)
 //               draftingTeam->updateTeamStrength; // O(log n)
 //               draftingTeam->updateAusterity();  // O(log n)
 
-//    if allocation failed, return StatusType::ALLOCATION_ERROR.
-//    return StatusType::SUCCESS;
-
-
-
-	return StatusType::FAILURE;
 }
 
 StatusType Olympics::remove_contestant_from_team(int teamId,int contestantId) { // O(log n + log m)
