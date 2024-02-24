@@ -491,32 +491,6 @@ output_t<int> Olympics::get_team_strength(int teamId){ // O(log m)
 
 
 
-StatusType Olympics::unite_teams(int teamId1,int teamId2) { // O(log m + n_team_ID1 + n_team_ID2)
-//     Pseudo-code:
-
-//      if teamId1 <= 0 or teamId2 <= 0 or teamId1 == teamId2
-//          return StatusType::INVALID_INPUT
-
-//      in a try block:
-
-//          Team* team1 = find(teamId1) in team tree. // O(log m)
-//              if team1 == nullptr, then teamId1 doesn't exist
-//                  return StatusType::FAILURE
-
-//          Team* team2 = find(teamId2) in team tree. // O(log m)
-//              if team2 == nullptr, then teamId2 doesn't exist
-//                  return StatusType::FAILURE
-
-//          if team1->getCountryID() != team2->getCountryID() // O(1)
-//              return StatusType::FAILURE
-
-//          if team1->getSport() != team2->getSport() // O(1)
-//              return StatusType::FAILURE
-
-// TODO: check if better to make mergeTeams a member function of Team class
-//         return mergeTeams(team1, team2); // O(n_team_ID1 + n_team_ID2)
-    return StatusType::FAILURE;
-}
 
 ////** explanation for mergeTeams: **////
 
@@ -524,7 +498,10 @@ int ceilDivisionByThree(int n){
     return (n / 3) + ( (n % 3) != 0); // O(1)
 }
 
-//     StatusType mergeTeams(Team* team1,Team*  team2){
+// TODO: check if better to make mergeTeams a member function of Team class
+//         return mergeTeams(team1, team2); // O(n_team_ID1 + n_team_ID2)
+
+StatusType mergeTeams(Team* team1,Team*  team2){}
 //       in a try block:
 
 //            ID** mergedIdArray = mergeIDsToArray(team1, team2); // O(n_team_ID1 + n_team_ID2) // mergeIDsToArray needs to take care of duplicates
@@ -598,8 +575,54 @@ int ceilDivisionByThree(int n){
 
 
 
-StatusType Olympics::play_match(int teamId1,int teamId2){ // O(log k + log m)
-    if (teamId1 <= ZERO || teamId2 <= ZERO || teamId1 == teamId2){
+StatusType Olympics::unite_teams(int teamId1,int teamId2) { // O(log m + n_team_ID1 + n_team_ID2)
+    if (teamId1 <= ZERO || teamId2 <= ZERO || teamId1 == teamId2) {
+        return StatusType::INVALID_INPUT;
+    }
+    try {
+        Team *team1 = m_teamTree->find(teamId1);
+        if (team1 == nullptr) {
+            return StatusType::FAILURE;
+        }
+        Team *team2 = m_teamTree->find(teamId2);
+        if (team2 == nullptr) {
+            return StatusType::FAILURE;
+        }
+        if (team1->getCountryID() != team2->getCountryID()) {
+            return StatusType::FAILURE;
+        }
+        if (team1->getSport() != team2->getSport()) {
+            return StatusType::FAILURE;
+        }
+        return mergeTeams(team1, team2);
+
+    } catch (std::bad_alloc &e) {
+        return StatusType::ALLOCATION_ERROR;
+    }
+}
+
+
+//     Pseudo-code:
+//      if teamId1 <= 0 or teamId2 <= 0 or teamId1 == teamId2
+//          return StatusType::INVALID_INPUT
+//      in a try block:
+//          Team* team1 = find(teamId1) in team tree. // O(log m)
+//              if team1 == nullptr, then teamId1 doesn't exist
+//                  return StatusType::FAILURE
+//          Team* team2 = find(teamId2) in team tree. // O(log m)
+//              if team2 == nullptr, then teamId2 doesn't exist
+//                  return StatusType::FAILURE
+//          if team1->getCountryID() != team2->getCountryID() // O(1)
+//              return StatusType::FAILURE
+//          if team1->getSport() != team2->getSport() // O(1)
+//              return StatusType::FAILURE
+
+
+
+
+
+StatusType Olympics::play_match(int teamId1, int teamId2) { // O(log k + log m)
+    if (teamId1 <= ZERO || teamId2 <= ZERO || teamId1 == teamId2) {
         return StatusType::INVALID_INPUT;
     }
     try {
@@ -614,17 +637,17 @@ StatusType Olympics::play_match(int teamId1,int teamId2){ // O(log k + log m)
         if (team1->getSport() != team2->getSport()) {
             return StatusType::FAILURE;
         }
-        int team1TotalScore = team1->getCountry()->getMedals() + team1->getStrength(); // O(1)
-        int team2TotalScore = team2->getCountry()->getMedals() + team2->getStrength(); // O(1)
+        int team1TotalScore = team1->getCountry()->getMedals() + team1->getStrength();
+        int team2TotalScore = team2->getCountry()->getMedals() + team2->getStrength();
         if (team1TotalScore > team2TotalScore) {
-            team1->getCountry()->addMedal(); // O(1)
+            team1->getCountry()->addMedal();
         }
         if (team1TotalScore < team2TotalScore) {
-            team2->getCountry()->addMedal(); // O(1)
+            team2->getCountry()->addMedal();
         }
         return StatusType::SUCCESS;
     }
-    catch (std::bad_alloc& e){
+    catch (std::bad_alloc &e) {
         return StatusType::ALLOCATION_ERROR;
     }
 }
@@ -652,23 +675,23 @@ StatusType Olympics::play_match(int teamId1,int teamId2){ // O(log k + log m)
 
 
 
-output_t<int> Olympics::austerity_measures(int teamId){ // O(log m)
-    if (teamId <= ZERO){
-        return output_t<int>(StatusType::INVALID_INPUT);
-    }
-    try {
-        Team *team = m_teamTree->find(teamId); // O(log m)
-        if (team == nullptr) {
-            return output_t<int>(StatusType::FAILURE);
+    output_t<int> Olympics::austerity_measures(int teamId) { // O(log m)
+        if (teamId <= ZERO) {
+            return output_t<int>(StatusType::INVALID_INPUT);
         }
-        if (team->getSize() < MINIMUM_AUSTERITY_TEAM_SIZE) {
-            return output_t<int>(StatusType::FAILURE);
+        try {
+            Team *team = m_teamTree->find(teamId); // O(log m)
+            if (team == nullptr) {
+                return output_t<int>(StatusType::FAILURE);
+            }
+            if (team->getSize() < MINIMUM_AUSTERITY_TEAM_SIZE) {
+                return output_t<int>(StatusType::FAILURE);
+            }
+            return output_t<int>(team->getAusterity()); // O(1)
+        } catch (std::bad_alloc &e) {
+            return output_t<int>(StatusType::ALLOCATION_ERROR);
         }
-        return output_t<int>(team->getAusterity()); // O(1)
-    }catch (std::bad_alloc& e){
-        return output_t<int>(StatusType::ALLOCATION_ERROR);
     }
-}
 
 //     Pseudo-code:
 //      if teamId <= 0

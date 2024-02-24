@@ -1,7 +1,4 @@
-
-
 #include "Team.h"
-
 
 
 void Team::removeContestantFromTeam(Contestant *contestant) {
@@ -22,3 +19,4 @@ void Team::removeContestantFromSubtrees(Contestant *contestant) {
     //update the team strength
     //update the team aussterity
     return;
+}
