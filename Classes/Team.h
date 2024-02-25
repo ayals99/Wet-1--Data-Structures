@@ -1,17 +1,11 @@
 #ifndef WET_1_DATA_STRUCTURES_TEAM_H
 #define WET_1_DATA_STRUCTURES_TEAM_H
-
+#include "Country.h"
 #include "wet1util.h"
 #include "Contestant.h"
 #include "AVL_Tree.h"
 #include "ID.h"
 #include "Strength.h"
-
-//const static int NUMBER_OF_ID_SUBTREES = 3;
-const static int AUSTERITY_REMOVALS = 3;
-
-// I added country to the include list to add the country field to the team
-#include "Country.h"
 
 static const int TEAM_STRENGTH_NOT_MOD_3 = 0;
 static const int NOT_FOUND = -1;
@@ -45,17 +39,17 @@ private:
 
 public:
     Team(int id,int countryID, Sport sport, Country* teamsCountry)
-        :   m_id(id),
-            m_countryID(countryID),
-            m_sport(sport), m_strength(ZERO),
-            m_austerity(ZERO), m_size(ZERO),
-            m_country(teamsCountry),
-            m_LEFT_ID_Tree(new AVL_Tree<ID>),
-            m_MIDDLE_ID_Tree(new AVL_Tree<ID>),
-            m_RIGHT_ID_Tree(new AVL_Tree<ID>),
-            m_LEFT_Strength_Tree(new AVL_Tree<Strength>),
-            m_MIDDLE_Strength_Tree(new AVL_Tree<Strength>),
-            m_RIGHT_Strength_Tree(new AVL_Tree<Strength>){}
+            :   m_id(id),
+                m_countryID(countryID),
+                m_sport(sport), m_strength(ZERO),
+                m_austerity(ZERO), m_size(ZERO),
+                m_country(teamsCountry),
+                m_LEFT_ID_Tree(new AVL_Tree<ID>),
+                m_MIDDLE_ID_Tree(new AVL_Tree<ID>),
+                m_RIGHT_ID_Tree(new AVL_Tree<ID>),
+                m_LEFT_Strength_Tree(new AVL_Tree<Strength>),
+                m_MIDDLE_Strength_Tree(new AVL_Tree<Strength>),
+                m_RIGHT_Strength_Tree(new AVL_Tree<Strength>){}
 
     ~Team();
 

@@ -1,7 +1,11 @@
+#include "Contestant_Country_ID_Strength_Team.h"
+
 
 static const int NUMBER_OF_SUBTREES = 3;
 static const int ONE = 1;
 static const int TWO = 2;
+
+////** Team  **////
 
 Team::~Team(){
     deleteSubtrees();
@@ -232,27 +236,47 @@ Strength** mergeStrengthsToArray(Team* team1, Team* team2){ // O(n_team_ID1 + n_
     return mergeArrays(sortedStrength1, sortedStrength2); // O(n_team_ID1 + n_team_ID2)
 }
 
+
+
+// As we learned in the recitation:
 AVL_Tree<ID>* ArrayToTree(ID** array, int startIndex, int endIndex){
-    AVL_Tree<ID>* newTree = new AVL_Tree<ID>(); // O(1)
-
-    for (int i = startIndex; i < endIndex; i++){ // O(n)
-
-    }
+    int numberOfElements = endIndex - startIndex;
+    AVL_Tree<ID>* newTree = createEmptyTree<ID>(numberOfElements); // O(n)
+    insertArrayToTree(&array[startIndex], newTree); // O(n)
     return newTree;
 }
 
-AVL_Tree<Strength>* ArrayToTree(Strength** array, subtreePosition position){
-    AVL_Tree<Strength>* newTree = new AVL_Tree<Strength>(); // O(1)
+int countPositionsInArray(Strength** array,subtreePosition position){
     int i = 0;
+    int counter = 0;
     while (array[i] != nullptr){
         if (array[i]->getPosition() == position){
-
+            counter++;
         }
         i++;
     }
-    return newTree;
+    return counter;
 }
 
+AVL_Tree<Strength>* ArrayToTree(Strength** array,subtreePosition position) { // O(n)
+    int arrayLength = findArrayLength(array); // O(n)
+    int numberOfElements = countPositionsInArray(array, position); // O(n)
+
+    AVL_Tree<Strength>* newTree = createEmptyTree<Strength>(numberOfElements); // O(n)
+    Strength** positionArray = new Strength*[numberOfElements]; // O(n)
+
+    int j = 0;
+    for (int i = 0; i < arrayLength; i++){ // O(n)
+        if (array[i]->getPosition() == position){ // O(1)
+            positionArray[j] = array[j]; // O(1)
+            j++;
+        }
+    }
+
+    insertArrayToTree(positionArray, newTree); // O(n)
+    delete[] positionArray;// O(n)
+    return newTree; // O(1)
+}
 
 int Team::getID() const{
     return m_id;
@@ -282,16 +306,34 @@ Country* Team::getCountry() const{
 //               draftingTeam->updateAusterity();  // O(log n)
 
 StatusType Team::insertContestant(Contestant* contestantToRegister){// O(log n)
+    assert (contestantToRegister != nullptr);
+
     Strength* strength = new Strength(contestantToRegister, UNASSIGNED);
     ID* id = new ID(contestantToRegister, strength);
     assignInSubtrees(id, strength); // a lot of if statements
-    balanceTrees();
+    balanceTrees(); //
+    updateTeamStrength(); // O(log n)
+    updateAusterity(); // O(log n)
     return StatusType::SUCCESS;
 }
 
 void Team::assignInSubtrees(ID* id, Strength* strength) {
 //       Pseudo-code:
-    int max_left_ID = m_LEFT_ID_Tree->find_Maximum_In_Subtree()->getID();
+    assert (id != nullptr);
+    assert (strength != nullptr);
+
+    int max_left_ID = NOT_FOUND;
+    if(m_LEFT_ID_Tree->find_Maximum_In_Subtree() == nullptr || m_MIDDLE_ID_Tree->find_Maximum_In_Subtree() == nullptr){ // O(log n)
+        m_LEFT_ID_Tree->insert(id);
+        strength->setPosition(LEFT);
+        m_LEFT_Strength_Tree->insert(strength);
+        m_size++;
+        return;
+    }
+    else{
+        max_left_ID = m_LEFT_ID_Tree->find_Maximum_In_Subtree()->getID();
+    }
+
     int max_middle_ID = m_MIDDLE_ID_Tree->find_Maximum_In_Subtree()->getID();
 
     if (id->getID() < max_left_ID){
@@ -313,49 +355,163 @@ void Team::assignInSubtrees(ID* id, Strength* strength) {
 
 }
 
+void moveLargestIDFromTree1ToTree2(AVL_Tree<ID>* IdTree1, AVL_Tree<ID>* IdTree2,
+                                   AVL_Tree<Strength>* StrengthTree1,
+                                   AVL_Tree<Strength>* StrengthTree2){
+    ID* largestID = IdTree1->find_Maximum_In_Subtree();
+    Contestant* largestContestant = largestID->getContestant();
+    Strength* largestStrength = IdTree1->find(largestID)->getParallelStrength();
+    IdTree1->remove(largestID);
+
+    subtreePosition position = largestStrength->getPosition();
+    if (position == LEFT){
+        position = MIDDLE;
+    }
+    else if (position == MIDDLE){
+        position = RIGHT;
+    }
+
+    Strength* strengthToInsert = new Strength(largestContestant, position);
+    StrengthTree1->remove(largestStrength);
+
+    ID* idToInsert = new ID(largestContestant, strengthToInsert);
+    IdTree2->insert(idToInsert);
+    StrengthTree2->insert(strengthToInsert);
+}
+
+void moveSmallestIDFromTree1ToTree2(AVL_Tree<ID>* IdTree1, AVL_Tree<ID>* IdTree2,
+                                   AVL_Tree<Strength>* StrengthTree1,
+                                   AVL_Tree<Strength>* StrengthTree2){
+    ID* smallestId = IdTree1->find_Minimum_In_Subtree();
+    Contestant* smallestContestant = smallestId->getContestant();
+    Strength* weakestStrength = IdTree1->find(smallestId)->getParallelStrength();
+    IdTree1->remove(smallestId);
+
+    subtreePosition position = weakestStrength->getPosition();
+    if (position == RIGHT){
+        position = MIDDLE;
+    }
+    else if (position == MIDDLE){
+        position = LEFT;
+    }
+    Strength* strengthToInsert = new Strength(smallestContestant, position);
+    ID* idToInsert = new ID(smallestContestant, strengthToInsert);
+    StrengthTree1->remove(weakestStrength);
+
+    IdTree2->insert(idToInsert);
+    StrengthTree2->insert(strengthToInsert);
+}
+
 void Team::balanceTrees(){ // (1)
-//        if (this->m_size % 3 != 0){
-//            return;
-//        }
-//        int left_size = m_LEFT_ID_Tree->getSize();
-//        int middle_size = m_MIDDLE_ID_Tree->getSize();
-//        int right_size = m_RIGHT_ID_Tree->getSize();
-//
-//      if (left size - middle size == 1 && left size - right size == 2){
-//        {
-//          transfer largest in left tree to middle
+    if (this->m_size % 3 != 0){
+        return;
+    }
+    int left_size = m_LEFT_ID_Tree->getSize();
+    int middle_size = m_MIDDLE_ID_Tree->getSize();
+    int right_size = m_RIGHT_ID_Tree->getSize();
+
+    // TODO: add cases of empty subTrees
+    if (left_size - middle_size == 1 && left_size - right_size == 2){
+//          transfer largest in left tree to middle:
+        moveLargestIDFromTree1ToTree2(m_LEFT_ID_Tree,
+                                      m_MIDDLE_ID_Tree,
+                                      m_LEFT_Strength_Tree,
+                                      m_MIDDLE_Strength_Tree);
+
 //          then transfer largest in middle to right
-//        }
-//      if (left size - middle size == 3 && left size - right size == 3){
+        moveLargestIDFromTree1ToTree2(m_MIDDLE_ID_Tree,
+                                      m_RIGHT_ID_Tree,
+                                      m_MIDDLE_Strength_Tree,
+                                      m_RIGHT_Strength_Tree);
+    }
+    if (left_size - middle_size == 3 && left_size - right_size == 3){
 //        transfer two from left to middle
+        moveLargestIDFromTree1ToTree2(m_LEFT_ID_Tree,
+                                      m_MIDDLE_ID_Tree,
+                                      m_LEFT_Strength_Tree,
+                                      m_MIDDLE_Strength_Tree);
+        moveLargestIDFromTree1ToTree2(m_LEFT_ID_Tree,
+                                      m_MIDDLE_ID_Tree,
+                                      m_LEFT_Strength_Tree,
+                                      m_MIDDLE_Strength_Tree);
 //        then transfer one from middle to right
-//      }
-//      if (left size - middle size == 2 && left size - right size == 1){
+        moveLargestIDFromTree1ToTree2(m_MIDDLE_ID_Tree,
+                                      m_RIGHT_ID_Tree,
+                                      m_MIDDLE_Strength_Tree,
+                                      m_RIGHT_Strength_Tree);
+    }
+    if (left_size - middle_size == 2 && left_size - right_size == 1){
 //          transfer largest in left to middle
-//      }
+        moveLargestIDFromTree1ToTree2(m_LEFT_ID_Tree,
+                                      m_MIDDLE_ID_Tree,
+                                      m_LEFT_Strength_Tree,
+                                      m_MIDDLE_Strength_Tree);
+    }
 
-//      if (middle size - left size == 1 && middle size - right size == 2){
+    if (middle_size - left_size == 1 && middle_size - right_size == 2){
 //        transfer largest in middle to right
-//      }
-//      if (middle size - left size == 3 && middle size - right size == 3){
+        moveLargestIDFromTree1ToTree2(m_MIDDLE_ID_Tree,
+                                      m_RIGHT_ID_Tree,
+                                      m_MIDDLE_Strength_Tree,
+                                      m_RIGHT_Strength_Tree);
+    }
+    if (middle_size - left_size == 3 && middle_size - right_size == 3){
 //       transfer largest in middle to right
-//       transfer smallest in middle to left
-//      }
-//     if (middle size - left size == 2 && middle size - right size == 1){
-//       transfer smallest in middle to left
-//     }
+        moveLargestIDFromTree1ToTree2(m_MIDDLE_ID_Tree,
+                                      m_RIGHT_ID_Tree,
+                                      m_MIDDLE_Strength_Tree,
+                                      m_RIGHT_Strength_Tree);
+//       transfer smallest in middle to left:
+        moveSmallestIDFromTree1ToTree2(m_MIDDLE_ID_Tree,
+                                      m_LEFT_ID_Tree,
+                                      m_MIDDLE_Strength_Tree,
+                                      m_LEFT_Strength_Tree);
+    }
+    if (middle_size - left_size == 2 && middle_size - right_size == 1){
+//       transfer smallest in middle to left;
+        moveSmallestIDFromTree1ToTree2(m_MIDDLE_ID_Tree,
+                                      m_LEFT_ID_Tree,
+                                      m_MIDDLE_Strength_Tree,
+                                      m_LEFT_Strength_Tree);
+    }
 
-//     if (right size - left size == 1 && right size - middle size == 2){
-//       transfer smallest in right to middle
-//     }
-//     if (right size - left size == 3 && right size - middle size == 3){
-//      transfer two smallest from right to middle
-//      transfer smallest from middle to left
-//     }
-//     if (right size - left size == 2 && right size - middle size == 1){
-//      transfer smallest in right to middle
-//      transfer smallest in middle to left
-//     }
+    if (right_size - left_size == 1 && right_size - middle_size == 2){
+//       transfer smallest in right to middle:
+        moveSmallestIDFromTree1ToTree2(m_RIGHT_ID_Tree,
+                                      m_MIDDLE_ID_Tree,
+                                      m_RIGHT_Strength_Tree,
+                                      m_MIDDLE_Strength_Tree);
+    }
+
+    if (right_size - left_size == 3 && right_size - middle_size == 3){
+//      transfer two smallest from right to middle:
+        moveSmallestIDFromTree1ToTree2(m_RIGHT_ID_Tree,
+                                      m_MIDDLE_ID_Tree,
+                                      m_RIGHT_Strength_Tree,
+                                      m_MIDDLE_Strength_Tree);
+        moveSmallestIDFromTree1ToTree2(m_RIGHT_ID_Tree,
+                                      m_MIDDLE_ID_Tree,
+                                      m_RIGHT_Strength_Tree,
+                                      m_MIDDLE_Strength_Tree);
+//      transfer smallest from middle to left:
+        moveSmallestIDFromTree1ToTree2(m_MIDDLE_ID_Tree,
+                                      m_LEFT_ID_Tree,
+                                      m_MIDDLE_Strength_Tree,
+                                      m_LEFT_Strength_Tree);
+ }
+
+     if (right_size - left_size == 2 && right_size - middle_size == 1){
+//      transfer smallest in right to middle:
+        moveSmallestIDFromTree1ToTree2(m_RIGHT_ID_Tree,
+                                      m_MIDDLE_ID_Tree,
+                                      m_RIGHT_Strength_Tree,
+                                      m_MIDDLE_Strength_Tree);
+//      transfer smallest in middle to left:
+        moveSmallestIDFromTree1ToTree2(m_MIDDLE_ID_Tree,
+                                      m_LEFT_ID_Tree,
+                                      m_MIDDLE_Strength_Tree,
+                                      m_LEFT_Strength_Tree);
+     }
 }
 
 StatusType Team::mergeTeams(Team* team2) {
@@ -445,13 +601,14 @@ int Team::calculateAusterity(){
     }
 
     for (int left_removals = 0; left_removals <= AUSTERITY_REMOVALS; left_removals++){
+
         Contestant** LEFT_removedContestants = delete_i_from_LeftTree(left_removals);
 
         int right_removals = ZERO;
         int middle_removals = ZERO;
 
         while (right_removals <= AUSTERITY_REMOVALS - left_removals) {
-            Contestant **RIGHT_removedContestants = delete_k_from_RightTree(right_removals);
+            Contestant** RIGHT_removedContestants = delete_k_from_RightTree(right_removals);
 
             middle_removals = AUSTERITY_REMOVALS - left_removals - right_removals;
 
@@ -459,10 +616,11 @@ int Team::calculateAusterity(){
             if (middle_removals == ONE && right_removals == TWO || middle_removals == ONE && left_removals == TWO) {
 //               first case: remove the border ID.
 
-                ID *borderID = nullptr;
+                ID* borderID = nullptr;
                 if (right_removals == TWO) {
                     borderID = m_MIDDLE_ID_Tree->find_Maximum_In_Subtree();
-                } else {
+                }
+                else {
                     borderID = m_MIDDLE_ID_Tree->find_Minimum_In_Subtree();
                 }
                 Contestant *removedContestant = borderID->getContestant();
@@ -471,7 +629,9 @@ int Team::calculateAusterity(){
                 m_MIDDLE_ID_Tree->remove(borderID);
                 m_MIDDLE_Strength_Tree->remove(removedStrength);
 
+                // TODO: balance tree somehow so we can check the maximum strength in the new subtree
                 updateMAXPossibleStrength();
+
 
                 // Saving the weakest strength without the border ID.
                 Strength* weakestStrengthWithoutBorder = m_MIDDLE_Strength_Tree->find_Minimum_In_Subtree();
@@ -516,7 +676,6 @@ int Team::calculateAusterity(){
     return maxPossibleStrength;
 }
 
-
 void Team::updateAusterity(){
     m_austerity = calculateAusterity();
 }
@@ -532,6 +691,11 @@ Contestant** Team::delete_i_from_LeftTree(int i){
     Contestant** LEFT_removedContestants = new Contestant*[AUSTERITY_REMOVALS];
     for (int t = 0; t < i; t++){
         Strength* removedStrength = m_LEFT_Strength_Tree->find_Minimum_In_Subtree(); // O(log(n))
+
+        // TODO: what to do if we want to remove more contestants than we have?
+        if (removedStrength == nullptr){
+            break;
+        }
         ID* removedID = m_LEFT_ID_Tree->find(removedStrength->getID()); // O(log(n))
         LEFT_removedContestants[t] = removedID->getContestant();
 
@@ -680,4 +844,141 @@ void Team::removeContestantFromSubtrees(Contestant *contestant) {
         m_RIGHT_Strength_Tree->remove(matchingID->getParallelStrength()); // O(log(n)
         m_RIGHT_ID_Tree->remove(matchingID); // O(log(n)
     }
+}
+
+
+////** Strength  **////
+int Strength::getID() const{
+    return m_contestant->getID();
+}
+
+int Strength::getStrength() const{
+    return m_contestant->getStrength();
+}
+
+subtreePosition Strength::getPosition() const{
+    return m_position;
+}
+
+Contestant* Strength::getContestant() const{
+    return m_contestant;
+}
+
+void Strength::setPosition(subtreePosition position){
+    m_position = position;
+}
+
+bool Strength::operator >= (const Strength& other) const{
+    if (this->m_contestant->getStrength() == other.m_contestant->getStrength()){
+        if (this->m_contestant->getID() >= other.m_contestant->getID()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    else if (this->m_contestant->getStrength() > other.m_contestant->getStrength()){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+bool Strength::operator == (const Strength& other) const{
+    if (*this >= other && other >= *this){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+std::ostream& operator<<(std::ostream& os, const Strength& strength){
+    os << "Contestant ID: " << strength.m_contestant->getID() << ", Strength: " << strength.m_contestant->getStrength() << std::endl;
+    return os;
+}
+
+
+////** ID  **////
+int ID::getID() const{
+    return m_contestant->getID();
+}
+
+Contestant* ID::getContestant() const{
+    return m_contestant;
+}
+
+Strength* ID::getParallelStrength() const{
+    return parallel_strength;
+}
+
+bool ID::operator==(const ID& other) const{
+    if (this->m_contestant->getID() == other.m_contestant->getID()){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+bool ID::operator>=(const ID& other) const{
+    if (this->m_contestant->getID() >= other.m_contestant->getID()){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+std::ostream &operator<<(std::ostream &os, const ID &id) {
+    os << "Contestant ID: " << id.m_contestant->getID() << std::endl;
+    return os;
+}
+
+
+
+////** Contestant  **////
+
+bool Contestant::registeredInATeam() {
+    for (int i = ZERO; i < NUMBER_OF_TEAMS_ALLOWED_PER_PLAYER; i++){
+        if (m_teams[i] != nullptr){
+            return true;
+        }
+    }
+    return false;
+}
+
+Contestant::Contestant(int id, int countryID, Sport sport, int strength) : m_id(id), m_countryID(countryID), m_sport(sport), m_strength(strength), m_country(nullptr){
+    for (int i = 0; i < NUMBER_OF_TEAMS_ALLOWED_PER_PLAYER; i++){
+        m_teams[i] = nullptr;
+    }
+}
+
+bool Contestant::isAvailable() {
+    for (int i = 0; i < NUMBER_OF_TEAMS_ALLOWED_PER_PLAYER; ++i) {
+        if (m_teams[i] == nullptr){
+            return true;
+        }
+    }
+    return false;
+}
+
+bool Contestant::isRegisteredInTeam(int teamID) {
+    for (int i = 0; i < NUMBER_OF_TEAMS_ALLOWED_PER_PLAYER; ++i) {
+        if (m_teams[i] != nullptr){
+            if (m_teams[i]->getID() == teamID){
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+void Contestant::updateStrength(int change) {
+    m_strength += change;
+}
+
+std::ostream& operator<<(std::ostream& os, const Contestant& contestant){
+    os << "Contestant ID: " << contestant.m_id << ", Strength: " << contestant.m_strength << std::endl;
+    return os;
 }

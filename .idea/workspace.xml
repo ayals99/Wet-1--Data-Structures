@@ -21,19 +21,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ee6379aa-e38b-43ed-b738-6074c08a537a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Classes/Contestant_Country_ID_Strength_Team.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Classes/Contestant_Country_ID_Strength_Team.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AVL Tree/AVL_Tree.h" beforeDir="false" afterPath="$PROJECT_DIR$/AVL Tree/AVL_Tree.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Classes/Contestant.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Classes/Contestant.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Classes/Contestant.h" beforeDir="false" afterPath="$PROJECT_DIR$/Classes/Contestant.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Classes/ID.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Classes/ID.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Classes/ID.h" beforeDir="false" afterPath="$PROJECT_DIR$/Classes/ID.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Classes/Strength.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Classes/Strength.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Classes/Strength.h" beforeDir="false" afterPath="$PROJECT_DIR$/Classes/Strength.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Classes/Team.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Classes/Team.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Classes/Team.h" beforeDir="false" afterPath="$PROJECT_DIR$/Classes/Team.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GR files/Scripts/Olympicsa1.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/GR files/Scripts/Olympicsa1.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GR files/Scripts/maina1.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/GR files/Scripts/maina1.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-d7d21a614a616a5c7e3b.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2024-02-25T09-34-24-0395.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-Wet_1__Data_Structures-Debug-516cd6627c06a322b97f.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
@@ -73,7 +71,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "CMake Application.Wet_1__Data_Structures.executor": "Run",
+    "CMake Application.Wet_1__Data_Structures.executor": "Debug",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
@@ -92,12 +90,12 @@
   }
 }]]></component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+    <configuration name="Wet_1__Data_Structures" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Wet_1__Data_Structures" TARGET_NAME="Wet_1__Data_Structures" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Wet_1__Data_Structures" RUN_TARGET_NAME="Wet_1__Data_Structures">
       <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Wet_1__Data_Structures" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Wet_1__Data_Structures" TARGET_NAME="Wet_1__Data_Structures" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Wet_1__Data_Structures" RUN_TARGET_NAME="Wet_1__Data_Structures">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -120,6 +118,7 @@
       <workItem from="1708798327028" duration="2444000" />
       <workItem from="1708800946063" duration="10418000" />
       <workItem from="1708844777969" duration="12026000" />
+      <workItem from="1708871327558" duration="15424000" />
     </task>
     <servers />
   </component>
@@ -136,10 +135,21 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/AVL Tree/AVL_Tree.h</url>
-          <line>113</line>
+          <line>115</line>
           <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/GR files/Scripts/maina1.cpp</url>
+          <line>445</line>
+          <option name="timeStamp" value="28" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="CMakeRunConfiguration">
+        <watch expression="id" />
+        <watch expression="this-&gt;m_id" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

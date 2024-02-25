@@ -77,11 +77,8 @@
 			"sourceIndexes" : 
 			[
 				1,
-				10,
-				11,
-				12,
-				13,
-				14
+				5,
+				6
 			]
 		}
 	],
@@ -122,11 +119,7 @@
 				2,
 				3,
 				4,
-				5,
-				6,
-				7,
-				8,
-				9
+				7
 			]
 		},
 		{
@@ -134,11 +127,8 @@
 			"sourceIndexes" : 
 			[
 				1,
-				10,
-				11,
-				12,
-				13,
-				14
+				5,
+				6
 			]
 		}
 	],
@@ -172,31 +162,6 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "Classes/Contestant.h",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"path" : "Classes/Team.h",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"path" : "Classes/Strength.h",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"path" : "Classes/Country.h",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"path" : "Classes/ID.h",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "GR files/Scripts/Olympicsa1.cpp",
 			"sourceGroupIndex" : 1
@@ -204,26 +169,13 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "Classes/Contestant.cpp",
+			"path" : "Classes/Contestant_Country_ID_Strength_Team.cpp",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "Classes/Team.cpp",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "Classes/Strength.cpp",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "Classes/ID.cpp",
-			"sourceGroupIndex" : 1
+			"path" : "Classes/Contestant_Country_ID_Strength_Team.h",
+			"sourceGroupIndex" : 0
 		}
 	],
 	"type" : "EXECUTABLE"

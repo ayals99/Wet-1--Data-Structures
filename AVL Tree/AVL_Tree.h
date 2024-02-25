@@ -95,6 +95,8 @@ private:
         if(currentNode == nullptr){
             return nullptr;
         }
+        assert(currentNode->getData() != nullptr);
+        assert(dataToFind != nullptr);
         if( *(dataToFind) == *(currentNode->getData())){
             return currentNode;
         }
@@ -215,6 +217,9 @@ private:
     }
 
     AVL_Node<T>* AUX_find_Minimum_In_Subtree(AVL_Node<T>* currentNode){
+        if (currentNode == nullptr){
+            return nullptr;
+        }
         while(currentNode->getLeft() != nullptr){
             currentNode = currentNode->getLeft();
         }
@@ -222,6 +227,9 @@ private:
     }
 
     AVL_Node<T>* AUX_find_Maximum_In_Subtree(AVL_Node<T>* currentNode){
+        if (currentNode == nullptr){
+            return nullptr;
+        }
         while(currentNode->getRight() != nullptr){
             currentNode = currentNode->getRight();
         }
@@ -299,6 +307,18 @@ public:
         return AUX_find(m_root, Key)->getData();
     }
 
+    void setRoot(AVL_Node<T>* newRoot){
+        m_root = newRoot;
+    }
+
+    AVL_Node<T>* getRoot() const{
+        return m_root;
+    }
+
+    void setSize(int newSize){
+        m_size = newSize;
+    }
+
     bool exists_In_Tree(T* dataToInsert){
         return (bool) find(dataToInsert);
     }
@@ -335,13 +355,15 @@ public:
     }
 
     T* find_Maximum_In_Subtree(){
+        if (m_root == nullptr){
+            return nullptr;
+        }
         return AUX_find_Maximum_In_Subtree(m_root)->getData();
     }
 
     int getSize() const{
         return m_size;
     }
-
 
     StatusType remove(T* dataToRemove){
         if (!exists_In_Tree(dataToRemove)){
@@ -370,4 +392,69 @@ public:
 
 };
 
+template <class T>
+AVL_Node<T>* createEmptyNode(){
+    AVL_Node<T>* newNode = new AVL_Node<T>(); // O(1)
+    return newNode;
+}
+
+template <class T>
+AVL_Node<T>* AUX_EmptyTree(int height){
+    if (height == 0){ // reached a leaf
+        return createEmptyNode<T>();
+    }
+    AVL_Node<T>* newNode = createEmptyNode<T>();
+    newNode->setLeftChild(AUX_EmptyTree<T>(height - 1));
+    newNode->setRightChild(AUX_EmptyTree<T>(height - 1));
+    return newNode;
+}
+
+template <class T>
+void deleteSpareNodes(AVL_Tree<T>* tree, AVL_Node<T>* parent, AVL_Node<T>* current, int height, int numberOfElements){
+    if (tree->getSize() <= numberOfElements){
+        return;
+    }
+    if (current->isLeaf() && height == 0){
+        if (current == parent->getRight()) {
+            parent->setRightChild(nullptr);
+
+        }
+        else {
+            parent->setLeftChild(nullptr);
+
+        }
+        delete current;
+    }
+    else{
+        deleteSpareNodes(tree, current, current->getRight(), height - 1, numberOfElements);
+        deleteSpareNodes(tree, current, current->getLeft(), height - 1, numberOfElements);
+    }
+}
+
+template <class T>
+AVL_Tree<T>* createEmptyTree(int numberOfElements){
+    AVL_Tree<T>* newTree = new AVL_Tree<T>(); // O(1)
+    int height  = (int)floor(log2(numberOfElements + 1)) - 1;
+    newTree->setRoot(AUX_EmptyTree<T>(height)); // O(n)
+    deleteSpareNodes<T>(newTree , nullptr, newTree->getRoot(), height, numberOfElements); // O(n)
+    newTree->setSize(numberOfElements); // O(1)
+    return newTree;
+}
+
+template <class T>
+void AUX_insertArrayToTreeInOrder(T** array, AVL_Node<T>* current, int& index){ // O(n)
+    if (current == nullptr){
+        return;
+    }
+    AUX_insertArrayToTreeInOrder(array, current->getLeft(), index);
+    current->setData(array[index]);
+    index++;
+    AUX_insertArrayToTreeInOrder(array, current->getRight(), index);
+}
+
+template <class T>
+void insertArrayToTree(T** array, AVL_Tree<T>* tree){ // O(n)
+    int index = 0;
+    AUX_insertArrayToTreeInOrder(array, tree->getRoot(), index);
+}
 #endif //WET_1_DATA_STRUCTURES_AVL_TREE_H
