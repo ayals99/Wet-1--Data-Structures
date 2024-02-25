@@ -38,3 +38,8 @@ bool Contestant::isRegisteredInTeam(int teamID) {
 void Contestant::updateStrength(int change) {
     m_strength += change;
 }
+
+std::ostream& operator<<(std::ostream& os, const Contestant& contestant){
+    os << "Contestant ID: " << contestant.m_id << ", Strength: " << contestant.m_strength << std::endl;
+    return os;
+}

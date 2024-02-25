@@ -120,7 +120,6 @@
 
 #include "AVL_Tree.h"
 #include "../Classes/Team.h"
-#include "../../Classes/ID.h"
 #include <iostream>
 #include <functional>
 
@@ -142,7 +141,7 @@ bool test_1(){
     std::cout << "First Test, with int:"<<std::endl;
     if (!tree->printTreeInOrder()){
         return false;
-    };
+    }
 
     tree->remove(b);
     std::cout << std::endl;
@@ -242,6 +241,7 @@ bool Strength_and_ID_test(){
 
     AVL_Tree<ID>* ID_Tree = new AVL_Tree<ID>;
 
+    std::cout << "initial Tree size: " << ID_Tree->getSize() << std::endl;
     ID_Tree->insert(id_a);
     ID_Tree->insert(id_d);
     ID_Tree->insert(id_c);
@@ -249,13 +249,17 @@ bool Strength_and_ID_test(){
     ID_Tree->insert(id_e);
     ID_Tree->insert(id_b);
 
+    std::cout << "Tree size is now: " << ID_Tree->getSize() << std::endl;
+
     std::cout << std::endl;
+    std::cout << "Tree size is now: " << ID_Tree->getSize() << std::endl;
     if(! (ID_Tree->printTreeInOrder())){
         return false;
     }
-    std::cout << std::endl;
 
+    std::cout << std::endl;
     ID_Tree->remove(id_d);
+    std::cout << "Tree size is now: " << ID_Tree->getSize() << std::endl;
     if(! (ID_Tree->printTreeInOrder())){
         return false;
     }
@@ -264,6 +268,7 @@ bool Strength_and_ID_test(){
     ID_Tree->remove(id_f);
 
     std::cout << std::endl;
+    std::cout << "Tree size is now: " << ID_Tree->getSize() << std::endl;
     if(! (ID_Tree->printTreeInOrder())){
         return false;
     }

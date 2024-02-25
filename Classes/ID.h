@@ -5,6 +5,7 @@
 #include "Strength.h"
 
 class Contestant;
+class Strength;
 
 class ID{
 private:
@@ -15,40 +16,16 @@ public:
     explicit ID(Contestant* contestant) : m_contestant(contestant), parallel_strength(nullptr){};
     ID(Contestant* contestant, Strength* parallel) : m_contestant(contestant), parallel_strength(parallel){};
 
-    int getID() const{
-        return m_contestant->getID();
-    }
+    int getID() const;
 
-    Contestant* getContestant() const{
-        return m_contestant;
-    }
+    Contestant* getContestant() const;
 
-    Strength* getParallelStrength() const{
-        return parallel_strength;
-    }
+    Strength* getParallelStrength() const;
 
-    bool operator==(const ID& other) const{
-        if (this->m_contestant->getID() == other.m_contestant->getID()){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
-    bool operator>=(const ID& other) const{
-        if (this->m_contestant->getID() >= other.m_contestant->getID()){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
+    bool operator==(const ID& other) const;
+    bool operator>=(const ID& other) const;
     friend std::ostream& operator<<(std::ostream& os, const ID& id);
 };
 
-std::ostream &operator<<(std::ostream &os, const ID &id) {
-    os << "Contestant ID: " << id.m_contestant->getID() << std::endl;
-    return os;
-}
 
 #endif //WET_1_DATA_STRUCTURES_ID_H

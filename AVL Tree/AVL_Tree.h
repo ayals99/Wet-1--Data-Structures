@@ -289,6 +289,9 @@ public:
 
     T* find(const T* dataToFind) const{
         assert(dataToFind != nullptr);
+        if (AUX_find(m_root, dataToFind) == nullptr){
+            return nullptr;
+        }
         return AUX_find(m_root, dataToFind)->getData();
     }
 

@@ -3,6 +3,7 @@
 
 #include "wet1util.h"
 #include "Team.h"
+#include "Country.h"
 #include <iostream>
 
 const static int NUMBER_OF_TEAMS_ALLOWED_PER_PLAYER = 3;
@@ -17,10 +18,6 @@ private:
     Sport m_sport;
     int m_countryID;
     Country* m_country;
-
-
-
-    // TODO: check if this problem in Team is because the include is circular
     Team* m_teams[NUMBER_OF_TEAMS_ALLOWED_PER_PLAYER]{};
 
 public:
@@ -82,9 +79,6 @@ public:
     bool isRegisteredInTeam(int teamID);
 };
 
-std::ostream& operator<<(std::ostream& os, const Contestant& contestant){
-    os << "Contestant ID: " << contestant.m_id << ", Strength: " << contestant.m_strength << std::endl;
-    return os;
-}
+
 
 #endif //WET_1_DATA_STRUCTURES_CONTESTANT_H

@@ -21,4 +21,6 @@ add_executable(Wet_1__Data_Structures
         "GR files/Scripts/Olympicsa1.cpp"
         Classes/Contestant.cpp
         Classes/Team.cpp
+        Classes/Strength.cpp
+        Classes/ID.cpp
 )
