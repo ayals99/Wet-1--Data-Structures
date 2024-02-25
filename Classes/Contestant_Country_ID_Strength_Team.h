@@ -179,6 +179,8 @@ public:
 
     Contestant** delete_k_from_RightTree(int k);
 
+    void reInsert(Contestant** LEFT_removedContestants, int amount);
+
     void reinsert_i_to_LeftTree(Contestant** LEFT_removedContestants, int i);
 
     void reinsert_j_to_MiddleTree(Contestant** MIDDLE_removedContestants, int j);
@@ -218,6 +220,7 @@ public:
     int getID() const{
         return m_id;
     }
+
 
     Team* getTeam(int index) const{
         return m_teams[index];

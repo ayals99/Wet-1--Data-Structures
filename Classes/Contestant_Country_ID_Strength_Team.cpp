@@ -360,10 +360,10 @@ void moveLargestIDFromTree1ToTree2(AVL_Tree<ID>* IdTree1, AVL_Tree<ID>* IdTree2,
                                    AVL_Tree<Strength>* StrengthTree2){
     ID* largestID = IdTree1->find_Maximum_In_Subtree();
     Contestant* largestContestant = largestID->getContestant();
-    Strength* largestStrength = IdTree1->find(largestID)->getParallelStrength();
+    Strength* largestIdStrength = largestID->getParallelStrength();
     IdTree1->remove(largestID);
 
-    subtreePosition position = largestStrength->getPosition();
+    subtreePosition position = largestIdStrength->getPosition();
     if (position == LEFT){
         position = MIDDLE;
     }
@@ -372,7 +372,7 @@ void moveLargestIDFromTree1ToTree2(AVL_Tree<ID>* IdTree1, AVL_Tree<ID>* IdTree2,
     }
 
     Strength* strengthToInsert = new Strength(largestContestant, position);
-    StrengthTree1->remove(largestStrength);
+    StrengthTree1->remove(largestIdStrength);
 
     ID* idToInsert = new ID(largestContestant, strengthToInsert);
     IdTree2->insert(idToInsert);
@@ -592,15 +592,127 @@ int Team::calculateTeamStrength(){
 void Team::updateTeamStrength(){
     m_strength = calculateTeamStrength();
 }
+int max(int a , int b){
+    if (a > b){
+        return a;
+    }
+    return b;
+}
 
-int Team::calculateAusterity(){
+
+
+
+//int Team::calculateAusterity(){
+//    int maxPossibleStrength = ZERO;
+//
+//    if (this->getSize() == ZERO){
+//        return ZERO;
+//    }
+//
+//    if ( ( (this->getSize() - AUSTERITY_REMOVALS) % NUMBER_OF_SUBTREES ) != ZERO ){
+//        return ZERO;
+//    }
+//
+//    for (int left_removals = 0; left_removals <= AUSTERITY_REMOVALS; left_removals++){
+//        if (left_removals > m_LEFT_ID_Tree->getSize()){
+//            continue;
+//        }
+//
+//        Contestant** LEFT_removedContestants = delete_i_from_LeftTree(left_removals);
+//
+//        int right_removals = ZERO;
+//        int middle_removals = ZERO;
+//
+//        while (right_removals <= AUSTERITY_REMOVALS - left_removals) {
+//            if (right_removals > m_RIGHT_ID_Tree->getSize()){
+//                continue;
+//            }
+//            Contestant** RIGHT_removedContestants = delete_k_from_RightTree(right_removals);
+//
+//            middle_removals = AUSTERITY_REMOVALS - left_removals - right_removals;
+//
+//
+//            if (middle_removals == ONE && right_removals == TWO || middle_removals == ONE && left_removals == TWO) {
+////               first case: remove the border ID.
+//
+//                ID* borderID = nullptr;
+//                if (right_removals == TWO) {
+//                    borderID = m_MIDDLE_ID_Tree->find_Maximum_In_Subtree();
+//                }
+//                else {
+//                    borderID = m_MIDDLE_ID_Tree->find_Minimum_In_Subtree();
+//                }
+//                Contestant *removedContestant = borderID->getContestant();
+//                Strength *removedStrength = borderID->getParallelStrength();
+//
+//                m_MIDDLE_ID_Tree->remove(borderID);
+//                m_MIDDLE_Strength_Tree->remove(removedStrength);
+//
+//                // TODO: balance tree somehow so we can check the maximum strength in the new subtree
+//                maxPossibleStrength = max(maxPossibleStrength, calculateTeamStrength());
+//
+//
+//                // Saving the weakest strength without the border ID.
+//                Strength* weakestStrengthWithoutBorder = m_MIDDLE_Strength_Tree->find_Minimum_In_Subtree();
+//                Contestant* weakestContestantWithoutBorder = weakestStrengthWithoutBorder->getContestant();
+//                ID* weakestIDWithoutBorder = m_MIDDLE_ID_Tree->find(weakestStrengthWithoutBorder->getID());
+//
+//                m_MIDDLE_ID_Tree->insert(borderID);
+//                m_MIDDLE_Strength_Tree->insert(removedStrength);
+//                m_size++;
+//
+////              second case: the smallest Strength in the group that's left without the border ID.
+//                m_MIDDLE_ID_Tree->remove(weakestIDWithoutBorder);
+//                m_MIDDLE_Strength_Tree->remove(weakestStrengthWithoutBorder);
+//                m_size--;
+//                maxPossibleStrength = max(maxPossibleStrength, calculateTeamStrength());
+//                m_MIDDLE_ID_Tree->insert(weakestIDWithoutBorder);
+//                m_MIDDLE_Strength_Tree->insert(weakestStrengthWithoutBorder);
+//                m_size++;
+//            }
+//            else {
+//                if (middle_removals > m_MIDDLE_ID_Tree->getSize()){
+//                    break;
+//                }
+//                Contestant** MIDDLE_removedContestants = delete_j_from_MiddleTree(middle_removals);
+//                maxPossibleStrength = max(maxPossibleStrength, calculateTeamStrength());
+//                reinsert_j_to_MiddleTree(MIDDLE_removedContestants, middle_removals);
+//                delete[] MIDDLE_removedContestants;
+//            }
+//
+//            if (left_removals + middle_removals + right_removals == AUSTERITY_REMOVALS) {
+//                maxPossibleStrength = max(maxPossibleStrength, calculateTeamStrength());
+//            }
+//            reinsert_k_to_RightTree(RIGHT_removedContestants, right_removals);
+//            right_removals++;
+//            delete[] RIGHT_removedContestants;
+//        }
+//
+//        if (left_removals + middle_removals + right_removals == AUSTERITY_REMOVALS) {
+//            maxPossibleStrength = max(maxPossibleStrength, calculateTeamStrength());
+//        }
+//        reinsert_i_to_LeftTree(LEFT_removedContestants, left_removals);
+//        delete[] LEFT_removedContestants;
+//    }
+//
+//    return maxPossibleStrength;
+//}
+
+int Team::calculateAusterity(){ // doesn't work well when adding 6 contestants
     int maxPossibleStrength = ZERO;
 
+    if (this->getSize() == ZERO){
+        return ZERO;
+    }
+
     if ( ( (this->getSize() - AUSTERITY_REMOVALS) % NUMBER_OF_SUBTREES ) != ZERO ){
-        return maxPossibleStrength;
+        return ZERO;
     }
 
     for (int left_removals = 0; left_removals <= AUSTERITY_REMOVALS; left_removals++){
+        if (left_removals > m_LEFT_ID_Tree->getSize()){
+            continue;
+        }
 
         Contestant** LEFT_removedContestants = delete_i_from_LeftTree(left_removals);
 
@@ -608,6 +720,10 @@ int Team::calculateAusterity(){
         int middle_removals = ZERO;
 
         while (right_removals <= AUSTERITY_REMOVALS - left_removals) {
+            if (right_removals > m_RIGHT_ID_Tree->getSize()){
+                right_removals++;
+                continue;
+            }
             Contestant** RIGHT_removedContestants = delete_k_from_RightTree(right_removals);
 
             middle_removals = AUSTERITY_REMOVALS - left_removals - right_removals;
@@ -623,53 +739,76 @@ int Team::calculateAusterity(){
                 else {
                     borderID = m_MIDDLE_ID_Tree->find_Minimum_In_Subtree();
                 }
-                Contestant *removedContestant = borderID->getContestant();
-                Strength *removedStrength = borderID->getParallelStrength();
+                Contestant* removedContestant = borderID->getContestant();
+                Strength* removedStrength = borderID->getParallelStrength();
 
                 m_MIDDLE_ID_Tree->remove(borderID);
                 m_MIDDLE_Strength_Tree->remove(removedStrength);
-
-                // TODO: balance tree somehow so we can check the maximum strength in the new subtree
-                updateMAXPossibleStrength();
-
 
                 // Saving the weakest strength without the border ID.
                 Strength* weakestStrengthWithoutBorder = m_MIDDLE_Strength_Tree->find_Minimum_In_Subtree();
                 Contestant* weakestContestantWithoutBorder = weakestStrengthWithoutBorder->getContestant();
                 ID* weakestIDWithoutBorder = m_MIDDLE_ID_Tree->find(weakestStrengthWithoutBorder->getID());
 
-                m_MIDDLE_ID_Tree->insert(borderID);
-                m_MIDDLE_Strength_Tree->insert(removedStrength);
+                this->balanceTrees();
+                maxPossibleStrength = max(maxPossibleStrength, calculateTeamStrength());
+
+                if(right_removals > ZERO) {
+                    this->reInsert(RIGHT_removedContestants, right_removals);
+                    this->balanceTrees();
+                }
+                else{
+                    this->reInsert(LEFT_removedContestants, left_removals);
+                    this->balanceTrees();
+                }
+
+                Strength* toReInsert = new Strength(removedContestant, MIDDLE);
+                ID* toReInsertID = new ID(removedContestant, toReInsert);
+                m_MIDDLE_ID_Tree->insert(toReInsertID);
+                m_MIDDLE_Strength_Tree->insert(toReInsert);
                 m_size++;
 
-//               second case: the smallest Strength in the group that's left without the border ID.
+//              second case: the smallest Strength in the group that's left without the border ID.
                 m_MIDDLE_ID_Tree->remove(weakestIDWithoutBorder);
                 m_MIDDLE_Strength_Tree->remove(weakestStrengthWithoutBorder);
                 m_size--;
-                updateMAXPossibleStrength();
-                m_MIDDLE_ID_Tree->insert(weakestIDWithoutBorder);
-                m_MIDDLE_Strength_Tree->insert(weakestStrengthWithoutBorder);
-                m_size++;
-            } else {
-                Contestant **MIDDLE_removedContestants = delete_j_from_MiddleTree(middle_removals);
-                updateMAXPossibleStrength();
-                reinsert_j_to_MiddleTree(MIDDLE_removedContestants, middle_removals);
-                delete[] MIDDLE_removedContestants;
-            }
+                this->balanceTrees();
+                maxPossibleStrength = max(maxPossibleStrength, calculateTeamStrength());
+                Strength* toReInsert2 = new Strength(weakestContestantWithoutBorder, MIDDLE);
+                ID* toReInsertID2 = new ID(weakestContestantWithoutBorder, toReInsert2);
 
+                m_MIDDLE_ID_Tree->insert(toReInsertID2);
+                m_MIDDLE_Strength_Tree->insert(toReInsert2);
+                m_size++;
+            }
+            else {
+                if (middle_removals > m_MIDDLE_ID_Tree->getSize()){
+
+                    break;
+                }
+                if (middle_removals > ZERO){
+                    Contestant **MIDDLE_removedContestants = delete_j_from_MiddleTree(middle_removals);
+                    this->balanceTrees();
+                    maxPossibleStrength = max(maxPossibleStrength, calculateTeamStrength());
+                    reInsert(MIDDLE_removedContestants, middle_removals);
+                    delete[] MIDDLE_removedContestants;
+                }
+            }
 
             if (left_removals + middle_removals + right_removals == AUSTERITY_REMOVALS) {
-                updateMAXPossibleStrength();
+                this->balanceTrees();
+                maxPossibleStrength = max(maxPossibleStrength, calculateTeamStrength());
             }
-            reinsert_k_to_RightTree(RIGHT_removedContestants, right_removals);
+            reInsert(RIGHT_removedContestants, right_removals);
             right_removals++;
             delete[] RIGHT_removedContestants;
         }
 
         if (left_removals + middle_removals + right_removals == AUSTERITY_REMOVALS) {
-            updateMAXPossibleStrength();
+            this->balanceTrees();
+            maxPossibleStrength = max(maxPossibleStrength, calculateTeamStrength());
         }
-        reinsert_i_to_LeftTree(LEFT_removedContestants, left_removals);
+        reInsert(LEFT_removedContestants, left_removals);
         delete[] LEFT_removedContestants;
     }
 
@@ -732,6 +871,15 @@ Contestant** Team::delete_k_from_RightTree(int k){
         m_size--;
     }
     return RIGHT_removedContestants;
+}
+
+void Team::reInsert(Contestant** LEFT_removedContestants, int amount){
+    for(int t = 0; t <amount ; t++){
+        Strength* strength = new Strength(LEFT_removedContestants[t], UNASSIGNED);
+        ID* id = new ID(LEFT_removedContestants[t], strength);
+        assignInSubtrees(id, strength);
+        balanceTrees();
+    }
 }
 
 void Team::reinsert_i_to_LeftTree(Contestant** LEFT_removedContestants, int i){

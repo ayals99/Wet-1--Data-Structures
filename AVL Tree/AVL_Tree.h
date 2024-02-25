@@ -242,20 +242,23 @@ private:
             return nullptr;
         }
         // currentNode is not null, we need to see if we arrived at the node we want to remove
-        if ( *(dataToRemove) >= *(currentNode->getData())){
+        if ( *(dataToRemove) == *(currentNode->getData())){
             // if the data is equal. This means we've found our node to delete.
             if (currentNode->isLeaf()){
                 delete currentNode;
+                currentNode = nullptr;
                 return nullptr;
             }
             else if (currentNode->hasLeftChildOnly()){
                 AVL_Node<T>* replacement = currentNode->getLeft();
                 delete currentNode;
+                currentNode = nullptr;
                 return replacement;
             }
             else if (currentNode->hasRightChildOnly()){
                 AVL_Node<T>* replacement = currentNode->getRight();
                 delete currentNode;
+                currentNode = nullptr;
                 return replacement;
             }
             else{ // has two children

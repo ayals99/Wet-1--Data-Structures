@@ -21,22 +21,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ee6379aa-e38b-43ed-b738-6074c08a537a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Classes/Contestant_Country_ID_Strength_Team.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Classes/Contestant_Country_ID_Strength_Team.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AVL Tree/AVL_Tree.h" beforeDir="false" afterPath="$PROJECT_DIR$/AVL Tree/AVL_Tree.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Classes/Team.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Classes/Team.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Classes/Team.h" beforeDir="false" afterPath="$PROJECT_DIR$/Classes/Team.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Classes/Contestant_Country_ID_Strength_Team.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Classes/Contestant_Country_ID_Strength_Team.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Classes/Contestant_Country_ID_Strength_Team.h" beforeDir="false" afterPath="$PROJECT_DIR$/Classes/Contestant_Country_ID_Strength_Team.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GR files/Scripts/maina1.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/GR files/Scripts/maina1.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-d7d21a614a616a5c7e3b.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2024-02-25T09-34-24-0395.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-Wet_1__Data_Structures-Debug-516cd6627c06a322b97f.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Wet_1__Data_Structures.dir/Classes/Contestant_Country_ID_Strength_Team.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Wet_1__Data_Structures.dir/Classes/Contestant_Country_ID_Strength_Team.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Wet_1__Data_Structures.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Wet_1__Data_Structures.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
     </list>
     <list id="03773ba4-af21-45a8-a46a-f0c82d655b7f" name="Changes by Administrator" comment="" />
     <list id="4a348711-4b6d-4534-9607-8bd66a84583e" name="Changes by Shani Sazbon" comment="" />
@@ -95,11 +89,6 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -119,6 +108,7 @@
       <workItem from="1708800946063" duration="10418000" />
       <workItem from="1708844777969" duration="12026000" />
       <workItem from="1708871327558" duration="15424000" />
+      <workItem from="1708890308248" duration="8091000" />
     </task>
     <servers />
   </component>
@@ -134,14 +124,89 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/AVL Tree/AVL_Tree.h</url>
-          <line>115</line>
-          <option name="timeStamp" value="19" />
+          <url>file://$PROJECT_DIR$/GR files/Scripts/maina1.cpp</url>
+          <line>561</line>
+          <option name="timeStamp" value="44" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/GR files/Scripts/maina1.cpp</url>
-          <line>445</line>
-          <option name="timeStamp" value="28" />
+          <line>556</line>
+          <option name="timeStamp" value="45" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/GR files/Scripts/maina1.cpp</url>
+          <line>551</line>
+          <option name="timeStamp" value="46" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/GR files/Scripts/maina1.cpp</url>
+          <line>546</line>
+          <option name="timeStamp" value="47" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/GR files/Scripts/maina1.cpp</url>
+          <line>542</line>
+          <option name="timeStamp" value="48" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/GR files/Scripts/maina1.cpp</url>
+          <line>538</line>
+          <option name="timeStamp" value="49" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/GR files/Scripts/maina1.cpp</url>
+          <line>534</line>
+          <option name="timeStamp" value="50" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/GR files/Scripts/maina1.cpp</url>
+          <line>530</line>
+          <option name="timeStamp" value="51" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/GR files/Scripts/maina1.cpp</url>
+          <line>526</line>
+          <option name="timeStamp" value="52" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/GR files/Scripts/maina1.cpp</url>
+          <line>522</line>
+          <option name="timeStamp" value="53" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/GR files/Scripts/maina1.cpp</url>
+          <line>518</line>
+          <option name="timeStamp" value="54" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/GR files/Scripts/maina1.cpp</url>
+          <line>514</line>
+          <option name="timeStamp" value="55" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/GR files/Scripts/maina1.cpp</url>
+          <line>510</line>
+          <option name="timeStamp" value="57" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/GR files/Scripts/maina1.cpp</url>
+          <line>506</line>
+          <option name="timeStamp" value="58" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/GR files/Scripts/maina1.cpp</url>
+          <line>502</line>
+          <option name="timeStamp" value="59" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/GR files/Scripts/maina1.cpp</url>
+          <line>498</line>
+          <option name="timeStamp" value="60" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/GR files/Scripts/maina1.cpp</url>
+          <line>494</line>
+          <option name="timeStamp" value="79" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -149,6 +214,42 @@
       <configuration name="CMakeRunConfiguration">
         <watch expression="id" />
         <watch expression="this-&gt;m_id" />
+        <watch expression="IdTree1-&gt;m_root" />
+        <watch expression="IdTree1-&gt;m_root-&gt;m_data-&gt;m_contestant-&gt;m_id" />
+        <watch expression="IdTree1-&gt;m_root-&gt;m_left" />
+        <watch expression="this-&gt;m_LEFT_ID_Tree-&gt;m_root" />
+        <watch expression="largestID" />
+        <watch expression="largestIdStrength" />
+        <watch expression="largestID" />
+        <watch expression="largestIdStrength-&gt;m_contestant" />
+        <watch expression="this-&gt;m_LEFT_ID_Tree-&gt;m_root-&gt;m_data-&gt;parallel_strength-&gt;m_contestant" />
+        <watch expression="this-&gt;m_LEFT_Strength_Tree-&gt;m_root-&gt;m_left-&gt;m_data" />
+        <watch expression="this-&gt;m_LEFT_Strength_Tree-&gt;m_root-&gt;m_left-&gt;m_data" />
+        <watch expression="this-&gt;m_LEFT_Strength_Tree-&gt;m_root-&gt;m_left-&gt;m_data" />
+        <watch expression="currentNode" />
+        <watch expression="currentNode" language="ObjectiveC" />
+        <watch expression="currentNode" language="ObjectiveC" />
+        <watch expression="currentNode" language="ObjectiveC" />
+        <watch expression="currentNode" language="ObjectiveC" />
+        <watch expression="currentNode" language="ObjectiveC" />
+        <watch expression="currentNode" language="ObjectiveC" />
+        <watch expression="largestID-&gt;m_contestant" />
+        <watch expression="largestID-&gt;m_contestant" />
+        <watch expression="largestID-&gt;m_contestant" />
+        <watch expression="largestID-&gt;m_contestant" />
+        <watch expression="largestID-&gt;m_contestant" />
+        <watch expression="largestID-&gt;m_contestant" />
+        <watch expression="largestID-&gt;m_contestant" />
+        <watch expression="StrengthTree2-&gt;m_root" />
+        <watch expression="StrengthTree2-&gt;m_root" />
+        <watch expression="StrengthTree2-&gt;m_root" />
+        <watch expression="this-&gt;m_LEFT_ID_Tree-&gt;m_root" />
+        <watch expression="this-&gt;m_RIGHT_Strength_Tree-&gt;m_size" />
+        <watch expression="team0-&gt;m_MIDDLE_ID_Tree-&gt;m_root-&gt;m_left" />
+        <watch expression="team0-&gt;m_RIGHT_ID_Tree-&gt;m_root-&gt;m_height" />
+        <watch expression="middle_removals" />
+        <watch expression="this-&gt;m_MIDDLE_ID_Tree-&gt;m_root-&gt;m_data" />
+        <watch expression="this-&gt;m_MIDDLE_ID_Tree-&gt;m_root-&gt;m_data" />
       </configuration>
     </watches-manager>
   </component>
