@@ -413,78 +413,53 @@ bool Team_test(){
     Contestant* contestant20 = new Contestant(20, 0, Sport::BOULDERING, 20);
     Contestant* contestant21 = new Contestant(21, 0, Sport::BOULDERING, 10);
 
-    if (team0->insertContestant(contestant1) != StatusType::SUCCESS){
-        std::cout << "insertContestant failed" << std::endl;
-        return false;
-    }
 
-    if (team0->getSize() != 1){
-        std::cout << "getSize failed" << std::endl;
+    if (team0->insertContestant(contestant16) != StatusType::SUCCESS){
+        std::cout << "insertContestant failed" << std::endl;
         return false;
     }
 
     if (team0->insertContestant(contestant2) != StatusType::SUCCESS){
-        std::cout << "insertContestant failed" << std::endl;
-        return false;
-    }
-
-    if (team0->getSize() != 2){
-        std::cout << "getSize failed" << std::endl;
+        std::cout << "insertContestant 2 failed" << std::endl;
         return false;
     }
 
     if (team0->insertContestant(contestant3) != StatusType::SUCCESS){
+        std::cout << "insertContestant 3 failed" << std::endl;
+        return false;
+    }
+
+
+    if (team0->insertContestant(contestant13) != StatusType::SUCCESS){
         std::cout << "insertContestant failed" << std::endl;
         return false;
     }
 
-    if (team0->getSize() != 3){
-        std::cout << "getSize failed" << std::endl;
-        return false;
-    }
 
-    if (team0->getStrength() != 30){
-        std::cout << "first getStrength failed" << std::endl;
-        return false;
-    }
-
-    if (team0->insertContestant(contestant4) != StatusType::SUCCESS){
-        std::cout << "insertContestant failed" << std::endl;
-        return false;
-    }
-
-    if (team0->getSize() != 4){
-        std::cout << "getSize failed" << std::endl;
-        return false;
-    }
 
     if (team0->insertContestant(contestant5) != StatusType::SUCCESS){
         std::cout << "insertContestant failed" << std::endl;
         return false;
     }
 
-    if (team0->getSize() != 5){
-        std::cout << "getSize 5 failed" << std::endl;
+    if (team0->insertContestant(contestant12) != StatusType::SUCCESS){
+        std::cout << "insertContestant failed" << std::endl;
         return false;
     }
+
+    if (team0->insertContestant(contestant4) != StatusType::SUCCESS){
+        std::cout << "insertContestant 4 failed" << std::endl;
+        return false;
+    }
+
 
     if (team0->insertContestant(contestant6) != StatusType::SUCCESS){
         std::cout << "insertContestant failed" << std::endl;
         return false;
     }
 
-    if (team0->getSize() != 6){
-        std::cout << "getSize 6 failed" << std::endl;
-        return false;
-    }
-
-    if (team0->getStrength() != 63){
-        std::cout << "second getStrength failed" << std::endl;
-        return false;
-    }
-
-    if (team0->getAusterity() != 84){
-        std::cout << "second getAusterity failed" << std::endl;
+    if (team0->insertContestant(contestant19) != StatusType::SUCCESS){
+        std::cout << "insertContestant failed" << std::endl;
         return false;
     }
 
@@ -492,67 +467,78 @@ bool Team_test(){
         std::cout << "insertContestant failed" << std::endl;
         return false;
     }
-    if (team0->insertContestant(contestant8) != StatusType::SUCCESS){
-        std::cout << "insertContestant failed" << std::endl;
-        return false;
-    }
-    if (team0->insertContestant(contestant9) != StatusType::SUCCESS){
-        std::cout << "insertContestant failed" << std::endl;
-        return false;
-    }
-    if (team0->insertContestant(contestant10) != StatusType::SUCCESS){
-        std::cout << "insertContestant failed" << std::endl;
-        return false;
-    }
-    if (team0->insertContestant(contestant11) != StatusType::SUCCESS){
-        std::cout << "insertContestant failed" << std::endl;
-        return false;
-    }
-    if (team0->insertContestant(contestant12) != StatusType::SUCCESS){
-        std::cout << "insertContestant failed" << std::endl;
-        return false;
-    }
-    if (team0->insertContestant(contestant13) != StatusType::SUCCESS){
-        std::cout << "insertContestant failed" << std::endl;
-        return false;
-    }
-    if (team0->insertContestant(contestant14) != StatusType::SUCCESS){
-        std::cout << "insertContestant failed" << std::endl;
-        return false;
-    }
-    if (team0->insertContestant(contestant15) != StatusType::SUCCESS){
-        std::cout << "insertContestant failed" << std::endl;
-        return false;
-    }
-    if (team0->insertContestant(contestant16) != StatusType::SUCCESS){
-        std::cout << "insertContestant failed" << std::endl;
-        return false;
-    }
+
     if (team0->insertContestant(contestant17) != StatusType::SUCCESS){
         std::cout << "insertContestant failed" << std::endl;
         return false;
     }
-    if (team0->insertContestant(contestant18) != StatusType::SUCCESS){
+
+    if (team0->insertContestant(contestant8) != StatusType::SUCCESS){
         std::cout << "insertContestant failed" << std::endl;
         return false;
     }
-    if (team0->insertContestant(contestant19) != StatusType::SUCCESS){
+
+    if (team0->insertContestant(contestant15) != StatusType::SUCCESS){
         std::cout << "insertContestant failed" << std::endl;
         return false;
     }
-    if (team0->insertContestant(contestant20) != StatusType::SUCCESS){
+
+    if (team0->insertContestant(contestant9) != StatusType::SUCCESS){
         std::cout << "insertContestant failed" << std::endl;
         return false;
     }
+
+    if (team0->insertContestant(contestant1) != StatusType::SUCCESS){
+        std::cout << "insertContestant 1 failed" << std::endl;
+        return false;
+    }
+
     if (team0->insertContestant(contestant21) != StatusType::SUCCESS){
         std::cout << "insertContestant failed" << std::endl;
         return false;
     }
 
+    if (team0->insertContestant(contestant10) != StatusType::SUCCESS){
+        std::cout << "insertContestant failed" << std::endl;
+        return false;
+    }
+
+    if (team0->insertContestant(contestant14) != StatusType::SUCCESS){
+        std::cout << "insertContestant failed" << std::endl;
+        return false;
+    }
+
+
+    if (team0->insertContestant(contestant11) != StatusType::SUCCESS){
+        std::cout << "insertContestant failed" << std::endl;
+        return false;
+    }
+
+
+    if (team0->insertContestant(contestant18) != StatusType::SUCCESS){
+        std::cout << "insertContestant failed" << std::endl;
+        return false;
+    }
+
+    if (team0->insertContestant(contestant20) != StatusType::SUCCESS){
+        std::cout << "insertContestant failed" << std::endl;
+        return false;
+    }
+
+
+
     if (team0->getSize() != 21){
         std::cout << "getSize failed" << std::endl;
         return false;
     }
+
+    std::cout<<std::endl;
+    if (!team0->printTeamInOrder()){
+        return false;
+    }
+
+
+    std::cout<<std::endl;
 
     if (team0->getStrength() != 101){
         std::cout << "last getStrength failed" << std::endl;
@@ -561,6 +547,53 @@ bool Team_test(){
 
     if (team0->getAusterity() != 101){
         std::cout << "getAusterity failed" << std::endl;
+        return false;
+    }
+
+
+
+
+    team0->removeContestantFromTeam(contestant1);
+
+    if (team0->getStrength() != ZERO){
+        std::cout << "getStrength failed" << std::endl;
+        return false;
+    }
+
+    if (team0->getAusterity() != ZERO){
+        std::cout << "getAusterity failed" << std::endl;
+        return false;
+    }
+    if (contestant1->isRegisteredInTeam(0) != false){
+        std::cout << "isRegisteredInTeam failed" << std::endl;
+        return false;
+    }
+
+    team0->removeContestantFromTeam(contestant17);
+
+    team0->removeContestantFromTeam(contestant11);
+
+    if (team0->getStrength() != 101){
+        std::cout << "getStrength failed" << std::endl;
+        return false;
+    }
+
+    //// ** Merge Teams Test **
+
+    team1->mergeTeams(team0);
+
+    if (team1->printTeamInOrder() != true){
+        std::cout << "printTeamInOrder failed after merge" << std::endl;
+        return false;
+    }
+
+    if (team1->getStrength() != 101){
+        std::cout << "getStrength failed" << std::endl;
+        return false;
+    }
+
+    if (team1->getSize() != 18){
+        std::cout << "getSize failed after merge" << std::endl;
         return false;
     }
 

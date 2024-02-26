@@ -83,8 +83,10 @@ private:
     Strength* parallel_strength;
 
 public:
+    ID() = delete;
+    ID(const ID& other) = delete;
     explicit ID(Contestant* contestant) : m_contestant(contestant), parallel_strength(nullptr){};
-    ID(Contestant* contestant, Strength* parallel) : m_contestant(contestant), parallel_strength(parallel){};
+    explicit ID(Contestant* contestant, Strength* parallel) : m_contestant(contestant), parallel_strength(parallel){};
 
     int getID() const;
 
@@ -143,6 +145,41 @@ public:
     int getAusterity() const;
     Country* getCountry() const;
 
+    bool printTeamInOrder(){
+        std::cout<<"Team ID: "<<m_id<<std::endl;
+
+        if (!m_LEFT_ID_Tree->printTreeInOrder()){
+            return false;
+        }
+
+        std::cout<<std::endl;
+        if (!m_MIDDLE_ID_Tree->printTreeInOrder()){
+            return false;
+        }
+
+        std::cout<<std::endl;
+        if (!m_RIGHT_ID_Tree->printTreeInOrder()){
+            return false;
+        }
+
+        std::cout<<std::endl;
+        if (!m_LEFT_Strength_Tree->printTreeInOrder()){
+            return false;
+        }
+
+        std::cout<<std::endl;
+        if (!m_MIDDLE_Strength_Tree->printTreeInOrder()){
+            return false;
+        }
+
+        std::cout<<std::endl;
+        if (!m_RIGHT_Strength_Tree->printTreeInOrder()){
+            return false;
+        }
+
+        return true;
+    }
+
     bool operator== (const Team& other) const{
         return m_id == other.m_id;
     }
@@ -179,7 +216,7 @@ public:
 
     Contestant** delete_k_from_RightTree(int k);
 
-    void reInsert(Contestant** LEFT_removedContestants, int amount);
+    void reInsert(Contestant** removedContestants, int amount, subtreePosition position);
 
     void reinsert_i_to_LeftTree(Contestant** LEFT_removedContestants, int i);
 
@@ -214,13 +251,13 @@ private:
     Team* m_teams[NUMBER_OF_TEAMS_ALLOWED_PER_PLAYER]{};
 
 public:
-    Contestant(int id, int countryID, Sport sport, int strength);
-
+   explicit Contestant(int id, int countryID, Sport sport, int strength);
+   Contestant() = delete;
+   Contestant(const Contestant& other) = delete;
 
     int getID() const{
         return m_id;
     }
-
 
     Team* getTeam(int index) const{
         return m_teams[index];

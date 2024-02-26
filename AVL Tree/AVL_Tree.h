@@ -6,6 +6,8 @@
 #include <cassert>
 #include <iostream>
 
+
+
 static const int LEFT_IMBALANCE = 2;
 static const int RIGHT_IMBALANCE = -2;
 
@@ -91,6 +93,28 @@ private:
 
     /** Insert & Remove Recursive Utility Functions **/
 
+    T** AUX_inOrderToArray(AVL_Node<T>* root, T** array, int* index)
+    {
+        if (root == nullptr){
+            return array;
+        }
+
+        assert (*index < m_size);
+
+        AUX_inOrderToArray(root->getLeft(), array, index);
+        array[*index] = root->getData();
+
+        std::cout<<std::endl;
+        print(array, *index);
+        std::cout << "index: " << *index << std::endl;
+        std::cout<<std::endl;
+        (*index)++;
+
+        AUX_inOrderToArray(root->getRight(), array, index);
+        return array;
+    }
+
+
     AVL_Node<T>* AUX_find(AVL_Node<T>* currentNode, const T* dataToFind) const{
         if(currentNode == nullptr){
             return nullptr;
@@ -160,6 +184,7 @@ private:
         deleteTree(node->getLeft());
         deleteTree(node->getRight());
         delete node;
+        node = nullptr;
     }
 
     void AUX_removeDataFromTree(AVL_Node<T>* node){ // O(n_team_ID2)
@@ -307,6 +332,10 @@ public:
     }
 
     T* find(int Key) const{
+
+        if (AUX_find(m_root, Key) == nullptr){
+            return nullptr;
+        }
         return AUX_find(m_root, Key)->getData();
     }
 
@@ -393,6 +422,26 @@ public:
         AUX_removeDataFromTree(m_root);
     };
 
+    void print(T** array, int length){
+        for(int i = 0; i < length; i++){
+            std::cout << *(array[i]) << " ";
+        }
+    }
+
+    T** inOrderToArray(){
+        if (this->m_size == ZERO){
+            return nullptr;
+        }
+        T** array = new T*[m_size];
+
+        int* index = new int(ZERO);
+        array = AUX_inOrderToArray(m_root, array, index);
+        assert( *index == m_size );
+        delete index;
+        print(array, m_size);
+        return array;
+    }
+
 };
 
 template <class T>
@@ -403,7 +452,7 @@ AVL_Node<T>* createEmptyNode(){
 
 template <class T>
 AVL_Node<T>* AUX_EmptyTree(int height){
-    if (height == 0){ // reached a leaf
+    if (height <= 0){ // reached a leaf
         return createEmptyNode<T>();
     }
     AVL_Node<T>* newNode = createEmptyNode<T>();
@@ -460,4 +509,6 @@ void insertArrayToTree(T** array, AVL_Tree<T>* tree){ // O(n)
     int index = 0;
     AUX_insertArrayToTreeInOrder(array, tree->getRoot(), index);
 }
+
+
 #endif //WET_1_DATA_STRUCTURES_AVL_TREE_H
