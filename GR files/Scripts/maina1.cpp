@@ -278,7 +278,7 @@ bool Strength_and_ID_test(){
 }
 
 bool testContestantMemberFunctions(){
-    int contestantID = 182737394789;
+    int contestantID = 2147483647;
     int countryID = 55;
     int strength = 0;
 

@@ -202,18 +202,22 @@ void moveIDsToTeam1(ID** sortedId2,int length_sortedId2, int teamId2, Team* team
 
 // explain mergeIDsToArray:
 ID** mergeIDsToArray(Team* team1, Team* team2, int& newTeamSize) { // O(n_team_ID1 + n_team_ID2) // need to take care of duplicates
-
+    assert(team1 != nullptr);
+    assert(team2 != nullptr);
     // gets a sorted array of IDs from each team:
     ID** sortedId1 = team1->getSortedIdArray(); // O(n_team_ID1)
     ID** sortedId2WithDuplicates = team2->getSortedIdArray(); // O(n_team_ID2)
     // TODO: add cases of null pointers to arrays
+
     if (sortedId1 == nullptr && sortedId2WithDuplicates == nullptr){
         return nullptr;
     }
     if (sortedId1 == nullptr){
+        newTeamSize = team2->getSize();
         return sortedId2WithDuplicates;
     }
     if (sortedId2WithDuplicates == nullptr){
+        newTeamSize = team1->getSize();
         return sortedId1;
     }
     int lengthSorted1 = team1->getSize();
@@ -228,7 +232,7 @@ ID** mergeIDsToArray(Team* team1, Team* team2, int& newTeamSize) { // O(n_team_I
     ID** sortedId2 = deleteDuplicates(sortedId2WithDuplicates, lengthSortedWithDuplicates2, team2->getID(), team1->getID(), lengthSorted2); // O(n_team_ID2)
     delete[] sortedId2WithDuplicates; // O(n_team_ID2)
 
-    newTeamSize = lengthSorted1 + lengthSorted2;
+
 
     // set all the contestants in sortedId2 to be registered in team1:
     moveIDsToTeam1(sortedId2,lengthSorted2, team2->getID(), team1); // O(n_team_ID2)
@@ -279,7 +283,7 @@ int countStrengthsWithPOSITIONInArray(Strength** array, int arrayLength,subtreeP
     return counter;
 }
 
-AVL_Tree<Strength>* ArrayToTree(Strength** strengthArray, int arrayLength, subtreePosition position) { // O(n)
+AVL_Tree<Strength>* ArrayToTree(Strength** strengthArray, int arrayLength, int treeSize, subtreePosition position) { // O(n)
 
     int numberOfElements = countStrengthsWithPOSITIONInArray(strengthArray, arrayLength, position); // O(n)
 
@@ -593,7 +597,7 @@ StatusType Team::mergeTeams(Team* team2) {
             if (i < leftTreeSize){
                 currentPosition = LEFT;
             }
-            else if (i < leftTreeSize + middleTreeSize + 1){
+            else if (i < leftTreeSize + middleTreeSize){
                 currentPosition = MIDDLE;
             }
             else{
@@ -610,16 +614,16 @@ StatusType Team::mergeTeams(Team* team2) {
         AVL_Tree<ID>* new_LEFT_ID_Tree = ArrayToTree(mergedIdArray, leftTreeSize); // O(n)
 
         startIndex += leftTreeSize;
-        AVL_Tree<ID>* new_MIDDLE_ID_Tree = ArrayToTree(mergedIdArray + startIndex -1, middleTreeSize); // O(n)
+        AVL_Tree<ID>* new_MIDDLE_ID_Tree = ArrayToTree(mergedIdArray + startIndex, middleTreeSize); // O(n)
 
         startIndex += middleTreeSize;
-        AVL_Tree<ID>* new_RIGHT_ID_Tree = ArrayToTree(mergedIdArray + startIndex - 1, rightTreeSize); // O(n)
+        AVL_Tree<ID>* new_RIGHT_ID_Tree = ArrayToTree(mergedIdArray + startIndex, rightTreeSize); // O(n)
 
 //        create three almost full Strength subtrees  //O(n_team_ID1 + n_team_ID2)
 //              move all of mergedStrengthArray into the subtrees according to their m_position //O(n_team_ID1 + n_team_ID2)
-        AVL_Tree<Strength>* new_LEFT_Strength_Tree = ArrayToTree(mergedStrengthArray, leftTreeSize  , LEFT);
-        AVL_Tree<Strength>* new_MIDDLE_Strength_Tree = ArrayToTree(mergedStrengthArray, middleTreeSize , MIDDLE);
-        AVL_Tree<Strength>* new_RIGHT_Strength_Tree = ArrayToTree(mergedStrengthArray, rightTreeSize, RIGHT);
+        AVL_Tree<Strength>* new_LEFT_Strength_Tree = ArrayToTree(mergedStrengthArray, newTeamSize , leftTreeSize  , LEFT);
+        AVL_Tree<Strength>* new_MIDDLE_Strength_Tree = ArrayToTree(mergedStrengthArray, newTeamSize, middleTreeSize , MIDDLE);
+        AVL_Tree<Strength>* new_RIGHT_Strength_Tree = ArrayToTree(mergedStrengthArray, newTeamSize, rightTreeSize, RIGHT);
 
         delete[] mergedIdArray; // O(n)
         delete[] mergedStrengthArray; // O(n)
@@ -636,9 +640,15 @@ StatusType Team::mergeTeams(Team* team2) {
         m_MIDDLE_Strength_Tree = new_MIDDLE_Strength_Tree;
         m_RIGHT_Strength_Tree = new_RIGHT_Strength_Tree;
 
+        assert(m_LEFT_ID_Tree->getSize() == m_LEFT_Strength_Tree->getSize());
+        assert(m_MIDDLE_ID_Tree->getSize() == m_MIDDLE_Strength_Tree->getSize());
+        assert(m_RIGHT_ID_Tree->getSize() == m_RIGHT_Strength_Tree->getSize());
+
+        setSize(m_LEFT_ID_Tree->getSize() + m_MIDDLE_ID_Tree->getSize() + m_RIGHT_ID_Tree->getSize()); // O(1)
         this->updateTeamStrength(); // O(log n)
         this->updateAusterity(); // O(log n)
-    }catch(std::bad_alloc & e)
+    }
+    catch(std::bad_alloc & e)
     {
         return StatusType::ALLOCATION_ERROR;
     }

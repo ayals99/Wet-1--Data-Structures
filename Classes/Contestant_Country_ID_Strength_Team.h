@@ -120,6 +120,9 @@ private:
     AVL_Tree<Strength>* m_MIDDLE_Strength_Tree;
     AVL_Tree<Strength>* m_RIGHT_Strength_Tree;
 
+    void setSize(int newSize){
+        m_size = newSize;
+    }
 
 public:
     Team(int id,int countryID, Sport sport, Country* teamsCountry)
