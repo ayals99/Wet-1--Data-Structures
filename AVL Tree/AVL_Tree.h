@@ -104,10 +104,6 @@ private:
         AUX_inOrderToArray(root->getLeft(), array, index);
         array[*index] = root->getData();
 
-        std::cout<<std::endl;
-        print(array, *index);
-        std::cout << "index: " << *index << std::endl;
-        std::cout<<std::endl;
         (*index)++;
 
         AUX_inOrderToArray(root->getRight(), array, index);
@@ -422,11 +418,11 @@ public:
         AUX_removeDataFromTree(m_root);
     };
 
-    void print(T** array, int length){
-        for(int i = 0; i < length; i++){
-            std::cout << *(array[i]) << " ";
-        }
-    }
+//    void print(T** array, int length){
+//        for(int i = 0; i < length; i++){
+//            std::cout << *(array[i]) << " ";
+//        }
+//    }
 
     T** inOrderToArray(){
         if (this->m_size == ZERO){
@@ -438,7 +434,6 @@ public:
         array = AUX_inOrderToArray(m_root, array, index);
         assert( *index == m_size );
         delete index;
-        print(array, m_size);
         return array;
     }
 

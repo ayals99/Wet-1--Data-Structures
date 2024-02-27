@@ -145,6 +145,7 @@ public:
     Sport getSport() const;
     int getStrength() const;
     int getSize() const;
+    void decrementSize();
     int getAusterity() const;
     Country* getCountry() const;
 
@@ -251,7 +252,7 @@ private:
     Sport m_sport;
     int m_countryID;
     Country* m_country;
-    Team* m_teams[NUMBER_OF_TEAMS_ALLOWED_PER_PLAYER]{};
+    Team* m_teams[NUMBER_OF_TEAMS_ALLOWED_PER_PLAYER];
 
 public:
    explicit Contestant(int id, int countryID, Sport sport, int strength);
@@ -299,8 +300,9 @@ public:
 // TODO: implement the following functions in the cpp file! otherwise it will be a circular include and we can't access members of Team
 //    bool isInTeam(int teamID); // Checks if registered in a specific team
 //    bool registeredInATeam();
-//    StatusType registerWithTeam(int teamID);
-//    StatusType unregisterWithTeam(int teamID);
+    void registerWithTeam(Team* team);
+
+    void unregisterWithTeam(int teamID);
 //    bool isAvailable();
 //    bool sameSport(int teamID);
 //    bool sameCountry(int teamID)

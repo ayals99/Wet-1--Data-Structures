@@ -16,7 +16,7 @@ Olympics::~Olympics(){ // O(n+k+m)
 	
 StatusType Olympics::add_country(int countryId, int medals){ // O(log k)
 
-    if (medals <= ZERO || countryId <= ZERO){
+    if (medals < ZERO || countryId <= ZERO){
         return StatusType::INVALID_INPUT;
     }
 
@@ -60,7 +60,9 @@ StatusType Olympics::remove_country(int countryId){ // O(log k)
         if (countryToDelete->getTeamCounter() != ZERO || countryToDelete->getContestantCounter() != ZERO){ // O(1)
             return StatusType::FAILURE;
         }
-        delete countryToDelete;
+//        delete countryToDelete;
+        m_countryTree->remove(countryToDelete); // O(log k)
+        return StatusType::SUCCESS;
     }
     catch (std::bad_alloc& e){
         return StatusType::ALLOCATION_ERROR;
@@ -157,7 +159,7 @@ StatusType Olympics::remove_team(int teamId) { // O(log m)
 //    return StatusType::SUCCESS.
 //we need to remove the team from the team tree and delete the team
 
-StatusType Olympics::add_contestant(int contestantId ,int countryId,Sport sport,int strength){  // O(log n + log k)
+StatusType Olympics::add_contestant(int contestantId, int countryId, Sport sport, int strength){  // O(log n + log k)
     if (contestantId <= ZERO || countryId <= ZERO || strength < ZERO){
         return StatusType::INVALID_INPUT;
     }
@@ -214,11 +216,6 @@ StatusType Olympics::remove_contestant(int contestantId){ // O(log n)
         }
         contestantToDelete->getCountryPointer()->decreaseContestantCounter(); // O(1)
         m_contestantTree->remove(contestantToDelete); // O(log n)
-
-//        TODO: Make sure we do need to delete the contestant
-//         AYAL: Notice that if we use remove(), then the instance of contestantToDelete is deleted
-//        delete contestantToDelete;
-
         return StatusType::SUCCESS;
         }
         catch (std::bad_alloc& e){
@@ -254,7 +251,7 @@ StatusType Olympics::add_contestant_to_team(int teamId,int contestantId){ // O(l
         if (contestantToRegister == nullptr) {
             return StatusType::FAILURE;
         }
-        Team *draftingTeam = m_teamTree->find(teamId); // O(log m)
+        Team* draftingTeam = m_teamTree->find(teamId); // O(log m)
         if (draftingTeam == nullptr) {
             return StatusType::FAILURE;
         }
@@ -275,6 +272,7 @@ StatusType Olympics::add_contestant_to_team(int teamId,int contestantId){ // O(l
             return StatusType::FAILURE;
         }
         draftingTeam->insertContestant(contestantToRegister); // O(log n)
+        contestantToRegister->registerWithTeam(draftingTeam);
         return StatusType::SUCCESS;
     }
     catch(std::bad_alloc& e){
@@ -320,6 +318,7 @@ StatusType Olympics::remove_contestant_from_team(int teamId,int contestantId) { 
         if (!contestantToUnregister->isRegisteredInTeam(teamId)){ // O(1)
             return StatusType::FAILURE;
         }
+        contestantToUnregister->unregisterWithTeam(teamId); // O(1)
         draftingTeam->removeContestantFromTeam(contestantToUnregister); // O(log n)
         return StatusType::SUCCESS;
     }catch (std::bad_alloc& e){
@@ -356,6 +355,7 @@ void removeContestantFromAllTeamSubtrees(Contestant* contestant){ // O(log n)
             //TODO: we need to implement removeContestant in Team.cpp
             //removeContestantFromSubtrees should remove the data and then remove the node and balance the tree
             contestant->getTeam(i)->removeContestantFromSubtrees(contestant); // O(log n)
+            contestant->getTeam(i)->decrementSize();
         }
     }
 }
@@ -372,10 +372,10 @@ StatusType Olympics::update_contestant_strength(int contestantId ,int change){ /
         if (change == ZERO) {
             return StatusType::SUCCESS;
         }
-        if (contestantToUpdate->getStrength() - change < ZERO) {
+        if (contestantToUpdate->getStrength() + change < ZERO) {
             return StatusType::FAILURE;
         }
-        //TODO:Need to implement removeContestantFromAllTeamSubtrees
+
         //The function should just remove contestant from all team subtrees
         removeContestantFromAllTeamSubtrees(contestantToUpdate); // O(log n)
         contestantToUpdate->updateStrength(change);

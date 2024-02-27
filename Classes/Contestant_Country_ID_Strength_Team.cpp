@@ -321,6 +321,9 @@ int Team::getStrength() const{
 int Team::getSize() const{
     return m_size;
 }
+void Team::decrementSize(){
+    m_size--;
+}
 int Team::getAusterity() const{
     return m_austerity;
 }
@@ -1262,6 +1265,25 @@ bool Contestant::isRegisteredInTeam(int teamID) {
         }
     }
     return false;
+}
+
+void Contestant::registerWithTeam(Team* team){
+     for (int i = 0; i < NUMBER_OF_TEAMS_ALLOWED_PER_PLAYER; i++){
+         if (m_teams[i] == nullptr){
+             m_teams[i] = team;
+             return;
+         }
+     }
+}
+void Contestant::unregisterWithTeam(int teamID){
+    for (int i = 0; i < NUMBER_OF_TEAMS_ALLOWED_PER_PLAYER; i++){
+        if (m_teams[i] != nullptr){
+            if (m_teams[i]->getID() == teamID){
+                m_teams[i] = nullptr;
+                return;
+            }
+        }
+    }
 }
 
 void Contestant::updateStrength(int change) {

@@ -25,8 +25,12 @@
       <change beforePath="$PROJECT_DIR$/AVL Tree/AVL_Tree.h" beforeDir="false" afterPath="$PROJECT_DIR$/AVL Tree/AVL_Tree.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Classes/Contestant_Country_ID_Strength_Team.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Classes/Contestant_Country_ID_Strength_Team.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Classes/Contestant_Country_ID_Strength_Team.h" beforeDir="false" afterPath="$PROJECT_DIR$/Classes/Contestant_Country_ID_Strength_Team.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GR files/Scripts/Olympicsa1.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/GR files/Scripts/Olympicsa1.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GR files/Scripts/Olympicsa1.h" beforeDir="false" afterPath="$PROJECT_DIR$/GR files/Scripts/Olympicsa1.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GR files/Scripts/maina1.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/GR files/Scripts/maina1.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Wet_1__Data_Structures.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Wet_1__Data_Structures.exe" afterDir="false" />
     </list>
     <list id="03773ba4-af21-45a8-a46a-f0c82d655b7f" name="Changes by Administrator" comment="" />
     <list id="4a348711-4b6d-4534-9607-8bd66a84583e" name="Changes by Shani Sazbon" comment="" />
@@ -108,7 +112,8 @@
       <workItem from="1708890308248" duration="8091000" />
       <workItem from="1708950866664" duration="6612000" />
       <workItem from="1708965398428" duration="17545000" />
-      <workItem from="1709021189593" duration="8220000" />
+      <workItem from="1709021189593" duration="8461000" />
+      <workItem from="1709043543169" duration="7557000" />
     </task>
     <servers />
   </component>
@@ -132,46 +137,6 @@
           <url>file://$PROJECT_DIR$/Classes/Contestant_Country_ID_Strength_Team.cpp</url>
           <line>262</line>
           <option name="timeStamp" value="142" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/GR files/Scripts/maina1.cpp</url>
-          <line>584</line>
-          <option name="timeStamp" value="145" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/GR files/Scripts/maina1.cpp</url>
-          <line>583</line>
-          <option name="timeStamp" value="146" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/GR files/Scripts/Olympicsa1.cpp</url>
-          <line>502</line>
-          <option name="timeStamp" value="155" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/GR files/Scripts/Olympicsa1.cpp</url>
-          <line>506</line>
-          <option name="timeStamp" value="169" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Classes/Contestant_Country_ID_Strength_Team.cpp</url>
-          <line>647</line>
-          <option name="timeStamp" value="170" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Classes/Contestant_Country_ID_Strength_Team.cpp</url>
-          <line>642</line>
-          <option name="timeStamp" value="175" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Classes/Contestant_Country_ID_Strength_Team.cpp</url>
-          <line>643</line>
-          <option name="timeStamp" value="176" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Classes/Contestant_Country_ID_Strength_Team.cpp</url>
-          <line>644</line>
-          <option name="timeStamp" value="177" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -259,6 +224,12 @@
         <watch expression="new_MIDDLE_Strength_Tree" language="ObjectiveC" />
         <watch expression="new_MIDDLE_Strength_Tree" language="ObjectiveC" />
         <watch expression="this-&gt;m_MIDDLE_ID_Tree-&gt;m_root-&gt;m_data" />
+        <watch expression="olympics-&gt;m_countryTree-&gt;m_size" />
+        <watch expression="olympics-&gt;m_countryTree" />
+        <watch expression="olympics-&gt;m_countryTree" />
+        <watch expression="olympics-&gt;m_countryTree" />
+        <watch expression="olympics-&gt;m_countryTree" />
+        <watch expression="this-&gt;m_contestantTree-&gt;m_root-&gt;m_left-&gt;m_data" />
       </configuration>
     </watches-manager>
   </component>
