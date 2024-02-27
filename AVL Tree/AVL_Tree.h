@@ -453,6 +453,7 @@ AVL_Node<T>* AUX_EmptyTree(int height){
     AVL_Node<T>* newNode = createEmptyNode<T>();
     newNode->setLeftChild(AUX_EmptyTree<T>(height - 1));
     newNode->setRightChild(AUX_EmptyTree<T>(height - 1));
+    newNode->updateHeight();
     return newNode;
 }
 
@@ -462,11 +463,13 @@ void deleteSpareNodes(AVL_Tree<T>* tree, AVL_Node<T>* parent, AVL_Node<T>* curre
         return;
     }
     if (current->isLeaf() && height == 0){
-        if (current == parent->getRight()) {
-            parent->setRightChild(nullptr);
-        }
-        else {
-            parent->setLeftChild(nullptr);
+        if(parent != nullptr){
+            if (current == parent->getRight()) {
+                parent->setRightChild(nullptr);
+            }
+            else {
+                parent->setLeftChild(nullptr);
+            }
         }
         tree->setSize(tree->getSize() - 1);
         delete current;

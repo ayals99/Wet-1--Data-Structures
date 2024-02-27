@@ -486,11 +486,11 @@ StatusType Olympics::unite_teams(int teamId1,int teamId2) { // O(log m + n_team_
         return StatusType::INVALID_INPUT;
     }
     try {
-        Team *team1 = m_teamTree->find(teamId1);
+        Team* team1 = m_teamTree->find(teamId1);
         if (team1 == nullptr) {
             return StatusType::FAILURE;
         }
-        Team *team2 = m_teamTree->find(teamId2);
+        Team* team2 = m_teamTree->find(teamId2);
         if (team2 == nullptr) {
             return StatusType::FAILURE;
         }
@@ -501,7 +501,8 @@ StatusType Olympics::unite_teams(int teamId1,int teamId2) { // O(log m + n_team_
             return StatusType::FAILURE;
         }
         return team1->mergeTeams(team2); // O(n_team_ID1 + n_team_ID2)
-    } catch (std::bad_alloc &e) {
+    }
+    catch (std::bad_alloc &e) {
         return StatusType::ALLOCATION_ERROR;
     }
 }

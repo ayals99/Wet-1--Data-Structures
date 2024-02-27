@@ -782,6 +782,7 @@ bool olympicTest(){
     }
 
 
+    /** add_contestant tests: **/
     if (olympics->add_contestant(contestant2Id, country1Id, sport2, strength2) != StatusType::SUCCESS){
         std::cout << "add_contestant2 failed" << std::endl;
         return false;
@@ -824,6 +825,8 @@ bool olympicTest(){
 
 
 
+    /** remove_contestant tests: **/
+
     if (olympics->remove_contestant(contestant7Id) != StatusType::SUCCESS){
         std::cout << "remove_contestant7 failed" << std::endl;
         return false;
@@ -850,7 +853,7 @@ bool olympicTest(){
 
 
 
-
+    /** add_contestant_to_team tests: **/
     if (olympics->add_contestant_to_team(team1Id, contestant1Id) != StatusType::SUCCESS){
         std::cout << "add_contestant 1 to team1 failed" << std::endl;
         return false;
@@ -886,6 +889,7 @@ bool olympicTest(){
         return false;
     }
 
+
     if (olympics->add_team(team3Id, country1Id, sportTeam3) != StatusType::SUCCESS){
         std::cout << "add_team3 failed" << std::endl;
         return false;
@@ -896,9 +900,7 @@ bool olympicTest(){
         return false;
     }
 
-
-
-
+    /** remove_contestant_from_team tests: **/
     if (olympics->remove_contestant_from_team(team1Id, contestant1Id) != StatusType::SUCCESS){
         std::cout << "remove_contestant 1 from team1 failed" << std::endl;
         return false;
@@ -914,6 +916,7 @@ bool olympicTest(){
         return false;
     }
 
+    /** update_contestant_strength tests: **/
     if (olympics->update_contestant_strength(contestant2Id , 100) != StatusType::SUCCESS){
         std::cout << "first update_contestant 2 strength failed" << std::endl;
         return false;
@@ -929,6 +932,7 @@ bool olympicTest(){
         return false;
     }
 
+    /** get_strength tests: **/
     if (olympics->get_strength(contestant2Id).ans() != 2159 && olympics->get_strength(contestant2Id).status() != StatusType::SUCCESS){
         std::cout << "second get_strength contestant2 failed" << std::endl;
         return false;
@@ -945,7 +949,7 @@ bool olympicTest(){
         return false;
     }
 
-    // checking get_medals
+    /** get_medals tests: **/
     if (olympics->get_medals(country1Id).ans() != ZERO){
         std::cout << "get_medals country1 failed" << std::endl;
         return false;
@@ -966,7 +970,7 @@ bool olympicTest(){
         return false;
     }
 
-    // checking get_team_strength
+    /** get_team_strength tests: **/
 
     // adding contestants 8 and 9 to team1:
     if (olympics->add_contestant(contestant8Id, country1Id, sport8, strength8) != StatusType::SUCCESS){
@@ -1065,17 +1069,39 @@ bool olympicTest(){
         return false;
     }
 
+    if (olympics->add_contestant_to_team(team6Id, contestant12Id) != StatusType::SUCCESS)
+    {
+        std::cout << "add_contestant12 to team 6 failed" << std::endl;
+        return false;
+    }
+
+    if (olympics->add_contestant_to_team(team6Id, contestant13Id) != StatusType::SUCCESS)
+    {
+        std::cout << "add_contestant13 to team 6 failed" << std::endl;
+        return false;
+    }
+
+    if (olympics->add_contestant_to_team(team6Id, contestant14Id) != StatusType::SUCCESS)
+    {
+        std::cout << "add_contestant14 to team 6 failed" << std::endl;
+        return false;
+    }
+
 
     if (olympics->unite_teams(team1Id ,team6Id) != StatusType::SUCCESS){
         std::cout << "unite_teams team6 and team4 failed" << std::endl;
         return false;
     }
 
-    if (olympics->get_team_strength(team1Id).ans() != ){
+    if (olympics->get_team_strength(team1Id).ans() != strength1 + strength12 + strength14){
         std::cout << "get_team_strength team1 after unite failed" << std::endl;
         return false;
     }
 
+    if (olympics->austerity_measures(team1Id).ans() != strength1 + strength12 + strength14){
+        std::cout << "austerity_measures team1 failed" << std::endl;
+        return false;
+    }
 
 //    StatusType play_match(int teamId1,int teamId2);
 //
