@@ -944,25 +944,56 @@ void Team::deleteSubtrees(){
 
 
 void Team::getSortedIdArray(ID** sortedIDArray) const{
-    ID** LEFT_sortedIDArray = m_LEFT_ID_Tree->inOrderToArray();
-    ID** MIDDLE_sortedIDArray = m_MIDDLE_ID_Tree->inOrderToArray();
-    ID** RIGHT_sortedIDArray = m_RIGHT_ID_Tree->inOrderToArray();
+    ID** LEFT_sortedIDArray = new ID*[m_LEFT_ID_Tree->getSize()];
+    m_LEFT_ID_Tree->inOrderToArray(LEFT_sortedIDArray);
+
+    ID** MIDDLE_sortedIDArray = new ID*[m_MIDDLE_ID_Tree->getSize()];
+    m_MIDDLE_ID_Tree->inOrderToArray(MIDDLE_sortedIDArray);
+
+    ID** RIGHT_sortedIDArray = new ID*[m_RIGHT_ID_Tree->getSize()];
+    m_RIGHT_ID_Tree->inOrderToArray(RIGHT_sortedIDArray);
 
     ID** tempArray = new ID*[m_LEFT_ID_Tree->getSize() + m_MIDDLE_ID_Tree->getSize()];
     mergeArrays(tempArray, LEFT_sortedIDArray, MIDDLE_sortedIDArray, m_LEFT_ID_Tree->getSize(), m_MIDDLE_ID_Tree->getSize());
     mergeArrays(sortedIDArray, tempArray, RIGHT_sortedIDArray, m_LEFT_ID_Tree->getSize() + m_MIDDLE_ID_Tree->getSize(), m_RIGHT_ID_Tree->getSize());
+
     delete[] tempArray;
+    tempArray = nullptr;
+
+    delete[] LEFT_sortedIDArray;
+    LEFT_sortedIDArray = nullptr;
+
+    delete[] MIDDLE_sortedIDArray;
+    MIDDLE_sortedIDArray = nullptr;
+
+    delete[] RIGHT_sortedIDArray;
+    RIGHT_sortedIDArray = nullptr;
 }
 
 void Team::getSortedStrengthArray(Strength** sortedStrengthArray) const{
-    Strength** LEFT_sortedIDArray = m_LEFT_Strength_Tree->inOrderToArray();
-    Strength** MIDDLE_sortedIDArray = m_MIDDLE_Strength_Tree->inOrderToArray();
-    Strength** RIGHT_sortedIDArray = m_RIGHT_Strength_Tree->inOrderToArray();
+    Strength** LEFT_sortedStrengthArray = new Strength *[m_LEFT_Strength_Tree->getSize()];
+    m_LEFT_Strength_Tree->inOrderToArray(LEFT_sortedStrengthArray);
+
+    Strength** MIDDLE_sortedStrengthArray = new Strength *[m_MIDDLE_Strength_Tree->getSize()];
+    m_MIDDLE_Strength_Tree->inOrderToArray(MIDDLE_sortedStrengthArray);
+
+    Strength** RIGHT_sortedStrengthArray = new Strength *[m_RIGHT_Strength_Tree->getSize()];
+    m_RIGHT_Strength_Tree->inOrderToArray(RIGHT_sortedStrengthArray);
 
     Strength** tempArray = new Strength * [ m_LEFT_Strength_Tree->getSize() + m_MIDDLE_Strength_Tree->getSize()];
-    mergeArrays(tempArray, LEFT_sortedIDArray, MIDDLE_sortedIDArray, m_LEFT_Strength_Tree->getSize(), m_MIDDLE_Strength_Tree->getSize());
-    mergeArrays(sortedStrengthArray, tempArray, RIGHT_sortedIDArray, m_LEFT_Strength_Tree->getSize() + m_MIDDLE_Strength_Tree->getSize(), m_RIGHT_Strength_Tree->getSize());
+    mergeArrays(tempArray, LEFT_sortedStrengthArray, MIDDLE_sortedStrengthArray, m_LEFT_Strength_Tree->getSize(), m_MIDDLE_Strength_Tree->getSize());
+
+    mergeArrays(sortedStrengthArray, tempArray, RIGHT_sortedStrengthArray, m_LEFT_Strength_Tree->getSize() + m_MIDDLE_Strength_Tree->getSize(), m_RIGHT_Strength_Tree->getSize());
+
     delete[] tempArray;
+    delete[] LEFT_sortedStrengthArray;
+    delete[] MIDDLE_sortedStrengthArray;
+    delete[] RIGHT_sortedStrengthArray;
+
+    tempArray = nullptr;
+    LEFT_sortedStrengthArray = nullptr;
+    MIDDLE_sortedStrengthArray = nullptr;
+    RIGHT_sortedStrengthArray = nullptr;
 }
 
 void Team::removeContestantFromTeam(Contestant* contestant) {

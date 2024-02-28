@@ -419,12 +419,10 @@ public:
 //        }
 //    }
 
-    T** inOrderToArray(){
+    T** inOrderToArray(T** array){
         if (this->m_size == ZERO){
             return nullptr;
         }
-        T** array = new T*[m_size];
-
         int* index = new int(ZERO);
         array = AUX_inOrderToArray(m_root, array, index);
         assert( *index == m_size );
