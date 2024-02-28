@@ -21,9 +21,9 @@ class ID;
 class Country{
 private:
     int m_countryID;
+    int m_medals;
     int m_numberOfContestants;
     int m_numberOfTeams;
-    int m_medals;
 
 public:
     Country(int id, int medals) : m_countryID(id),m_medals(medals), m_numberOfContestants(INITIALIZE_CONTESTANTS), m_numberOfTeams(INITIALIZE_TEAMS){};
@@ -226,9 +226,9 @@ class Contestant{
 private:
 
     int m_id;
-    int m_strength;
-    Sport m_sport;
     int m_countryID;
+    Sport m_sport;
+    int m_strength;
     Country* m_country;
     Team* m_teams[NUMBER_OF_TEAMS_ALLOWED_PER_PLAYER];
 

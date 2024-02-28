@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "Wet_1__Data_Structures::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-Wet_1__Data_Structures-Debug-796046cb3bca794b8328.json",
+					"jsonFile" : "target-Wet_1__Data_Structures-Debug-25290764e5318cf2ba21.json",
 					"name" : "Wet_1__Data_Structures",
 					"projectIndex" : 0
 				}
@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/ayals/OneDrive/Documents/GitHub/Wet-1--Data-Structures/cmake-build-debug",
-		"source" : "C:/Users/ayals/OneDrive/Documents/GitHub/Wet-1--Data-Structures"
+		"build" : "C:/Users/Shani Sazbon/Desktop/CS/Semester C/Data Structures/Wet-1--Data-Structures/cmake-build-debug",
+		"source" : "C:/Users/Shani Sazbon/Desktop/CS/Semester C/Data Structures/Wet-1--Data-Structures"
 	},
 	"version" : 
 	{

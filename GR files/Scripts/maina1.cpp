@@ -362,8 +362,6 @@ bool Team_test(){
 
     Team* team0 = new Team(team0ID, 0, Sport::BOULDERING, country0);
     Team* team1 = new Team(team1ID, 0, Sport::BOULDERING, country1);
-    Team* team2 = new Team(team2ID, 0, Sport::ACROBATICS, country2);
-    Team* team3 = new Team(team3ID, 0, Sport::SPINNING, country3);
 
     if (team0->getID() != 0){
         std::cout << "getID failed" << std::endl;

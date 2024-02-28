@@ -725,7 +725,7 @@ int Team::calculateAusterity(){
             middle_removals = AUSTERITY_REMOVALS - left_removals - right_removals;
 
 
-            if (middle_removals == ONE && right_removals == TWO || middle_removals == ONE && left_removals == TWO) {
+            if ((middle_removals == ONE && right_removals == TWO) || (middle_removals == ONE && left_removals == TWO)) {
 //               first case: remove the border ID.
 
                 ID* borderID = nullptr;
