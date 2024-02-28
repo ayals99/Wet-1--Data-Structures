@@ -11,11 +11,6 @@
 static const int LEFT_IMBALANCE = 2;
 static const int RIGHT_IMBALANCE = -2;
 
-static const int EQUAL = 0;
-static const int FIRST_LARGER = 1;
-static const int FIRST_SMALLER = -1;
-
-
 template <class T>
 class AVL_Tree{
 private:

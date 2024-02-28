@@ -7,7 +7,7 @@
 static const int INITIALIZE_CONTESTANTS = 0;
 static const int INITIALIZE_TEAMS = 0;
 const static int AUSTERITY_REMOVALS = 3;
-const static int NUMBER_OF_ID_SUBTREES = 3;
+
 static const int TEAM_STRENGTH_NOT_MOD_3 = 0;
 static const int NOT_FOUND = -1;
 const static int NUMBER_OF_TEAMS_ALLOWED_PER_PLAYER = 3;
@@ -36,10 +36,6 @@ public:
         m_medals++;
     }
 
-    void addMedals(int medals){
-        m_medals += medals;
-    }
-
     int getMedals() const{
         return m_medals;
     }
@@ -58,10 +54,6 @@ public:
 
     void decreaseContestantCounter(){
         m_numberOfContestants--;
-    }
-
-    void increaseTeamCounter(){
-        m_numberOfTeams++;
     }
 
     void increaseContestantCounter(){
@@ -213,32 +205,17 @@ public:
 
     void updateAusterity();
 
-    void updateMAXPossibleStrength();
+    void delete_i_from_LeftTree(Contestant** LEFT_removedContestants, int i);
 
-    Contestant** delete_i_from_LeftTree(int i);
+    void delete_j_from_MiddleTree(Contestant** MIDDLE_removedContestants, int j);
 
-    Contestant** delete_j_from_MiddleTree(int j);
-
-    Contestant** delete_k_from_RightTree(int k);
+    void delete_k_from_RightTree(Contestant** RIGHT_removedContestants, int k);
 
     void reInsert(Contestant** removedContestants, int amount, subtreePosition position);
-
-    void reinsert_i_to_LeftTree(Contestant** LEFT_removedContestants, int i);
-
-    void reinsert_j_to_MiddleTree(Contestant** MIDDLE_removedContestants, int j);
-
-    void reinsert_k_to_RightTree(Contestant** RIGHT_removedContestants, int k);
 
     void removeDataFromSubtrees();
 
     void deleteSubtrees();
-
-    void assignNewSubtrees(AVL_Tree<ID>* LEFT_ID_Tree,
-                           AVL_Tree<ID>* MIDDLE_ID_Tree,
-                           AVL_Tree<ID>* RIGHT_ID_Tree,
-                           AVL_Tree<Strength>* LEFT_Strength_Tree,
-                           AVL_Tree<Strength>* MIDDLE_Strength_Tree,
-                           AVL_Tree<Strength>* RIGHT_Strength_Tree);
 
     void getSortedIdArray(ID**) const;
 

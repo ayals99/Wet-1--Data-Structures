@@ -500,7 +500,13 @@ StatusType Olympics::unite_teams(int teamId1,int teamId2) { // O(log m + n_team_
         if (team1->getSport() != team2->getSport()) {
             return StatusType::FAILURE;
         }
-        return team1->mergeTeams(team2); // O(n_team_ID1 + n_team_ID2)
+        StatusType result  = team1->mergeTeams(team2); // O(n_team_ID1 + n_team_ID2)
+
+        if (m_teamTree->remove(team2) != StatusType::SUCCESS){ // O(log m)
+            return StatusType::FAILURE;
+        }
+
+        return result;
     }
     catch (std::bad_alloc &e) {
         return StatusType::ALLOCATION_ERROR;
@@ -527,25 +533,32 @@ StatusType Olympics::play_match(int teamId1, int teamId2) { // O(log k + log m)
         return StatusType::INVALID_INPUT;
     }
     try {
-        Team *team1 = m_teamTree->find(teamId1); // O(log m)
+        Team* team1 = m_teamTree->find(teamId1); // O(log m)
         if (team1 == nullptr) {
             return StatusType::FAILURE;
         }
-        Team *team2 = m_teamTree->find(teamId2); // O(log m)
+
+        Team* team2 = m_teamTree->find(teamId2); // O(log m)
+
         if (team2 == nullptr) {
             return StatusType::FAILURE;
         }
+
         if (team1->getSport() != team2->getSport()) {
             return StatusType::FAILURE;
         }
+
         int team1TotalScore = team1->getCountry()->getMedals() + team1->getStrength();
         int team2TotalScore = team2->getCountry()->getMedals() + team2->getStrength();
+
         if (team1TotalScore > team2TotalScore) {
             team1->getCountry()->addMedal();
         }
+
         if (team1TotalScore < team2TotalScore) {
             team2->getCountry()->addMedal();
         }
+
         return StatusType::SUCCESS;
     }
     catch (std::bad_alloc &e) {
@@ -579,7 +592,7 @@ output_t<int> Olympics::austerity_measures(int teamId) { // O(log m)
         return output_t<int>(StatusType::INVALID_INPUT);
     }
     try {
-        Team *team = m_teamTree->find(teamId); // O(log m)
+        Team* team = m_teamTree->find(teamId); // O(log m)
         if (team == nullptr) {
             return output_t<int>(StatusType::FAILURE);
         }

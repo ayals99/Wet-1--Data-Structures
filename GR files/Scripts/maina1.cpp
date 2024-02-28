@@ -119,7 +119,6 @@
 
 
 #include "../../Classes/Contestant_Country_ID_Strength_Team.h"
-#include <iostream>
 #include <functional>
 
 bool test_1(){
@@ -600,7 +599,6 @@ bool Team_test(){
     std::cout << "Team Test Passed" << std::endl;
     return true;
 }
-
 
 bool olympicTest(){
     Olympics* olympics = new Olympics();
@@ -1098,17 +1096,33 @@ bool olympicTest(){
         return false;
     }
 
-    if (olympics->austerity_measures(team1Id).ans() != strength1 + strength12 + strength14){
+    if (olympics->austerity_measures(team1Id).ans() != strength1 + strength9 + strength12){
         std::cout << "austerity_measures team1 failed" << std::endl;
         return false;
     }
 
-//    StatusType play_match(int teamId1,int teamId2);
-//
-//    output_t<int> austerity_measures(int teamId);
+   if (olympics->play_match(team1Id,team4Id) != StatusType::SUCCESS){
+       std::cout << "play match 1 and 4 failed" << std::endl;
+       return false;
+   }
 
-    std::cout << "First Olympic Test Passed" << std::endl;
-    return true;
+   if (olympics->play_match(team1Id, team2Id) != StatusType::FAILURE){
+        std::cout << "play match 1 and 2 failed" << std::endl;
+        return false;
+   }
+
+   if (olympics->play_match(0, 0) != StatusType::INVALID_INPUT){
+       std::cout << "play match 0 and 0 failed" << std::endl;
+       return false;
+   }
+
+    if (olympics->play_match(team1Id, team1Id) != StatusType::INVALID_INPUT){
+        std::cout << "play match 1 and 1 failed" << std::endl;
+        return false;
+    }
+
+   std::cout << "First Olympic Test Passed" << std::endl;
+   return true;
 }
 
 bool unite_teams_test(){
@@ -1237,40 +1251,34 @@ bool unite_teams_test(){
         return false;
     }
 
-
-
-
-
-
-
     std::cout << "Unite Teams Test Passed" << std::endl;
     return true;
 
 }
 
 int main(){
-//
-//    if(!test_1()){
-//        std::cout << "Test 1 failed" << std::endl;
-//    }
-//
-//    if(!test_2()){
-//        std::cout << "Test 2 failed" << std::endl;
-//    }
-//    if (!Strength_and_ID_test()){
-//        std::cout << "Strength_and_ID_test failed" << std::endl;
-//    }
-//    if (!testContestantMemberFunctions()){
-//        std::cout << "testContestantMemberFunctions failed" << std::endl;
-//    }
 
-//    if (!Team_test()){
-//        std::cout << "Team_test failed" << std::endl;
-//    }
+    if(!test_1()){
+        std::cout << "Test 1 failed" << std::endl;
+    }
 
-//    if (!olympicTest()){
-//        std::cout << "olympicTest failed" << std::endl;
-//    }
+    if(!test_2()){
+        std::cout << "Test 2 failed" << std::endl;
+    }
+    if (!Strength_and_ID_test()){
+        std::cout << "Strength_and_ID_test failed" << std::endl;
+    }
+    if (!testContestantMemberFunctions()){
+        std::cout << "testContestantMemberFunctions failed" << std::endl;
+    }
+
+    if (!Team_test()){
+        std::cout << "Team_test failed" << std::endl;
+    }
+
+    if (!olympicTest()){
+        std::cout << "olympicTest failed" << std::endl;
+    }
 
 
     if (!unite_teams_test()){

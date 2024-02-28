@@ -22,14 +22,28 @@
   <component name="ChangeListManager">
     <list default="true" id="ee6379aa-e38b-43ed-b738-6074c08a537a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AVL Tree/AVL_Node.h" beforeDir="false" afterPath="$PROJECT_DIR$/AVL Tree/AVL_Node.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AVL Tree/AVL_Tree.h" beforeDir="false" afterPath="$PROJECT_DIR$/AVL Tree/AVL_Tree.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AVL Tree/AVL_Tree_With_comparisonFunction.h" beforeDir="false" afterPath="$PROJECT_DIR$/Classes/old classes - obsolete/AVL_Tree_With_comparisonFunction.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AVL Tree/Contestant_Liaison.h" beforeDir="false" afterPath="$PROJECT_DIR$/Classes/old classes - obsolete/Contestant_Liaison.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Classes/Contestant_Country_ID_Strength_Team.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Classes/Contestant_Country_ID_Strength_Team.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Classes/Contestant_Country_ID_Strength_Team.h" beforeDir="false" afterPath="$PROJECT_DIR$/Classes/Contestant_Country_ID_Strength_Team.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GR files/Scripts/Olympicsa1.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/GR files/Scripts/Olympicsa1.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GR files/Scripts/maina1.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/GR files/Scripts/maina1.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2024-02-25T15-10-27-0051.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Wet_1__Data_Structures.dir/Classes/Contestant_Country_ID_Strength_Team.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Wet_1__Data_Structures.dir/Classes/Contestant_Country_ID_Strength_Team.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Wet_1__Data_Structures.dir/GR_files/Scripts/Olympicsa1.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Wet_1__Data_Structures.dir/GR_files/Scripts/Olympicsa1.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Wet_1__Data_Structures.dir/GR_files/Scripts/maina1.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Wet_1__Data_Structures.dir/GR_files/Scripts/maina1.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Wet_1__Data_Structures.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Wet_1__Data_Structures.exe" afterDir="false" />
     </list>
     <list id="03773ba4-af21-45a8-a46a-f0c82d655b7f" name="Changes by Administrator" comment="" />
-    <list id="0b8ae176-e959-4ebf-a23b-66775ae37a63" name="Changes by ayals" comment="">
-      <change beforePath="$PROJECT_DIR$/Classes/Contestant_Country_ID_Strength_Team.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Classes/Contestant_Country_ID_Strength_Team.cpp" afterDir="false" />
+    <list id="0b8ae176-e959-4ebf-a23b-66775ae37a63" name="Changes by ayals" comment="" />
+    <list id="4a348711-4b6d-4534-9607-8bd66a84583e" name="Changes by Shani Sazbon" comment="">
+      <change beforePath="$PROJECT_DIR$/Classes/Contestant_Country_ID_Strength_Team.h" beforeDir="false" afterPath="$PROJECT_DIR$/Classes/Contestant_Country_ID_Strength_Team.h" afterDir="false" />
     </list>
-    <list id="4a348711-4b6d-4534-9607-8bd66a84583e" name="Changes by Shani Sazbon" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,43 +57,17 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/Classes/Contestant_Country_ID_Strength_Team.cpp">
+    <file path="$PROJECT_DIR$/Classes/Contestant_Country_ID_Strength_Team.h">
       <ranges>
-        <range start1="22" end1="25" start2="22" end2="23" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
-        <range start1="26" end1="27" start2="24" end2="24" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
-        <range start1="57" end1="61" start2="54" end2="54" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
-        <range start1="65" end1="68" start2="58" end2="59" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
-        <range start1="95" end1="97" start2="86" end2="86" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
-        <range start1="110" end1="201" start2="99" end2="99" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
-        <range start1="218" end1="219" start2="116" end2="117" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
-        <range start1="220" end1="225" start2="118" end2="118" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
-        <range start1="226" end1="227" start2="119" end2="120" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
-        <range start1="228" end1="229" start2="121" end2="122" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
-        <range start1="234" end1="235" start2="127" end2="128" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
-        <range start1="239" end1="240" start2="132" end2="133" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
-        <range start1="247" end1="248" start2="140" end2="141" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
-        <range start1="251" end1="252" start2="144" end2="145" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
-        <range start1="254" end1="258" start2="147" end2="148" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
-        <range start1="260" end1="312" start2="150" end2="182" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
-        <range start1="313" end1="345" start2="183" end2="183" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
-        <range start1="347" end1="349" start2="185" end2="186" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
-        <range start1="365" end1="367" start2="202" end2="203" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
-        <range start1="388" end1="399" start2="224" end2="224" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
-        <range start1="401" end1="403" start2="226" end2="227" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
-        <range start1="404" end1="405" start2="228" end2="229" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
-        <range start1="406" end1="409" start2="230" end2="230" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
-        <range start1="419" end1="419" start2="240" end2="242" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
-        <range start1="702" end1="706" start2="525" end2="558" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
-        <range start1="707" end1="710" start2="559" end2="592" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
-        <range start1="712" end1="713" start2="594" end2="595" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
-        <range start1="723" end1="724" start2="605" end2="606" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
-        <range start1="729" end1="730" start2="611" end2="612" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
-        <range start1="732" end1="733" start2="614" end2="615" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
-        <range start1="735" end1="736" start2="617" end2="618" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
-        <range start1="739" end1="742" start2="621" end2="624" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
-        <range start1="743" end1="745" start2="625" end2="629" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
-        <range start1="748" end1="748" start2="632" end2="634" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
-        <range start1="971" end1="972" start2="857" end2="858" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
+        <range start1="9" end1="10" start2="9" end2="10" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
+        <range start1="38" end1="42" start2="38" end2="38" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
+        <range start1="61" end1="65" start2="57" end2="57" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
+        <range start1="214" end1="216" start2="206" end2="206" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
+        <range start1="217" end1="218" start2="207" end2="208" changelist="4a348711-4b6d-4534-9607-8bd66a84583e" />
+        <range start1="219" end1="220" start2="209" end2="210" changelist="4a348711-4b6d-4534-9607-8bd66a84583e" />
+        <range start1="221" end1="222" start2="211" end2="212" changelist="4a348711-4b6d-4534-9607-8bd66a84583e" />
+        <range start1="225" end1="231" start2="215" end2="215" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
+        <range start1="235" end1="242" start2="219" end2="219" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
       </ranges>
     </file>
   </component>
@@ -122,7 +110,17 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ayals\OneDrive\Documents\GitHub\Wet-1--Data-Structures\Classes\old classes - obsolete" />
+    </key>
+  </component>
   <component name="RunManager">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Wet_1__Data_Structures" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Wet_1__Data_Structures" TARGET_NAME="Wet_1__Data_Structures" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Wet_1__Data_Structures" RUN_TARGET_NAME="Wet_1__Data_Structures">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -158,6 +156,7 @@
       <workItem from="1709116751216" duration="6057000" />
       <workItem from="1709134678872" duration="74000" />
       <workItem from="1709134765875" duration="3137000" />
+      <workItem from="1709137971695" duration="3688000" />
     </task>
     <servers />
   </component>
@@ -280,6 +279,9 @@
         <watch expression="newTree" />
         <watch expression="newTree-&gt;m_root-&gt;m_data" />
         <watch expression="newTree" />
+        <watch expression="olympics-&gt;m_teamTree-&gt;m_root-&gt;m_right-&gt;m_left-&gt;m_data-&gt;m_RIGHT_ID_Tree-&gt;m_root-&gt;m_data" />
+        <watch expression="olympics-&gt;m_teamTree-&gt;m_root-&gt;m_right-&gt;m_left-&gt;m_data-&gt;m_RIGHT_ID_Tree-&gt;m_root-&gt;m_data" />
+        <watch expression="olympics-&gt;m_teamTree-&gt;m_root-&gt;m_right-&gt;m_left-&gt;m_data-&gt;m_RIGHT_ID_Tree-&gt;m_root-&gt;m_data" />
       </configuration>
     </watches-manager>
   </component>
