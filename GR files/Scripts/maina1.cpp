@@ -352,13 +352,10 @@ bool testContestantMemberFunctions(){
 bool Team_test(){
     Country* country0 = new Country(0, 0);
     Country* country1 = new Country(1, 0);
-    Country* country2 = new Country(2, 0);
-    Country* country3 = new Country(3, 2);
 
     int team0ID = 0;
     int team1ID = 1;
-    int team2ID = 2;
-    int team3ID = 3;
+
 
     Team* team0 = new Team(team0ID, 0, Sport::BOULDERING, country0);
     Team* team1 = new Team(team1ID, 0, Sport::BOULDERING, country1);
