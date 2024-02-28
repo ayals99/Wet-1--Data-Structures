@@ -83,7 +83,8 @@ private:
     Strength* parallel_strength;
 
 public:
-    ID() = delete;
+    ID() : m_contestant(nullptr), parallel_strength(nullptr){};
+
     ID(const ID& other) = delete;
     explicit ID(Contestant* contestant) : m_contestant(contestant), parallel_strength(nullptr){};
     explicit ID(Contestant* contestant, Strength* parallel) : m_contestant(contestant), parallel_strength(parallel){};
@@ -321,6 +322,7 @@ private:
     subtreePosition m_position;
 
 public:
+    Strength() : m_contestant(nullptr), m_position(UNASSIGNED){};
     explicit Strength(Contestant* contestant) : m_contestant(contestant), m_position(UNASSIGNED){};
     Strength(Contestant* contestant, subtreePosition position) : m_contestant(contestant), m_position(position){};
     ~Strength() = default;

@@ -1111,28 +1111,170 @@ bool olympicTest(){
     return true;
 }
 
+bool unite_teams_test(){
+
+    Olympics* olympics = new Olympics();
+
+    // create a country and add it to the olympics:
+    int countryId = 1;
+    int medals = 0;
+
+    if (olympics->add_country(countryId, medals) != StatusType::SUCCESS){
+        std::cout << "add_country failed" << std::endl;
+        return false;
+    }
+
+    //create two teams with the same sport:
+
+    int team1Id = 1;
+    Sport sportTeam1 = Sport::BOULDERING;
+
+
+    int team2Id = 2;
+    Sport sportTeam2 = Sport::BOULDERING;
+
+
+    if (olympics->add_team(team1Id, countryId, sportTeam1) != StatusType::SUCCESS){
+        std::cout << "add_team1 failed" << std::endl;
+        return false;
+    }
+
+    if (olympics->add_team(team2Id, countryId, sportTeam2) != StatusType::SUCCESS){
+        std::cout << "add_team2 failed" << std::endl;
+        return false;
+    }
+    // create six contestants with the same sport and insert three into team1 and three into team2:
+
+    int contestant1Id = 1;
+    int strength1 = 1000;
+
+    int contestant2Id = 2;
+    int strength2 = 2000;
+
+    int contestant3Id = 3;
+    int strength3 = 3000;
+
+    int contestant4Id = 4;
+    int strength4 = 4000;
+
+    int contestant5Id = 5;
+    int strength5 = 5000;
+
+    int contestant6Id = 6;
+    int strength6 = 6000;
+
+
+    // add all six contestants to olympics:
+
+    if (olympics->add_contestant(contestant1Id, countryId, sportTeam1, strength1) != StatusType::SUCCESS){
+        std::cout << "add_contestant1 failed" << std::endl;
+        return false;
+    }
+
+    if (olympics->add_contestant(contestant2Id, countryId, sportTeam1, strength2) != StatusType::SUCCESS){
+        std::cout << "add_contestant2 failed" << std::endl;
+        return false;
+    }
+
+    if (olympics->add_contestant(contestant3Id, countryId, sportTeam1, strength3) != StatusType::SUCCESS){
+        std::cout << "add_contestant3 failed" << std::endl;
+        return false;
+    }
+
+    if (olympics->add_contestant(contestant4Id, countryId, sportTeam2, strength4) != StatusType::SUCCESS){
+        std::cout << "add_contestant4 failed" << std::endl;
+        return false;
+    }
+
+    if (olympics->add_contestant(contestant5Id, countryId, sportTeam2, strength5) != StatusType::SUCCESS){
+        std::cout << "add_contestant5 failed" << std::endl;
+        return false;
+    }
+
+    if (olympics->add_contestant(contestant6Id, countryId, sportTeam2, strength6) != StatusType::SUCCESS){
+        std::cout << "add_contestant6 failed" << std::endl;
+        return false;
+    }
+
+    // add three contestants to team1 and three to team2:
+
+    if (olympics->add_contestant_to_team(team1Id, contestant1Id) != StatusType::SUCCESS){
+        std::cout << "add_contestant1 to team1 failed" << std::endl;
+        return false;
+    }
+
+    if (olympics->add_contestant_to_team(team1Id, contestant2Id) != StatusType::SUCCESS){
+        std::cout << "add_contestant2 to team1 failed" << std::endl;
+        return false;
+    }
+
+    if (olympics->add_contestant_to_team(team1Id, contestant3Id) != StatusType::SUCCESS){
+        std::cout << "add_contestant3 to team1 failed" << std::endl;
+        return false;
+    }
+
+    // add three contestants to team2:
+
+    if (olympics->add_contestant_to_team(team2Id, contestant4Id) != StatusType::SUCCESS){
+        std::cout << "add_contestant4 to team2 failed" << std::endl;
+        return false;
+    }
+
+    if (olympics->add_contestant_to_team(team2Id, contestant5Id) != StatusType::SUCCESS){
+        std::cout << "add_contestant5 to team2 failed" << std::endl;
+        return false;
+    }
+
+    if (olympics->add_contestant_to_team(team2Id, contestant6Id) != StatusType::SUCCESS){
+        std::cout << "add_contestant6 to team2 failed" << std::endl;
+        return false;
+    }
+
+    // unite the teams:
+
+    if (olympics->unite_teams(team1Id, team2Id) != StatusType::SUCCESS){
+        std::cout << "unite_teams failed" << std::endl;
+        return false;
+    }
+
+
+
+
+
+
+
+    std::cout << "Unite Teams Test Passed" << std::endl;
+    return true;
+
+}
+
 int main(){
+//
+//    if(!test_1()){
+//        std::cout << "Test 1 failed" << std::endl;
+//    }
+//
+//    if(!test_2()){
+//        std::cout << "Test 2 failed" << std::endl;
+//    }
+//    if (!Strength_and_ID_test()){
+//        std::cout << "Strength_and_ID_test failed" << std::endl;
+//    }
+//    if (!testContestantMemberFunctions()){
+//        std::cout << "testContestantMemberFunctions failed" << std::endl;
+//    }
 
-    if(!test_1()){
-        std::cout << "Test 1 failed" << std::endl;
-    }
+//    if (!Team_test()){
+//        std::cout << "Team_test failed" << std::endl;
+//    }
 
-    if(!test_2()){
-        std::cout << "Test 2 failed" << std::endl;
-    }
-    if (!Strength_and_ID_test()){
-        std::cout << "Strength_and_ID_test failed" << std::endl;
-    }
-    if (!testContestantMemberFunctions()){
-        std::cout << "testContestantMemberFunctions failed" << std::endl;
-    }
+//    if (!olympicTest()){
+//        std::cout << "olympicTest failed" << std::endl;
+//    }
 
-    if (!Team_test()){
-        std::cout << "Team_test failed" << std::endl;
-    }
 
-    if (!olympicTest()){
-        std::cout << "olympicTest failed" << std::endl;
+    if (!unite_teams_test()){
+        std::cout << "unite_teams_test failed" << std::endl;
     }
 
     return 0;

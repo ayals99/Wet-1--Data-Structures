@@ -271,9 +271,45 @@ Strength** mergeStrengthsToArray(Team* team1, Team* team2){ // O(n_team_ID1 + n_
 
 
 
+AVL_Tree<ID>* createEmptyTree(int numberOfElements){
+    AVL_Tree<ID>* newTree = nullptr; // O(1)
+    newTree = new AVL_Tree<ID>(); // O(1)
+    int height  = (int)floor(log2(numberOfElements + 1));
+    newTree->setRoot(AUX_EmptyTree<ID>(height)); // O(n)
+
+    int fullBinaryTreeSize = 0;
+    for (int i = height; i >= ZERO; i--){
+        fullBinaryTreeSize += (int)pow(2, i);
+    }
+
+    newTree->setSize(fullBinaryTreeSize);
+
+    deleteSpareNodes<ID>(newTree , nullptr, newTree->getRoot(), height, numberOfElements);// O(n)
+    assert(newTree->getSize() == numberOfElements);
+    return newTree;
+}
+
+AVL_Tree<Strength>* createEmptyStrengthTree(int numberOfElements){
+    AVL_Tree<Strength>* newTree = nullptr; // O(1)
+    newTree = new AVL_Tree<Strength>(); // O(1)
+    int height  = (int)floor(log2(numberOfElements + 1));
+    newTree->setRoot(AUX_EmptyTree<Strength>(height)); // O(n)
+
+    int fullBinaryTreeSize = 0;
+    for (int i = height; i >= ZERO; i--){
+        fullBinaryTreeSize += (int)pow(2, i);
+    }
+
+    newTree->setSize(fullBinaryTreeSize);
+
+    deleteSpareNodes<Strength>(newTree , nullptr, newTree->getRoot(), height, numberOfElements);// O(n)
+    assert(newTree->getSize() == numberOfElements);
+    return newTree;
+}
+
 // As we learned in the recitation:
 AVL_Tree<ID>* ArrayToTree(ID** array, int numberOfElements){
-    AVL_Tree<ID>* newTree = createEmptyTree<ID>(numberOfElements); // O(n)
+    AVL_Tree<ID>* newTree = createEmptyTree(numberOfElements); // O(n)
     insertArrayToTree(array, newTree); // O(n)
     return newTree;
 }
@@ -293,7 +329,7 @@ AVL_Tree<Strength>* ArrayToTree(Strength** strengthArray, int arrayLength, int t
 
     int numberOfElements = countStrengthsWithPOSITIONInArray(strengthArray, arrayLength, position); // O(n)
 
-    AVL_Tree<Strength>* newTree = createEmptyTree<Strength>(numberOfElements); // O(n)
+    AVL_Tree<Strength>* newTree = createEmptyStrengthTree(numberOfElements); // O(n)
 
     Strength** POSITION_Array = new Strength*[numberOfElements]; // O(n)
 

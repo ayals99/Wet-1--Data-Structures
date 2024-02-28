@@ -481,23 +481,7 @@ void deleteSpareNodes(AVL_Tree<T>* tree, AVL_Node<T>* parent, AVL_Node<T>* curre
     }
 }
 
-template <class T>
-AVL_Tree<T>* createEmptyTree(int numberOfElements){
-    AVL_Tree<T>* newTree = new AVL_Tree<T>(); // O(1)
-    int height  = (int)floor(log2(numberOfElements + 1));
-    newTree->setRoot(AUX_EmptyTree<T>(height)); // O(n)
 
-    int fullBinaryTreeSize = 0;
-    for (int i = height; i >= ZERO; i--){
-        fullBinaryTreeSize += (int)pow(2, i);
-    }
-
-    newTree->setSize(fullBinaryTreeSize);
-
-    deleteSpareNodes<T>(newTree , nullptr, newTree->getRoot(), height, numberOfElements);// O(n)
-    assert(newTree->getSize() == numberOfElements);
-    return newTree;
-}
 
 template <class T>
 void AUX_insertArrayToTreeInOrder(T** array, AVL_Node<T>* current, int& index){ // O(n)
