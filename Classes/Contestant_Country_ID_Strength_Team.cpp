@@ -18,16 +18,14 @@ int ceilDivisionByThree(int n){
 }
 
 
-ID** mergeArrays(ID** sortedId1, ID** sortedId2, int length1, int length2){
+void mergeArrays(ID** mergedIdArray, ID** sortedId1, ID** sortedId2, int length1, int length2){
     if (length1 == ZERO && length2 == ZERO) {
         delete[] sortedId1;
         delete[] sortedId2;
-        return nullptr;
+        mergedIdArray = nullptr;
     }
 
     // if arrived here, that means that at least one of the arrays is not empty
-    ID** mergedIdArray = new ID*[length1 + length2]; // O(n_team_ID1 + n_team_ID2)
-
     int i = 0;
     int j = 0;
     int k = 0;
@@ -61,17 +59,14 @@ ID** mergeArrays(ID** sortedId1, ID** sortedId2, int length1, int length2){
     // delete only the pointer to the elements of array, not the instances of ID
     delete[] sortedId1;
     delete[] sortedId2;
-    return mergedIdArray;
 }
 
-Strength** mergeArrays(Strength** sortedStrength1, Strength** sortedStrength2, int length1, int length2){
+void mergeArrays(Strength** mergedStrengthArray, Strength** sortedStrength1, Strength** sortedStrength2, int length1, int length2){
     if (length1 == ZERO && length2 == ZERO) {
         delete[] sortedStrength1;
         delete[] sortedStrength2;
-        return nullptr;
+        mergedStrengthArray = nullptr;
     }
-
-    Strength** mergedStrengthArray = new Strength*[length1 + length2]; // O(n_team_ID1 + n_team_ID2)
     int i = 0;
     int j = 0;
     int k = 0;
@@ -100,7 +95,6 @@ Strength** mergeArrays(Strength** sortedStrength1, Strength** sortedStrength2, i
     // delete only the pointer to the elements of array, not the instances of Strength
     delete[] sortedStrength1;
     delete[] sortedStrength2;
-    return mergedStrengthArray;
 }
 
 int findTeamIndex(Contestant* contestant, int teamId) { // O(1)
@@ -143,61 +137,61 @@ int findAmountOfStrengthNonDuplicates(Strength** ArrayWithDuplicates,int arrayLe
 // it then creates a new array with the remaining contestants which are not duplicates
 // deleting the duplicate ID's instances from sortedId2WithDuplicates while doing that.
 
-ID** deleteDuplicates(ID** ArrayWithDuplicates, int arrayLength, int teamId2, int teamId1, int& newArraySize) { // O(n_team_ID2)
+//ID** deleteDuplicates(ID** ArrayWithDuplicates, int arrayLength, int teamId2, int teamId1, int& newArraySize) { // O(n_team_ID2)
+//
+//    // remove the registration from team2 and leaves him registered only in team1
+//    for (int i = 0; i < arrayLength; ++i) {
+//        Contestant* contestant = ArrayWithDuplicates[i]->getContestant();
+//        // if he is registered in team1 as well, he is a duplicate:
+//        if (findTeamIndex(contestant, teamId1) != NOT_FOUND){ // O(1)
+//            int teamId2InArray = findTeamIndex(contestant, teamId2); // O(1)
+//            contestant->removeTeam(teamId2InArray); // O(1)
+//        }
+//    }
+//
+//    // create a new array with the remaining contestants which are not duplicates
+//    newArraySize  = findAmountOfIdNonDuplicates(ArrayWithDuplicates,arrayLength, teamId2);
+//    ID** sortedId2 = new ID*[newArraySize]; // O(n_team_ID2)
+//
+//    int index_Non_Duplicates_array = 0;
+//    for (int i = 0; i < arrayLength; i++){ // O(n_team_ID2
+//        // if the contestant is registered in team2, he is a non-duplicate
+//        // and we need to move him to the new array
+//        // which holds only contestants that are not duplicates
+//        if (findTeamIndex(ArrayWithDuplicates[i]->getContestant(), teamId2) != NOT_FOUND){
+//            sortedId2[index_Non_Duplicates_array] = ArrayWithDuplicates[i];
+//            index_Non_Duplicates_array++;
+//        }
+//        else {
+//            // if the contestant is a duplicate, we delete the instance of the ID.
+//            delete ArrayWithDuplicates[i]; // delete the instance of the ID.
+//        }
+//    }
+//    return sortedId2;
+//}
 
-    // remove the registration from team2 and leaves him registered only in team1
-    for (int i = 0; i < arrayLength; ++i) {
-        Contestant* contestant = ArrayWithDuplicates[i]->getContestant();
-        // if he is registered in team1 as well, he is a duplicate:
-        if (findTeamIndex(contestant, teamId1) != NOT_FOUND){ // O(1)
-            int teamId2InArray = findTeamIndex(contestant, teamId2); // O(1)
-            contestant->removeTeam(teamId2InArray); // O(1)
-        }
-    }
-
-    // create a new array with the remaining contestants which are not duplicates
-    newArraySize  = findAmountOfIdNonDuplicates(ArrayWithDuplicates,arrayLength, teamId2);
-    ID** sortedId2 = new ID*[newArraySize]; // O(n_team_ID2)
-
-    int index_Non_Duplicates_array = 0;
-    for (int i = 0; i < arrayLength; i++){ // O(n_team_ID2
-        // if the contestant is registered in team2, he is a non-duplicate
-        // and we need to move him to the new array
-        // which holds only contestants that are not duplicates
-        if (findTeamIndex(ArrayWithDuplicates[i]->getContestant(), teamId2) != NOT_FOUND){
-            sortedId2[index_Non_Duplicates_array] = ArrayWithDuplicates[i];
-            index_Non_Duplicates_array++;
-        }
-        else {
-            // if the contestant is a duplicate, we delete the instance of the ID.
-            delete ArrayWithDuplicates[i]; // delete the instance of the ID.
-        }
-    }
-    return sortedId2;
-}
-
-Strength** deleteDuplicates(Strength** sortedStrength2, int sortedStrength2Length, int teamId2, int teamId1, int& newArraySize) { // O(n_team_ID2)
+//Strength** deleteDuplicates(Strength** sortedStrength2, int sortedStrength2Length, int teamId2, int teamId1, int& newArraySize) { // O(n_team_ID2)
 // we run this function after we have already deleted the duplicates from the ID array
 // we can recognize a duplicate in sortedStrength2 by checking if the contestant is registered in teamId1
-
-
-    newArraySize =  findAmountOfStrengthNonDuplicates(sortedStrength2,sortedStrength2Length, teamId2);
-
-    Strength** sortedStrength2WithoutDuplicates = new Strength*[newArraySize]; // O(n_team_ID2)
-
-    int index_Non_Duplicates_array = 0;
-    for(int i = 0; i < sortedStrength2Length; i++){
-        // if a contestant is in team2, then it is not a duplicate, and we need to move him to the new array
-        if (findTeamIndex(sortedStrength2[i]->getContestant(), teamId2) != NOT_FOUND){
-            sortedStrength2WithoutDuplicates[index_Non_Duplicates_array] = sortedStrength2[i];
-        }
-        else{ // if he is a duplicate, we delete the instance of the Strength.
-            delete sortedStrength2[i];
-        }
-    }
-
-    return sortedStrength2WithoutDuplicates;
-}
+//
+//
+//    newArraySize =  findAmountOfStrengthNonDuplicates(sortedStrength2,sortedStrength2Length, teamId2);
+//
+//    Strength** sortedStrength2WithoutDuplicates = new Strength*[newArraySize]; // O(n_team_ID2)
+//
+//    int index_Non_Duplicates_array = 0;
+//    for(int i = 0; i < sortedStrength2Length; i++){
+//        // if a contestant is in team2, then it is not a duplicate, and we need to move him to the new array
+//        if (findTeamIndex(sortedStrength2[i]->getContestant(), teamId2) != NOT_FOUND){
+//            sortedStrength2WithoutDuplicates[index_Non_Duplicates_array] = sortedStrength2[i];
+//        }
+//        else{ // if he is a duplicate, we delete the instance of the Strength.
+//            delete sortedStrength2[i];
+//        }
+//    }
+//
+//    return sortedStrength2WithoutDuplicates;
+//}
 
 void moveIDsToTeam1(ID** sortedId2,int length_sortedId2, int teamId2, Team* team1) { // O(n_team_ID2)
     for (int i = 0; i < length_sortedId2; i++){
@@ -206,14 +200,85 @@ void moveIDsToTeam1(ID** sortedId2,int length_sortedId2, int teamId2, Team* team
     }
 }
 
+
+int countNonDuplicates(ID** arrayToCount,int size)
+{
+    int counter = 0;
+    for (int i = 0; i < size; ++i) {
+        if (i < size - 1) {
+            if (arrayToCount[i]->getContestant()->getID() == arrayToCount[i + 1]->getContestant()->getID()) {
+                i++;
+            }
+        }
+        counter++;
+    }
+    return counter;
+}
+
+
+ID** deleteDuplicates(ID** mergedIDArray,int originalTeamSize,int newTeamSize, int mainTeamID)
+{
+    if(newTeamSize == originalTeamSize){
+        return mergedIDArray;
+    }
+
+    ID** newIDArray = new ID*[newTeamSize];
+    int newArrayIndex = 0;
+    for (int i = 0; i < originalTeamSize; i++, newArrayIndex++)
+    {
+        if (i < originalTeamSize - 1)
+        {
+            if ( mergedIDArray[i]->getContestant()->getID() == mergedIDArray[i+1]->getContestant()->getID())
+            {
+                if ( mergedIDArray[i]->getContestant()->isRegisteredInTeam(mainTeamID))
+                {
+                    newIDArray[newArrayIndex] = mergedIDArray[i];
+                    delete mergedIDArray[i+1];
+                    mergedIDArray[i+1] = nullptr;
+                }
+                else{
+                    newIDArray[newArrayIndex] = mergedIDArray[i+1];
+                    delete mergedIDArray[i];
+                    mergedIDArray[i] = nullptr;
+                }
+                i++;
+            }
+            else
+            {
+                newIDArray[newArrayIndex] = mergedIDArray[i];
+            }
+        }
+        else{
+            newIDArray[newArrayIndex] = mergedIDArray[i];
+        }
+    }
+    delete[] mergedIDArray;
+    mergedIDArray = nullptr;
+    assert(newArrayIndex == newTeamSize);
+    return newIDArray;
+}
+
 // explain mergeIDsToArray:
-ID** mergeIDsToArray(Team* team1, Team* team2, int& newTeamSize) { // O(n_team_ID1 + n_team_ID2) // need to take care of duplicates
-    assert(team1 != nullptr);
+void mergeIDsToArray(ID** mergedIDArray, Team* team1, Team* team2, int& newTeamSize) { // O(n_team_ID1 + n_team_ID2) // need to take care of duplicates
+    assert(team1 != nullptr);s
     assert(team2 != nullptr);
     // gets a sorted array of IDs from each team:
-    ID** sortedId1 = team1->getSortedIdArray(); // O(n_team_ID1)
-    ID** sortedId2WithDuplicates = team2->getSortedIdArray(); // O(n_team_ID2)
-    // TODO: add cases of null pointers to arrays
+    ID** sortedId1 = new ID*[team1->getSize()];
+    team1->getSortedIdArray(sortedId1); // O(n_team_ID1)
+
+    ID** sortedId2WithDuplicates = new ID*[team2->getSize()];
+    team2->getSortedIdArray(sortedId2WithDuplicates); // O(n_team_ID2)
+
+    mergeArrays(mergedIDArray, sortedId1, sortedId2WithDuplicates,team1->getSize(), team2->getSize());
+
+    int numOfNonDuplicates = countNonDuplicates(mergedIDArray, team1->getSize() + team2->getSize());
+
+    ID** mergedIDArrayWithOutDuplicates = deleteDuplicates(mergedIDArray,team1->getSize() + team2->getSize(),numOfNonDuplicates, team1->getID());
+
+
+
+
+
 
     if (sortedId1 == nullptr && sortedId2WithDuplicates == nullptr){
         return nullptr;
@@ -234,9 +299,9 @@ ID** mergeIDsToArray(Team* team1, Team* team2, int& newTeamSize) { // O(n_team_I
     // it then creates a new array with the remaining contestants which are not duplicates
     // deleting the duplicate IDs from sortedId2WithDuplicates while doing that.
 
-    int lengthSorted2 = 0;
-    ID** sortedId2 = deleteDuplicates(sortedId2WithDuplicates, lengthSortedWithDuplicates2, team2->getID(), team1->getID(), lengthSorted2); // O(n_team_ID2)
-    delete[] sortedId2WithDuplicates; // O(n_team_ID2)
+//    int lengthSorted2 = 0;
+//    ID** sortedId2 = deleteDuplicates(sortedId2WithDuplicates, lengthSortedWithDuplicates2, team2->getID(), team1->getID(), lengthSorted2); // O(n_team_ID2)
+//    delete[] sortedId2WithDuplicates; // O(n_team_ID2)
 
     // set all the contestants in sortedId2 to be registered in team1:
     moveIDsToTeam1(sortedId2,lengthSorted2, team2->getID(), team1); // O(n_team_ID2)
@@ -248,25 +313,33 @@ ID** mergeIDsToArray(Team* team1, Team* team2, int& newTeamSize) { // O(n_team_I
 }
 
 // explain mergeStrengthsToArray:
-Strength** mergeStrengthsToArray(Team* team1, Team* team2){ // O(n_team_ID1 + n_team_ID2){
-    Strength** sortedStrength1 = team1->getSortedStrengthArray(); // O(n_team_ID1)
-    Strength** sortedStrength2WithDuplicates = team2->getSortedStrengthArray(); // O(n_team_ID2)
+void mergeStrengthsToArray(Strength** mergedArray,Team* team1, Team* team2){ // O(n_team_ID1 + n_team_ID2){
+    Strength** sortedStrength1 = new Strength*[team1->getSize()];
+    team1->getSortedStrengthArray(sortedStrength1); // O(n_team_ID1)
+
+    Strength** sortedStrength2WithDuplicates = new Strength*[team2->getSize()] ;
+    team2->getSortedStrengthArray(sortedStrength2WithDuplicates); // O(n_team_ID2)
 
     if (sortedStrength1 == nullptr && sortedStrength2WithDuplicates == nullptr){
-        return nullptr;
+        mergedArray = nullptr;
+        return;
     }
     if (sortedStrength1 == nullptr){
-        return sortedStrength2WithDuplicates;
+        mergedArray = sortedStrength2WithDuplicates;
+        return;
     }
     if (sortedStrength2WithDuplicates == nullptr){
-        return sortedStrength1;
+        mergedArray = sortedStrength1;
+        return;
     }
+
     int lengthSortedStrength2 = ZERO;
-    Strength** sortedStrength2 = deleteDuplicates(sortedStrength2WithDuplicates, team2->getSize(), team2->getID(), team1->getID(), lengthSortedStrength2); // O(n_team_ID2)
+
+    deleteDuplicates(sortedStrength2WithDuplicates, team2->getSize(), team2->getID(), team1->getID(), lengthSortedStrength2); // O(n_team_ID2)
 
     delete[] sortedStrength2WithDuplicates; // O(n_team_ID2)
 
-    return mergeArrays(sortedStrength1, sortedStrength2, team1->getSize(), lengthSortedStrength2); // O(n_team_ID1 + n_team_ID2)
+    mergeArrays(mergedArray, sortedStrength1, sortedStrength2, team1->getSize(), lengthSortedStrength2); // O(n_team_ID1 + n_team_ID2)
 }
 
 
@@ -1119,26 +1192,26 @@ void Team::assignNewSubtrees(AVL_Tree<ID>* LEFT_ID_Tree,
     m_RIGHT_Strength_Tree = RIGHT_Strength_Tree;
 }
 
-ID** Team::getSortedIdArray() const{
+void Team::getSortedIdArray(ID** sortedIDArray) const{
     ID** LEFT_sortedIDArray = m_LEFT_ID_Tree->inOrderToArray();
     ID** MIDDLE_sortedIDArray = m_MIDDLE_ID_Tree->inOrderToArray();
     ID** RIGHT_sortedIDArray = m_RIGHT_ID_Tree->inOrderToArray();
 
-    ID** tempArray = mergeArrays(LEFT_sortedIDArray, MIDDLE_sortedIDArray, m_LEFT_ID_Tree->getSize(), m_MIDDLE_ID_Tree->getSize());
-    ID** sortedIDArray = mergeArrays(tempArray, RIGHT_sortedIDArray, m_LEFT_ID_Tree->getSize() + m_MIDDLE_ID_Tree->getSize(), m_RIGHT_ID_Tree->getSize());
-
-    return sortedIDArray;
+    ID** tempArray = new ID*[m_LEFT_ID_Tree->getSize() + m_MIDDLE_ID_Tree->getSize()];
+    mergeArrays(tempArray, LEFT_sortedIDArray, MIDDLE_sortedIDArray, m_LEFT_ID_Tree->getSize(), m_MIDDLE_ID_Tree->getSize());
+    mergeArrays(sortedIDArray, tempArray, RIGHT_sortedIDArray, m_LEFT_ID_Tree->getSize() + m_MIDDLE_ID_Tree->getSize(), m_RIGHT_ID_Tree->getSize());
+    delete[] tempArray;
 }
 
-Strength** Team::getSortedStrengthArray() const{
+void Team::getSortedStrengthArray(Strength** sortedStrengthArray) const{
     Strength** LEFT_sortedIDArray = m_LEFT_Strength_Tree->inOrderToArray();
     Strength** MIDDLE_sortedIDArray = m_MIDDLE_Strength_Tree->inOrderToArray();
     Strength** RIGHT_sortedIDArray = m_RIGHT_Strength_Tree->inOrderToArray();
 
-    Strength** tempArray = mergeArrays(LEFT_sortedIDArray, MIDDLE_sortedIDArray, m_LEFT_Strength_Tree->getSize(), m_MIDDLE_Strength_Tree->getSize());
-    Strength** sortedStrengthArray = mergeArrays(tempArray, RIGHT_sortedIDArray, m_LEFT_Strength_Tree->getSize() + m_MIDDLE_Strength_Tree->getSize(), m_RIGHT_Strength_Tree->getSize());
-
-    return sortedStrengthArray;
+    Strength** tempArray = new Strength * [ m_LEFT_Strength_Tree->getSize() + m_MIDDLE_Strength_Tree->getSize()];
+    mergeArrays(tempArray, LEFT_sortedIDArray, MIDDLE_sortedIDArray, m_LEFT_Strength_Tree->getSize(), m_MIDDLE_Strength_Tree->getSize());
+    mergeArrays(sortedStrengthArray, tempArray, RIGHT_sortedIDArray, m_LEFT_Strength_Tree->getSize() + m_MIDDLE_Strength_Tree->getSize(), m_RIGHT_Strength_Tree->getSize());
+    delete[] tempArray;
 }
 
 void Team::removeContestantFromTeam(Contestant* contestant) {

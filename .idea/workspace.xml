@@ -22,19 +22,14 @@
   <component name="ChangeListManager">
     <list default="true" id="ee6379aa-e38b-43ed-b738-6074c08a537a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AVL Tree/AVL_Tree.h" beforeDir="false" afterPath="$PROJECT_DIR$/AVL Tree/AVL_Tree.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Classes/Contestant_Country_ID_Strength_Team.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Classes/Contestant_Country_ID_Strength_Team.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Classes/Contestant_Country_ID_Strength_Team.h" beforeDir="false" afterPath="$PROJECT_DIR$/Classes/Contestant_Country_ID_Strength_Team.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GR files/Scripts/maina1.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/GR files/Scripts/maina1.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Wet_1__Data_Structures.dir/Classes/Contestant_Country_ID_Strength_Team.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Wet_1__Data_Structures.dir/Classes/Contestant_Country_ID_Strength_Team.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Wet_1__Data_Structures.dir/GR_files/Scripts/Olympicsa1.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Wet_1__Data_Structures.dir/GR_files/Scripts/Olympicsa1.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Wet_1__Data_Structures.dir/GR_files/Scripts/maina1.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Wet_1__Data_Structures.dir/GR_files/Scripts/maina1.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Wet_1__Data_Structures.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Wet_1__Data_Structures.exe" afterDir="false" />
     </list>
     <list id="03773ba4-af21-45a8-a46a-f0c82d655b7f" name="Changes by Administrator" comment="" />
+    <list id="0b8ae176-e959-4ebf-a23b-66775ae37a63" name="Changes by ayals" comment="">
+      <change beforePath="$PROJECT_DIR$/Classes/Contestant_Country_ID_Strength_Team.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Classes/Contestant_Country_ID_Strength_Team.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Classes/Contestant_Country_ID_Strength_Team.h" beforeDir="false" afterPath="$PROJECT_DIR$/Classes/Contestant_Country_ID_Strength_Team.h" afterDir="false" />
+    </list>
     <list id="4a348711-4b6d-4534-9607-8bd66a84583e" name="Changes by Shani Sazbon" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +42,38 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/Classes/Contestant_Country_ID_Strength_Team.cpp">
+      <ranges>
+        <range start1="20" end1="21" start2="20" end2="21" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
+        <range start1="24" end1="25" start2="24" end2="25" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
+        <range start1="28" end1="30" start2="28" end2="28" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
+        <range start1="63" end1="64" start2="61" end2="61" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
+        <range start1="66" end1="67" start2="63" end2="64" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
+        <range start1="70" end1="71" start2="67" end2="68" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
+        <range start1="72" end1="74" start2="69" end2="69" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
+        <range start1="102" end1="103" start2="97" end2="97" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
+        <range start1="145" end1="156" start2="139" end2="171" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
+        <range start1="157" end1="179" start2="172" end2="173" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
+        <range start1="181" end1="200" start2="175" end2="194" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
+        <range start1="207" end1="207" start2="201" end2="259" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
+        <range start1="209" end1="211" start2="261" end2="263" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
+        <range start1="213" end1="216" start2="265" end2="281" changelist="ee6379aa-e38b-43ed-b738-6074c08a537a" />
+        <range start1="236" end1="239" start2="301" end2="304" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
+        <range start1="250" end1="253" start2="315" end2="321" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
+        <range start1="255" end1="256" start2="323" end2="325" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
+        <range start1="258" end1="259" start2="327" end2="329" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
+        <range start1="261" end1="262" start2="331" end2="333" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
+        <range start1="263" end1="263" start2="334" end2="335" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
+        <range start1="264" end1="265" start2="336" end2="338" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
+        <range start1="268" end1="269" start2="341" end2="342" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
+        <range start1="1121" end1="1122" start2="1194" end2="1195" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
+        <range start1="1126" end1="1130" start2="1199" end2="1203" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
+        <range start1="1132" end1="1133" start2="1205" end2="1206" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
+        <range start1="1137" end1="1141" start2="1210" end2="1214" changelist="0b8ae176-e959-4ebf-a23b-66775ae37a63" />
+      </ranges>
+    </file>
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
@@ -119,6 +146,7 @@
       <workItem from="1709059193054" duration="126000" />
       <workItem from="1709059603452" duration="1841000" />
       <workItem from="1709114599126" duration="898000" />
+      <workItem from="1709116751216" duration="6057000" />
     </task>
     <servers />
   </component>
@@ -131,20 +159,6 @@
     <isAutomaticReloadCMake value="true" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/GR files/Scripts/maina1.cpp</url>
-          <line>1238</line>
-          <option name="timeStamp" value="286" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/GR files/Scripts/maina1.cpp</url>
-          <line>1233</line>
-          <option name="timeStamp" value="287" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="CMakeRunConfiguration">
         <watch expression="id" />

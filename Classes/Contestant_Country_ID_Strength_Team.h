@@ -240,9 +240,9 @@ public:
                            AVL_Tree<Strength>* MIDDLE_Strength_Tree,
                            AVL_Tree<Strength>* RIGHT_Strength_Tree);
 
-    ID** getSortedIdArray() const;
+    void getSortedIdArray(ID**) const;
 
-    Strength** getSortedStrengthArray() const;
+    void getSortedStrengthArray(Strength**) const;
 };
 
 class Contestant{
