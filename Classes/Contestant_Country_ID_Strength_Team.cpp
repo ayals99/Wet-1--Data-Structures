@@ -541,6 +541,7 @@ StatusType Team::mergeTeams(Team* team2) {
         int fullSize = this->getSize() + team2->getSize();
         ID** mergedIDArray = new ID*[fullSize];
         mergeArrays(mergedIDArray, sortedId1, sortedId2WithDuplicates,this->getSize() ,team2->getSize());
+
         delete[] sortedId1;
         delete[] sortedId2WithDuplicates;
         sortedId1 = nullptr;
@@ -563,7 +564,6 @@ StatusType Team::mergeTeams(Team* team2) {
         this->getSortedStrengthArray(sortedStrength1); // O(n_team_ID1)
 
         //create a Strength array for team 2
-        //TODO:  remember to delete sortedStrength2WithDuplicates
         Strength** sortedStrength2WithDuplicates = new Strength*[team2->getSize()] ;
         team2->getSortedStrengthArray(sortedStrength2WithDuplicates);
 
@@ -574,8 +574,9 @@ StatusType Team::mergeTeams(Team* team2) {
         delete[] sortedStrength1;
         sortedId1 = nullptr;
 
-        delete[] sortedId2WithDuplicates;
+        delete[] sortedStrength2WithDuplicates;
         sortedStrength2WithDuplicates = nullptr;
+
 
         Strength** mergedStrengthArrayWithoutDuplicates = new Strength*[numOfNonDuplicates];
         deleteDuplicates(mergedStrengthArrayWithoutDuplicates,
@@ -584,8 +585,6 @@ StatusType Team::mergeTeams(Team* team2) {
                          this->getID());
         delete[] mergedStrengthArray;
         mergedStrengthArray = nullptr;
-
-
 
         int leftTreeSize = ceilDivisionByThree(numOfNonDuplicates);
         int middleTreeSize = ceilDivisionByThree(numOfNonDuplicates);

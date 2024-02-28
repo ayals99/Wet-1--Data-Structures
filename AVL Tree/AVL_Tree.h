@@ -413,21 +413,14 @@ public:
         AUX_removeDataFromTree(m_root);
     };
 
-//    void print(T** array, int length){
-//        for(int i = 0; i < length; i++){
-//            std::cout << *(array[i]) << " ";
-//        }
-//    }
-
-    T** inOrderToArray(T** array){
+    void inOrderToArray(T** array){
         if (this->m_size == ZERO){
-            return nullptr;
+            return;
         }
         int* index = new int(ZERO);
         array = AUX_inOrderToArray(m_root, array, index);
         assert( *index == m_size );
         delete index;
-        return array;
     }
 
 };

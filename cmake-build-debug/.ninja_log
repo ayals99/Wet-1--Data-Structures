@@ -1,10 +1,14 @@
 # ninja log v5
-5	2347	7308448661466745	CMakeFiles/Wet_1__Data_Structures.dir/GR_files/Scripts/maina1.cpp.obj	831018badabc36b0
-2347	2908	7308448666778595	Wet_1__Data_Structures.exe	4200fbde76a39120
-10	2212	7308448659907137	CMakeFiles/Wet_1__Data_Structures.dir/GR_files/Scripts/Olympicsa1.cpp.obj	5401202d70b70b0f
-1	126	7308454083930182	build.ninja	ba77d4b7f14717c
-16	2974	7308446675471271	CMakeFiles/Wet_1__Data_Structures.dir/Classes/Contestant_Country_ID_Strength_Team.cpp.obj	473c8dfca5ff66cf
-1	903	7308454201617574	CMakeFiles/Wet_1__Data_Structures.dir/GR_files/Scripts/Olympicsa1.cpp.obj	bd772deda167184d
-12	916	7308454201737571	CMakeFiles/Wet_1__Data_Structures.dir/Classes/Contestant_Country_ID_Strength_Team.cpp.obj	bf69bd10b0d9fe99
 7	993	7308454202528842	CMakeFiles/Wet_1__Data_Structures.dir/GR_files/Scripts/maina1.cpp.obj	bf9013c50bcc6f69
 993	1121	7308454203750168	Wet_1__Data_Structures.exe	dacdb56fd447a8a5
+1	903	7308454201617574	CMakeFiles/Wet_1__Data_Structures.dir/GR_files/Scripts/Olympicsa1.cpp.obj	bd772deda167184d
+1	126	7308473104797595	build.ninja	ba77d4b7f14717c
+12	916	7308454201737571	CMakeFiles/Wet_1__Data_Structures.dir/Classes/Contestant_Country_ID_Strength_Team.cpp.obj	bf69bd10b0d9fe99
+4	502	7308473120320705	CMakeFiles/Wet_1__Data_Structures.dir/GR_files/Scripts/Olympicsa1.cpp.obj	5401202d70b70b0f
+1	511	7308473120430747	CMakeFiles/Wet_1__Data_Structures.dir/GR_files/Scripts/maina1.cpp.obj	831018badabc36b0
+7	519	7308473120520674	CMakeFiles/Wet_1__Data_Structures.dir/Classes/Contestant_Country_ID_Strength_Team.cpp.obj	473c8dfca5ff66cf
+530	631	7308473121590895	Wet_1__Data_Structures.exe	4200fbde76a39120
+4	476	7308477435273212	CMakeFiles/Wet_1__Data_Structures.dir/GR_files/Scripts/maina1.cpp.obj	831018badabc36b0
+477	623	7308477436643510	Wet_1__Data_Structures.exe	4200fbde76a39120
+3	461	7308477857405586	CMakeFiles/Wet_1__Data_Structures.dir/GR_files/Scripts/maina1.cpp.obj	831018badabc36b0
+461	572	7308477858475293	Wet_1__Data_Structures.exe	4200fbde76a39120

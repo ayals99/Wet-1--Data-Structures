@@ -146,6 +146,9 @@ bool test_1(){
     if (!tree->printTreeInOrder()){
         return false;
     }
+
+    delete tree;
+
     return true;
 }
 
@@ -186,6 +189,8 @@ bool test_2(){
         if (!tree->printTreeInOrder()){
             return false;
         }
+
+        delete tree;
         return true;
 }
 
@@ -272,6 +277,15 @@ bool Strength_and_ID_test(){
     }
     std::cout << std::endl;
 
+    delete a;
+    delete b;
+    delete c;
+    delete d;
+    delete e;
+    delete f;
+
+    delete ID_Tree;
+    delete Strength_Tree;
 
     return true;
 }
@@ -323,7 +337,7 @@ bool testContestantMemberFunctions(){
         std::cout << "operator== failed" << std::endl;
         return false;
     }
-    if ( *(test_contestant) >= *(test_contestant2) ) {
+    if ( *(test_contestant2) >= *(test_contestant) ) {
         std::cout << "operator>= failed" << std::endl;
         return false;
     }
@@ -345,6 +359,10 @@ bool testContestantMemberFunctions(){
     }
 
     std::cout << "Contestant Test Passed" << std::endl;
+
+    delete test_contestant;
+    delete test_contestant2;
+    delete team;
 
     return true;
 }
@@ -592,6 +610,35 @@ bool Team_test(){
     }
 
     std::cout << "Team Test Passed" << std::endl;
+
+    delete team0;
+    delete team1;
+
+    delete country0;
+    delete country1;
+
+    delete contestant1;
+    delete contestant2;
+    delete contestant3;
+    delete contestant4;
+    delete contestant5;
+    delete contestant6;
+    delete contestant7;
+    delete contestant8;
+    delete contestant9;
+    delete contestant10;
+    delete contestant11;
+    delete contestant12;
+    delete contestant13;
+    delete contestant14;
+    delete contestant15;
+    delete contestant16;
+    delete contestant17;
+    delete contestant18;
+    delete contestant19;
+    delete contestant20;
+    delete contestant21;
+
     return true;
 }
 
@@ -1116,6 +1163,7 @@ bool olympicTest(){
         return false;
     }
 
+   delete olympics;
    std::cout << "First Olympic Test Passed" << std::endl;
    return true;
 }
@@ -1246,6 +1294,7 @@ bool unite_teams_test(){
         return false;
     }
 
+    delete olympics;
     std::cout << "Unite Teams Test Passed" << std::endl;
     return true;
 
