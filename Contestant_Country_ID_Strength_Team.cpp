@@ -170,8 +170,6 @@ void deleteDuplicates(Strength** mergedWithoutDuplicates, Strength** mergedStren
     {
         if (i < fullSize - 1)
         {
-            Strength* a = mergedStrengthArray[i];
-            Strength* b = mergedStrengthArray[i+1];
             if (mergedStrengthArray[i]->getContestant()->getID() == mergedStrengthArray[i+1]->getContestant()->getID())
             {
                 if (mergedStrengthArray[i]->getContestant()->isRegisteredInTeam(mainTeamID))
