@@ -22,29 +22,15 @@
   <component name="ChangeListManager">
     <list default="true" id="ee6379aa-e38b-43ed-b738-6074c08a537a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AVL Tree/AVL_Tree.h" beforeDir="false" afterPath="$PROJECT_DIR$/AVL Tree/AVL_Tree.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Classes/Contestant_Country_ID_Strength_Team.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Classes/Contestant_Country_ID_Strength_Team.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GR files/Scripts/Olympicsa1.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GR files/Scripts/Olympicsa1.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GR files/Scripts/our_Main.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GR files/Scripts/wet1util.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GR files/Tests/test1.in" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GR files/Tests/test1.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests_Wet_1/my_unite_test.out" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/my_unite_test.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests_Wet_1/my_unite_test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/my_unite_test.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-72cef17d527c12d4c935.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-3229d8ffe0a05e192533.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2024-02-28T18-15-10-0505.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-Wet_1__Data_Structures-Debug-796046cb3bca794b8328.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contestant_Country_ID_Strength_Team.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Contestant_Country_ID_Strength_Team.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Olympicsa1.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Olympicsa1.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Wet_1__Data_Structures.dir/Classes/Contestant_Country_ID_Strength_Team.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Wet_1__Data_Structures.dir/Classes/Contestant_Country_ID_Strength_Team.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Wet_1__Data_Structures.dir/Contestant_Country_ID_Strength_Team.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Wet_1__Data_Structures.dir/Contestant_Country_ID_Strength_Team.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Wet_1__Data_Structures.dir/Olympicsa1.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Wet_1__Data_Structures.dir/Olympicsa1.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Wet_1__Data_Structures.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Wet_1__Data_Structures.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/test2.out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/test2.out.txt" afterDir="false" />
     </list>
     <list id="03773ba4-af21-45a8-a46a-f0c82d655b7f" name="Changes by Administrator" comment="" />
     <list id="0b8ae176-e959-4ebf-a23b-66775ae37a63" name="Changes by ayals" comment="" />
@@ -80,7 +66,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "CMake Application.Wet_1__Data_Structures.executor": "Debug",
+    "CMake Application.Wet_1__Data_Structures.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
@@ -107,11 +93,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Wet_1__Data_Structures" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="&quot;C:\Users\ayals\OneDrive\Documents\GitHub\Wet-1--Data-Structures\GR files\Tests\test1.in&quot; &quot;C:\Users\ayals\OneDrive\Documents\GitHub\Wet-1--Data-Structures\GR files\Tests\test1.out&quot;" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Wet_1__Data_Structures" TARGET_NAME="Wet_1__Data_Structures" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Wet_1__Data_Structures" RUN_TARGET_NAME="Wet_1__Data_Structures">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -152,6 +133,7 @@
       <workItem from="1709143909268" duration="1634000" />
       <workItem from="1709195335735" duration="646000" />
       <workItem from="1709201672550" duration="3110000" />
+      <workItem from="1709206979129" duration="10993000" />
     </task>
     <servers />
   </component>
@@ -164,6 +146,20 @@
     <isAutomaticReloadCMake value="true" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Contestant_Country_ID_Strength_Team.cpp</url>
+          <line>556</line>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Contestant_Country_ID_Strength_Team.cpp</url>
+          <line>173</line>
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="CMakeRunConfiguration">
         <watch expression="id" />
@@ -277,6 +273,33 @@
         <watch expression="olympics-&gt;m_teamTree-&gt;m_root-&gt;m_right-&gt;m_left-&gt;m_data-&gt;m_RIGHT_ID_Tree-&gt;m_root-&gt;m_data" />
         <watch expression="olympics-&gt;m_teamTree-&gt;m_root-&gt;m_right-&gt;m_left-&gt;m_data-&gt;m_RIGHT_ID_Tree-&gt;m_root-&gt;m_data" />
         <watch expression="olympics-&gt;m_teamTree-&gt;m_root-&gt;m_right-&gt;m_left-&gt;m_data-&gt;m_RIGHT_ID_Tree-&gt;m_root-&gt;m_data" />
+        <watch expression="this-&gt;m_LEFT_ID_Tree-&gt;m_root-&gt;m_data-&gt;m_contestant-&gt;m_strength" />
+        <watch expression="this-&gt;m_contestantTree-&gt;m_root-&gt;m_data" />
+        <watch expression="this-&gt;m_contestantTree-&gt;m_root-&gt;m_data" />
+        <watch expression="this-&gt;m_contestantTree-&gt;m_root-&gt;m_data" />
+        <watch expression="this-&gt;m_teamTree-&gt;m_root-&gt;m_right-&gt;m_data-&gt;m_MIDDLE_ID_Tree" />
+        <watch expression="this-&gt;m_contestantTree" />
+        <watch expression="this-&gt;m_countryTree" />
+        <watch expression="this-&gt;m_teamTree-&gt;m_root-&gt;m_data-&gt;m_LEFT_ID_Tree-&gt;m_root-&gt;m_data-&gt;m_contestant-&gt;m_strength" />
+        <watch expression="this-&gt;m_teamTree-&gt;m_root-&gt;m_data-&gt;m_MIDDLE_ID_Tree-&gt;m_root-&gt;m_data-&gt;m_contestant-&gt;m_strength" />
+        <watch expression="this-&gt;m_teamTree-&gt;m_root-&gt;m_data-&gt;m_MIDDLE_Strength_Tree-&gt;m_root" />
+        <watch expression="this-&gt;m_countryTree" />
+        <watch expression="this-&gt;m_countryTree" />
+        <watch expression="this-&gt;m_teamTree-&gt;m_root-&gt;m_data-&gt;m_LEFT_ID_Tree-&gt;m_root-&gt;m_data-&gt;m_contestant-&gt;m_sport" />
+        <watch expression="this-&gt;m_contestantTree" />
+        <watch expression="this-&gt;m_teamTree-&gt;m_root-&gt;m_data" />
+        <watch expression="this-&gt;m_teamTree-&gt;m_root-&gt;m_data" />
+        <watch expression="this-&gt;m_teamTree-&gt;m_root-&gt;m_data" />
+        <watch expression="team2-&gt;m_MIDDLE_ID_Tree" />
+        <watch expression="team2-&gt;m_MIDDLE_ID_Tree" />
+        <watch expression="team2-&gt;m_MIDDLE_ID_Tree" />
+        <watch expression="team2-&gt;m_MIDDLE_ID_Tree" />
+        <watch expression="sortedId2WithDuplicates" />
+        <watch expression="sortedId2WithDuplicates" />
+        <watch expression="mergedIDArray" />
+        <watch expression="mergedIDArray" />
+        <watch expression="mergedWithoutDuplicates" />
+        <watch expression="mergedIDArray-&gt;*mergedIDArray-&gt;m_contestant" />
       </configuration>
     </watches-manager>
   </component>

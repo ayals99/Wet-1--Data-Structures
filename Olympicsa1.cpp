@@ -278,6 +278,7 @@ StatusType Olympics::add_contestant_to_team(int teamId,int contestantId){ // O(l
     catch(std::bad_alloc& e){
         return StatusType::ALLOCATION_ERROR;
     }
+
 }
 
 //     Pseudocode:
