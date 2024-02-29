@@ -1,5 +1,6 @@
 #include "Olympicsa1.h"
 
+static int hitCount = 0;
 static const int MINIMUM_AUSTERITY_TEAM_SIZE = 3;
 
 Olympics::Olympics(){ //O(1)
@@ -27,7 +28,6 @@ StatusType Olympics::add_country(int countryId, int medals){ // O(log k)
     try {
         Country* newCountry = new Country(countryId, medals);
         m_countryTree->insert(newCountry); // O(log k)
-        newCountry->incrementTeamCounter(); // O(1)
         return StatusType::SUCCESS;
     }
     catch (std::bad_alloc& e){
@@ -98,6 +98,7 @@ StatusType Olympics::add_team(int teamId,int countryId,Sport sport){ // O(log m 
         }
         Team* newTeam = new Team(teamId, countryId, sport, country);
         m_teamTree->insert(newTeam); // O(log m)
+        country->incrementTeamCounter(); // O(1)
         return StatusType::SUCCESS;
     }
     catch (std::bad_alloc& e){
@@ -312,7 +313,7 @@ StatusType Olympics::remove_contestant_from_team(int teamId,int contestantId) { 
         if (contestantToUnregister == nullptr) {
             return StatusType::FAILURE;
         }
-        Team *draftingTeam = m_teamTree->find(teamId); // O(log m)
+        Team* draftingTeam = m_teamTree->find(teamId); // O(log m)
         if (draftingTeam == nullptr) {
             return StatusType::FAILURE;
         }
@@ -322,7 +323,8 @@ StatusType Olympics::remove_contestant_from_team(int teamId,int contestantId) { 
         contestantToUnregister->unregisterWithTeam(teamId); // O(1)
         draftingTeam->removeContestantFromTeam(contestantToUnregister); // O(log n)
         return StatusType::SUCCESS;
-    }catch (std::bad_alloc& e){
+    }
+    catch (std::bad_alloc& e){
         return StatusType::ALLOCATION_ERROR;
     }
 }
@@ -466,6 +468,7 @@ output_t<int> Olympics::get_medals(int countryId){ // O(log k)
 //    If allocation failed, return output_t<int>(StatusType::FAILURE).
 
 output_t<int> Olympics::get_team_strength(int teamId){ // O(log m)
+    hitCount++;
     if (teamId <= ZERO){
         return StatusType::INVALID_INPUT;
     }

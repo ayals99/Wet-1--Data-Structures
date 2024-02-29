@@ -1076,10 +1076,6 @@ void Team::removeContestantFromTeam(Contestant* contestant) {
     this->updateTeamStrength(); // O(log(n)
     //update the team austerity
     this->updateAusterity(); // O(log(n)
-
-    //update the contestant's team array:
-    int indexInContestant = findTeamIndex(contestant,this->getID());
-    contestant->removeTeam(indexInContestant);
 }
 
 void Team::removeContestantFromSubtrees(Contestant *contestant) {
@@ -1093,8 +1089,7 @@ void Team::removeContestantFromSubtrees(Contestant *contestant) {
         m_LEFT_ID_Tree->remove(matchingID); // O(log(n)
 
     }
-
-        // if the contestant is not in the left subtree, check the middle subtree
+    // if the contestant is not in the left subtree, check the middle subtree
     else if(m_MIDDLE_ID_Tree->find(contestantID) != nullptr){
         matchingID = m_MIDDLE_ID_Tree->find(contestantID); // O(log(n)
         m_MIDDLE_Strength_Tree->remove(matchingID->getParallelStrength()); // O(log(n)

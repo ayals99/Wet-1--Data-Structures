@@ -23,18 +23,23 @@
     <list default="true" id="ee6379aa-e38b-43ed-b738-6074c08a537a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Contestant_Country_ID_Strength_Team.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Contestant_Country_ID_Strength_Team.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests_Wet_1/MyTest.in" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/MyTest.in" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests_Wet_1/MyTest.out" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/MyTest.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2024-02-29T10-35-09-0909.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Olympicsa1.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Olympicsa1.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests_Wet_1/22ktestOut.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/22ktestOut.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests_Wet_1/22ktest_in.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/22ktest_in.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests_Wet_1/input1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/input1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests_Wet_1/my_unite_test.out" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/my_unite_test.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests_Wet_1/my_unite_test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/my_unite_test.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests_Wet_1/newTest.in" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/newTest.in" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests_Wet_1/newTestOut.out" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/newTestOut.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests_Wet_1/output1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/output1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Wet_1__Data_Structures.dir/Contestant_Country_ID_Strength_Team.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Wet_1__Data_Structures.dir/Contestant_Country_ID_Strength_Team.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Wet_1__Data_Structures.dir/Olympicsa1.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Wet_1__Data_Structures.dir/Olympicsa1.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Wet_1__Data_Structures.dir/maina1_costum_debug.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Wet_1__Data_Structures.dir/maina1_costum_debug.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Wet_1__Data_Structures.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Wet_1__Data_Structures.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/my_unite_test.out" beforeDir="false" afterPath="$PROJECT_DIR$/Tests_Wet_1/my_unite_test.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/my_unite_test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tests_Wet_1/my_unite_test.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/test2.out.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/maina1_costum_debug.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/maina1_costum_debug.cpp" afterDir="false" />
     </list>
     <list id="03773ba4-af21-45a8-a46a-f0c82d655b7f" name="Changes by Administrator" comment="" />
     <list id="0b8ae176-e959-4ebf-a23b-66775ae37a63" name="Changes by ayals" comment="" />
@@ -68,28 +73,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;CMake Application.Wet_1__Data_Structures.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ayals/OneDrive/Documents/GitHub/Wet-1--Data-Structures/CMakeLists.txt&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;structure.view.defaults.are.configured&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "CMake Application.Wet_1__Data_Structures.executor": "Debug",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/ayals/OneDrive/Documents/GitHub/Wet-1--Data-Structures/CMakeLists.txt",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "structure.view.defaults.are.configured": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\ayals\OneDrive\Documents\GitHub\Wet-1--Data-Structures\cmake-build-debug" />
@@ -98,12 +103,12 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+    <configuration name="Wet_1__Data_Structures" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="&quot;C:\Users\ayals\OneDrive\Documents\GitHub\Wet-1--Data-Structures\cmake-build-debug\MyTest.in&quot; &quot;C:\Users\ayals\OneDrive\Documents\GitHub\Wet-1--Data-Structures\cmake-build-debug\MyTestResults.txt&quot;" REDIRECT_INPUT="false" ELEVATE="true" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Wet_1__Data_Structures" TARGET_NAME="Wet_1__Data_Structures" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Wet_1__Data_Structures" RUN_TARGET_NAME="Wet_1__Data_Structures">
       <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Wet_1__Data_Structures" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="&quot;C:\Users\ayals\OneDrive\Documents\GitHub\Wet-1--Data-Structures\cmake-build-debug\MyTest.in&quot; &quot;C:\Users\ayals\OneDrive\Documents\GitHub\Wet-1--Data-Structures\cmake-build-debug\MyTestResults.txt&quot;" REDIRECT_INPUT="false" ELEVATE="true" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Wet_1__Data_Structures" TARGET_NAME="Wet_1__Data_Structures" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Wet_1__Data_Structures" RUN_TARGET_NAME="Wet_1__Data_Structures">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -145,6 +150,7 @@
       <workItem from="1709201672550" duration="3110000" />
       <workItem from="1709206979129" duration="11242000" />
       <workItem from="1709221232064" duration="467000" />
+      <workItem from="1709221747091" duration="3475000" />
     </task>
     <servers />
   </component>
@@ -160,9 +166,23 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Contestant_Country_ID_Strength_Team.cpp</url>
-          <line>554</line>
-          <option name="timeStamp" value="32" />
+          <condition expression="int i = 0; i &lt; 19; i++" language="ObjectiveC" mode="CODE_FRAGMENT" />
+          <dependency leave-enabled="true" master-id="0" />
+          <url>file://$PROJECT_DIR$/Olympicsa1.cpp</url>
+          <line>443</line>
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <dependency id="0" />
+          <url>file://$PROJECT_DIR$/Olympicsa1.cpp</url>
+          <line>417</line>
+          <option name="timeStamp" value="41" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <condition expression="hitCount == 31" language="ObjectiveC" />
+          <url>file://$PROJECT_DIR$/Olympicsa1.cpp</url>
+          <line>469</line>
+          <option name="timeStamp" value="42" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -306,6 +326,8 @@
         <watch expression="mergedIDArray" />
         <watch expression="mergedWithoutDuplicates" />
         <watch expression="mergedIDArray-&gt;*mergedIDArray-&gt;m_contestant" />
+        <watch expression="this-&gt;m_countryTree-&gt;m_root-&gt;m_data" />
+        <watch expression="this-&gt;m_contestantTree-&gt;m_root-&gt;m_right" />
       </configuration>
     </watches-manager>
   </component>
