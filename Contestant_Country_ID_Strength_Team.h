@@ -43,13 +43,14 @@ public:
     int getTeamCounter() const{
         return m_numberOfTeams;
     }
-
+    void incrementTeamCounter(){
+        m_numberOfTeams++;
+    }
+    void decrementTeamCounter(){
+        m_numberOfTeams--;
+    }
     int getContestantCounter() const{
         return m_numberOfContestants;
-    }
-
-    void decreaseTeamCounter(){
-        m_numberOfTeams--;
     }
 
     void decreaseContestantCounter(){

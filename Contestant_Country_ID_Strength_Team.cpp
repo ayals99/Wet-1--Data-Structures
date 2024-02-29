@@ -148,42 +148,45 @@ void deleteDuplicates(ID** mergedWithoutDuplicates, ID** mergedIDArray, int full
     assert(newArrayIndex == numberOfNonDuplicates);
 }
 
-void deleteDuplicates(Strength** mergedWithoutDuplicates, Strength** mergedIDArray, int fullSize, int numberOfNonDuplicates, int mainTeamID)
+void deleteDuplicates(Strength** mergedWithoutDuplicates, Strength** mergedStrengthArray, int fullSize, int numberOfNonDuplicates, int mainTeamID)
 {
+    if (mergedWithoutDuplicates == nullptr){
+        return;
+    }
     int newArrayIndex = 0;
     for (int i = 0; i < fullSize; i++, newArrayIndex++)
     {
         if (i < fullSize - 1)
         {
-            if (mergedIDArray[i]->getContestant()->getID() == mergedIDArray[i+1]->getContestant()->getID())
+            if (mergedStrengthArray[i]->getContestant()->getID() == mergedStrengthArray[i+1]->getContestant()->getID())
             {
-                if (mergedIDArray[i]->getContestant()->isRegisteredInTeam(mainTeamID))
+                if (mergedStrengthArray[i]->getContestant()->isRegisteredInTeam(mainTeamID))
                 {
-                    mergedWithoutDuplicates[newArrayIndex] = mergedIDArray[i];
-                    delete mergedIDArray[i+1];
-                    mergedIDArray[i+1] = nullptr;
+                    mergedWithoutDuplicates[newArrayIndex] = mergedStrengthArray[i];
+                    delete mergedStrengthArray[i+1];
+                    mergedStrengthArray[i+1] = nullptr;
                 }
                 else{
-                    mergedWithoutDuplicates[newArrayIndex] = mergedIDArray[i+1];
-                    delete mergedIDArray[i];
-                    mergedIDArray[i] = nullptr;
+                    mergedWithoutDuplicates[newArrayIndex] = mergedStrengthArray[i+1];
+                    delete mergedStrengthArray[i];
+                    mergedStrengthArray[i] = nullptr;
                 }
                 i++;
             }
             else
             {
-                mergedWithoutDuplicates[newArrayIndex] = mergedIDArray[i];
+                mergedWithoutDuplicates[newArrayIndex] = mergedStrengthArray[i];
             }
         }
         else{
-            mergedWithoutDuplicates[newArrayIndex] = mergedIDArray[i];
+            mergedWithoutDuplicates[newArrayIndex] = mergedStrengthArray[i];
         }
     }
     assert(newArrayIndex == numberOfNonDuplicates);
 }
 
 AVL_Tree<ID>* createEmptyTree(int numberOfElements){
-    auto* newTree = new AVL_Tree<ID>(); // O(1)
+    AVL_Tree<ID>* newTree = new AVL_Tree<ID>(); // O(1)
     int height  = (int)floor(log2(numberOfElements + 1));
     newTree->setRoot(AUX_EmptyTree<ID>(height)); // O(n)
 
@@ -225,6 +228,10 @@ AVL_Tree<ID>* ArrayToTree(ID** array, int numberOfElements){
 
 AVL_Tree<Strength>* ArrayToTree(Strength** strengthArray, int arrayLength, int treeSize, subtreePosition position) { // O(n)
     AVL_Tree<Strength>* newTree = createEmptyStrengthTree(treeSize); // O(n)
+
+    if (strengthArray == nullptr){
+        return newTree;
+    }
 
     Strength** POSITION_Array = new Strength*[treeSize]; // O(n)
 
@@ -548,7 +555,10 @@ StatusType Team::mergeTeams(Team* team2) {
         sortedId2WithDuplicates = nullptr;
 
         int numOfNonDuplicates = countNonDuplicates(mergedIDArray, fullSize);
-        ID** mergedIDArrayWithOutDuplicates = new ID*[numOfNonDuplicates];
+        ID** mergedIDArrayWithOutDuplicates = nullptr;
+        if (numOfNonDuplicates != ZERO) {
+            mergedIDArrayWithOutDuplicates= new ID *[numOfNonDuplicates];
+        }
 
 
         deleteDuplicates(mergedIDArrayWithOutDuplicates ,mergedIDArray,fullSize,numOfNonDuplicates, this->getID());
@@ -578,7 +588,10 @@ StatusType Team::mergeTeams(Team* team2) {
         sortedStrength2WithDuplicates = nullptr;
 
 
-        Strength** mergedStrengthArrayWithoutDuplicates = new Strength*[numOfNonDuplicates];
+        Strength** mergedStrengthArrayWithoutDuplicates = nullptr;
+        if (numOfNonDuplicates != ZERO) {
+            mergedStrengthArrayWithoutDuplicates = new Strength *[numOfNonDuplicates];
+        }
         deleteDuplicates(mergedStrengthArrayWithoutDuplicates,
                          mergedStrengthArray,
                          fullSize, numOfNonDuplicates,
@@ -602,7 +615,9 @@ StatusType Team::mergeTeams(Team* team2) {
             else{
                 currentPosition = RIGHT;
             }
-            mergedIDArrayWithOutDuplicates[i]->getParallelStrength()->setPosition(currentPosition); // O(1)
+            if (mergedIDArrayWithOutDuplicates != nullptr) {
+                mergedIDArrayWithOutDuplicates[i]->getParallelStrength()->setPosition(currentPosition); // O(1)
+            }
         }
 
 //      create three almost full ID subtrees with empty nodes //O(n_team_ID1 + n_team_ID2)

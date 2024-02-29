@@ -8,14 +8,11 @@ include_directories("GR files/Scripts")
 
 add_executable(Wet_1__Data_Structures
         "AVL Tree/AVL_Node.h"
-        "GR files/Scripts/maina1.cpp"
-        "GR files/Scripts/Olympicsa1.h"
-        "GR files/Scripts/wet1util.h"
         "AVL Tree/AVL_Tree.h"
-
-        "GR files/Scripts/Olympicsa1.cpp"
-        "GR files/Scripts/Olympicsa1.cpp"
-
-        "Classes/Contestant_Country_ID_Strength_Team.cpp"
-        "Classes/Contestant_Country_ID_Strength_Team.h"
+        "Olympicsa1.h"
+        "wet1util.h"
+        "Olympicsa1.cpp"
+        "Contestant_Country_ID_Strength_Team.cpp"
+        "Contestant_Country_ID_Strength_Team.h"
+        "maina1_costum_debug.cpp"
 )

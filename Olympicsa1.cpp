@@ -27,6 +27,7 @@ StatusType Olympics::add_country(int countryId, int medals){ // O(log k)
     try {
         Country* newCountry = new Country(countryId, medals);
         m_countryTree->insert(newCountry); // O(log k)
+        newCountry->incrementTeamCounter(); // O(1)
         return StatusType::SUCCESS;
     }
     catch (std::bad_alloc& e){
@@ -133,8 +134,7 @@ StatusType Olympics::remove_team(int teamId) { // O(log m)
         if (teamToDelete->getSize() != ZERO) { // O(1)
             return StatusType::FAILURE;
         }
-        teamToDelete->getCountry()->decreaseTeamCounter(); // O(1)
-        //TODO: We need to make sure logic is right here
+        teamToDelete->getCountry()->decrementTeamCounter(); // O(1)
         m_teamTree->remove(teamToDelete); // O(log m)
 
 //        TODO: Make sure we do need to delete the team

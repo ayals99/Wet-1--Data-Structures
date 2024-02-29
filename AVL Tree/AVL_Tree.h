@@ -2,7 +2,7 @@
 #define WET_1_DATA_STRUCTURES_AVL_TREE_H
 
 #include "AVL_Node.h"
-#include "wet1util.h"
+#include "../wet1util.h"
 #include <cassert>
 #include <iostream>
 
@@ -374,6 +374,7 @@ public:
     }
 
     T* find_Minimum_In_Subtree(){
+        // TODO: add a check if the tree is empty
         return AUX_find_Minimum_In_Subtree(m_root)->getData();
     }
 
@@ -483,6 +484,9 @@ void AUX_insertArrayToTreeInOrder(T** array, AVL_Node<T>* current, int& index){ 
 template <class T>
 void insertArrayToTree(T** array, AVL_Tree<T>* tree){ // O(n)
     int index = 0;
+    if (array == nullptr){
+        return;
+    }
     AUX_insertArrayToTreeInOrder(array, tree->getRoot(), index);
 }
 
