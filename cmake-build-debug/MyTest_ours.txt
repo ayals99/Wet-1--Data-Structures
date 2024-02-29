@@ -1,0 +1,310 @@
+add_country: SUCCESS
+add_country: SUCCESS
+add_country: SUCCESS
+add_country: SUCCESS
+add_country: SUCCESS
+add_country: FAILURE
+add_country: INVALID_INPUT
+add_country: SUCCESS
+add_country: SUCCESS
+add_country: SUCCESS
+add_country: SUCCESS
+add_country: SUCCESS
+add_country: SUCCESS
+add_country: INVALID_INPUT
+remove_country: SUCCESS
+remove_country: FAILURE
+remove_country: SUCCESS
+remove_country: SUCCESS
+remove_country: INVALID_INPUT
+remove_country: INVALID_INPUT
+remove_country: FAILURE
+remove_country: SUCCESS
+remove_country: SUCCESS
+remove_country: SUCCESS
+remove_country: SUCCESS
+remove_country: SUCCESS
+remove_country: SUCCESS
+remove_country: SUCCESS
+remove_country: SUCCESS
+remove_country: FAILURE
+add_country: SUCCESS
+add_country: SUCCESS
+add_country: SUCCESS
+add_country: SUCCESS
+add_country: SUCCESS
+add_team: SUCCESS
+add_team: SUCCESS
+add_team: SUCCESS
+add_team: SUCCESS
+add_team: SUCCESS
+add_team: SUCCESS
+add_team: SUCCESS
+add_team: SUCCESS
+add_team: SUCCESS
+add_team: SUCCESS
+add_team: SUCCESS
+add_team: SUCCESS
+add_team: INVALID_INPUT
+add_team: INVALID_INPUT
+add_team: FAILURE
+add_team: FAILURE
+remove_team: SUCCESS
+remove_team: SUCCESS
+remove_team: FAILURE
+remove_team: INVALID_INPUT
+remove_team: INVALID_INPUT
+add_contestant: INVALID_INPUT
+add_contestant: INVALID_INPUT
+add_contestant: INVALID_INPUT
+add_contestant: SUCCESS
+add_contestant: SUCCESS
+add_contestant: SUCCESS
+add_contestant: SUCCESS
+add_contestant: SUCCESS
+add_contestant: SUCCESS
+add_contestant: SUCCESS
+add_contestant: SUCCESS
+add_contestant: SUCCESS
+add_contestant: SUCCESS
+add_contestant: SUCCESS
+add_contestant: FAILURE
+add_contestant: FAILURE
+add_contestant: FAILURE
+add_contestant: FAILURE
+add_contestant: FAILURE
+add_contestant: FAILURE
+add_contestant: FAILURE
+add_contestant: FAILURE
+remove_contestant: SUCCESS
+remove_contestant: SUCCESS
+remove_contestant: INVALID_INPUT
+remove_contestant: INVALID_INPUT
+remove_country: FAILURE
+remove_country: FAILURE
+add_contestant_to_team: INVALID_INPUT
+add_contestant_to_team: INVALID_INPUT
+add_contestant_to_team: INVALID_INPUT
+add_contestant_to_team: SUCCESS
+add_contestant_to_team: SUCCESS
+add_contestant_to_team: SUCCESS
+add_contestant_to_team: FAILURE
+add_contestant_to_team: FAILURE
+add_contestant_to_team: FAILURE
+add_contestant_to_team: SUCCESS
+add_contestant_to_team: SUCCESS
+add_contestant_to_team: FAILURE
+remove_contestant_from_team: INVALID_INPUT
+remove_contestant_from_team: INVALID_INPUT
+remove_contestant_from_team: FAILURE
+remove_contestant_from_team: FAILURE
+remove_contestant_from_team: FAILURE
+remove_contestant_from_team: SUCCESS
+update_contestant_strength: INVALID_INPUT
+update_contestant_strength: FAILURE
+update_contestant_strength: FAILURE
+update_contestant_strength: SUCCESS
+update_contestant_strength: SUCCESS
+update_contestant_strength: SUCCESS
+get_strength: INVALID_INPUT
+get_strength: INVALID_INPUT
+get_strength: FAILURE
+get_strength: SUCCESS, 3
+get_strength: SUCCESS, 40
+get_strength: SUCCESS, 50
+get_strength: SUCCESS, 1
+get_strength: SUCCESS, 7
+update_contestant_strength: SUCCESS
+get_strength: SUCCESS, 10
+get_medals: INVALID_INPUT
+get_medals: INVALID_INPUT
+get_medals: FAILURE
+add_country: SUCCESS
+add_country: SUCCESS
+add_country: SUCCESS
+add_country: SUCCESS
+add_country: SUCCESS
+add_country: SUCCESS
+get_medals: SUCCESS, 1
+get_medals: SUCCESS, 12
+get_medals: SUCCESS, 2
+get_medals: SUCCESS, 4
+get_medals: SUCCESS, 113
+get_medals: SUCCESS, 122
+add_team: SUCCESS
+get_team_strength: SUCCESS, 0
+austerity_measures: FAILURE
+add_contestant: SUCCESS
+add_contestant: SUCCESS
+add_contestant: SUCCESS
+add_contestant: SUCCESS
+add_contestant: SUCCESS
+add_contestant: SUCCESS
+add_contestant_to_team: SUCCESS
+get_team_strength: SUCCESS, 0
+austerity_measures: FAILURE
+add_contestant_to_team: SUCCESS
+get_team_strength: SUCCESS, 0
+austerity_measures: FAILURE
+add_contestant_to_team: SUCCESS
+get_team_strength: SUCCESS, 16
+austerity_measures: SUCCESS, 0
+add_contestant_to_team: SUCCESS
+get_team_strength: SUCCESS, 0
+austerity_measures: SUCCESS, 0
+add_contestant_to_team: SUCCESS
+get_team_strength: SUCCESS, 0
+austerity_measures: SUCCESS, 0
+add_contestant_to_team: SUCCESS
+get_team_strength: SUCCESS, 30
+austerity_measures: SUCCESS, 40
+get_team_strength: INVALID_INPUT
+get_team_strength: INVALID_INPUT
+get_team_strength: FAILURE
+austerity_measures: INVALID_INPUT
+austerity_measures: FAILURE
+austerity_measures: INVALID_INPUT
+add_contestant: SUCCESS
+add_contestant: SUCCESS
+add_contestant: SUCCESS
+add_contestant: SUCCESS
+add_contestant: SUCCESS
+add_contestant: SUCCESS
+add_contestant: SUCCESS
+add_contestant: SUCCESS
+add_contestant: SUCCESS
+add_team: SUCCESS
+add_team: SUCCESS
+add_team: SUCCESS
+unite_teams: FAILURE
+unite_teams: FAILURE
+unite_teams: FAILURE
+unite_teams: FAILURE
+unite_teams: FAILURE
+unite_teams: FAILURE
+add_contestant_to_team: SUCCESS
+add_contestant_to_team: SUCCESS
+add_contestant_to_team: SUCCESS
+add_contestant_to_team: SUCCESS
+add_contestant_to_team: SUCCESS
+add_contestant_to_team: SUCCESS
+add_contestant_to_team: FAILURE
+add_contestant_to_team: SUCCESS
+add_contestant_to_team: SUCCESS
+add_contestant_to_team: SUCCESS
+unite_teams: FAILURE
+unite_teams: FAILURE
+unite_teams: FAILURE
+unite_teams: FAILURE
+unite_teams: FAILURE
+unite_teams: FAILURE
+unite_teams: INVALID_INPUT
+unite_teams: INVALID_INPUT
+unite_teams: INVALID_INPUT
+add_contestant: SUCCESS
+add_contestant: SUCCESS
+add_contestant: SUCCESS
+add_team: SUCCESS
+get_team_strength: SUCCESS, 0
+austerity_measures: FAILURE
+unite_teams: SUCCESS
+get_team_strength: SUCCESS, 16
+get_team_strength: FAILURE
+austerity_measures: SUCCESS, 0
+austerity_measures: FAILURE
+add_team: SUCCESS
+get_team_strength: SUCCESS, 0
+austerity_measures: FAILURE
+unite_teams: SUCCESS
+get_team_strength: FAILURE
+get_team_strength: SUCCESS, 16
+austerity_measures: FAILURE
+austerity_measures: SUCCESS, 0
+add_contestant: SUCCESS
+add_contestant: SUCCESS
+add_contestant: SUCCESS
+add_team: SUCCESS
+add_contestant_to_team: SUCCESS
+unite_teams: SUCCESS
+get_team_strength: FAILURE
+get_team_strength: SUCCESS, 0
+austerity_measures: FAILURE
+austerity_measures: SUCCESS, 0
+add_team: SUCCESS
+add_contestant_to_team: SUCCESS
+add_contestant_to_team: SUCCESS
+unite_teams: SUCCESS
+get_team_strength: SUCCESS, 0
+get_team_strength: FAILURE
+austerity_measures: SUCCESS, 0
+austerity_measures: FAILURE
+add_team: SUCCESS
+add_contestant_to_team: SUCCESS
+unite_teams: SUCCESS
+get_team_strength: FAILURE
+get_team_strength: SUCCESS, 30
+austerity_measures: FAILURE
+austerity_measures: SUCCESS, 40
+remove_contestant_from_team: SUCCESS
+get_team_strength: SUCCESS, 0
+austerity_measures: SUCCESS, 0
+add_contestant_to_team: SUCCESS
+get_team_strength: SUCCESS, 30
+austerity_measures: SUCCESS, 40
+update_contestant_strength: SUCCESS
+get_team_strength: SUCCESS, 30
+austerity_measures: SUCCESS, 35
+add_team: SUCCESS
+add_contestant: SUCCESS
+add_contestant: SUCCESS
+add_contestant: SUCCESS
+add_contestant: SUCCESS
+add_contestant: SUCCESS
+add_contestant: SUCCESS
+add_contestant_to_team: SUCCESS
+add_contestant_to_team: SUCCESS
+add_contestant_to_team: SUCCESS
+add_contestant_to_team: SUCCESS
+add_contestant_to_team: SUCCESS
+add_contestant_to_team: SUCCESS
+get_team_strength: SUCCESS, 12
+austerity_measures: SUCCESS, 15
+remove_contestant_from_team: SUCCESS
+add_contestant_to_team: SUCCESS
+get_team_strength: SUCCESS, 23
+austerity_measures: SUCCESS, 24
+unite_teams: SUCCESS
+get_team_strength: SUCCESS, 0
+austerity_measures: SUCCESS, 0
+add_contestant_to_team: SUCCESS
+get_team_strength: SUCCESS, 31
+austerity_measures: SUCCESS, 31
+add_team: SUCCESS
+add_team: SUCCESS
+add_team: SUCCESS
+play_match: INVALID_INPUT
+play_match: INVALID_INPUT
+play_match: INVALID_INPUT
+play_match: INVALID_INPUT
+play_match: FAILURE
+play_match: FAILURE
+play_match: FAILURE
+play_match: FAILURE
+get_medals: SUCCESS, 1
+get_team_strength: SUCCESS, 0
+get_team_strength: SUCCESS, 31
+play_match: SUCCESS
+get_medals: SUCCESS, 2
+get_medals: SUCCESS, 12
+get_team_strength: SUCCESS, 0
+get_team_strength: SUCCESS, 0
+play_match: SUCCESS
+get_medals: SUCCESS, 2
+get_medals: SUCCESS, 13
+add_country: SUCCESS
+add_team: SUCCESS
+get_medals: SUCCESS, 2
+get_medals: SUCCESS, 2
+play_match: SUCCESS
+get_medals: SUCCESS, 2
+get_medals: SUCCESS, 2

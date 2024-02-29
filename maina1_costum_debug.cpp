@@ -25,8 +25,8 @@ int main_check()
     cout << "Welcome to the Olympics" << endl;
 
     // Input variables - for debug means
-    ifstream fin("newTest.in");
-    ofstream fout("newTest_ours.txt");
+    ifstream fin("22ktest_in.txt");
+    ofstream fout("22ktest_in_ours.txt");
 	
     int d1, d2, d3, g1;
     string b1;

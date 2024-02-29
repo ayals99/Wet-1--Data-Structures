@@ -171,7 +171,7 @@ austerity_measures: FAILURE
 austerity_measures: SUCCESS, 0
 add_contestant_to_team: SUCCESS
 add_contestant_to_team: SUCCESS
-get_team_strength: SUCCESS, 1800
+get_team_strength: SUCCESS, 2200
 austerity_measures: SUCCESS, 2200
 remove_team: FAILURE
 remove_contestant: FAILURE
@@ -188,5 +188,5 @@ austerity_measures: SUCCESS, 0
 get_team_strength: SUCCESS, 0
 remove_contestant_from_team: SUCCESS
 austerity_measures: SUCCESS, 2200
-get_team_strength: SUCCESS, 2200
+get_team_strength: SUCCESS, 1600
 remove_country: FAILURE

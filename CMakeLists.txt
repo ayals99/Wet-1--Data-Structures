@@ -14,5 +14,5 @@ add_executable(Wet_1__Data_Structures
         "Olympicsa1.cpp"
         "Contestant_Country_ID_Strength_Team.cpp"
         "Contestant_Country_ID_Strength_Team.h"
-        "maina1_costum_debug.cpp"
+        "our_Main.cpp"
 )

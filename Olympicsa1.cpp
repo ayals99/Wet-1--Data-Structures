@@ -1,7 +1,13 @@
 #include "Olympicsa1.h"
 
-static int hitCount = 0;
+//TODO: deleet this
+static int hitCount = 1;
+static int counter2 = 1;
+static int uniteCounter = 1;
+static int removeContestantFromTeam = 1;
+
 static const int MINIMUM_AUSTERITY_TEAM_SIZE = 3;
+
 
 Olympics::Olympics(){ //O(1)
     m_countryTree = new AVL_Tree<Country>(); // O(1)
@@ -243,7 +249,7 @@ StatusType Olympics::remove_contestant(int contestantId){ // O(log n)
 //      return StatusType::SUCCESS;
 
 StatusType Olympics::add_contestant_to_team(int teamId,int contestantId){ // O(log n + log m)
-
+    counter2++;
     if (teamId <= ZERO || contestantId <= ZERO){
         return StatusType::INVALID_INPUT;
     }
@@ -304,7 +310,7 @@ StatusType Olympics::add_contestant_to_team(int teamId,int contestantId){ // O(l
 //       	        return StatusType::FAILURE;
 
 StatusType Olympics::remove_contestant_from_team(int teamId,int contestantId) { // O(log n + log m)
-
+    removeContestantFromTeam++;
     if (teamId <= ZERO || contestantId <= ZERO) {
         return StatusType::INVALID_INPUT;
     }
@@ -486,6 +492,7 @@ output_t<int> Olympics::get_team_strength(int teamId){ // O(log m)
 
 
 StatusType Olympics::unite_teams(int teamId1,int teamId2) { // O(log m + n_team_ID1 + n_team_ID2)
+    uniteCounter++;
     if (teamId1 <= ZERO || teamId2 <= ZERO || teamId1 == teamId2) {
         return StatusType::INVALID_INPUT;
     }

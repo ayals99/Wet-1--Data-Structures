@@ -652,9 +652,15 @@ StatusType Team::mergeTeams(Team* team2) {
         delete[] mergedStrengthArray;
         mergedStrengthArray = nullptr;
 
-        int leftTreeSize = ceilDivisionByThree(numOfNonDuplicates);
-        int middleTreeSize = ceilDivisionByThree(numOfNonDuplicates);
-        int rightTreeSize = numOfNonDuplicates - leftTreeSize - middleTreeSize;
+        int leftTreeSize = (numOfNonDuplicates / THREE);
+        if ( (numOfNonDuplicates % THREE) >= ONE){
+            leftTreeSize++;
+        }
+        int middleTreeSize = (numOfNonDuplicates  / THREE);
+        if ( (numOfNonDuplicates % THREE) == TWO){
+            middleTreeSize++;
+        }
+        int rightTreeSize = (numOfNonDuplicates / THREE);
 
         //loop through mergedIdArray and for each ID, assign position to each parallelStrength:
         for (int i = 0; i < numOfNonDuplicates; i++){ // O(n)
@@ -1072,6 +1078,7 @@ void Team::getSortedStrengthArray(Strength** sortedStrengthArray) const{
 void Team::removeContestantFromTeam(Contestant* contestant) {
     removeContestantFromSubtrees(contestant); // O(log(n)
     m_size--;
+    balanceTrees();
     //update the team strength
     this->updateTeamStrength(); // O(log(n)
     //update the team austerity
@@ -1087,7 +1094,6 @@ void Team::removeContestantFromSubtrees(Contestant *contestant) {
     if (matchingID != nullptr){ // if the contestant is in the left subtree
         m_LEFT_Strength_Tree->remove(matchingID->getParallelStrength()); // O(log(n)
         m_LEFT_ID_Tree->remove(matchingID); // O(log(n)
-
     }
     // if the contestant is not in the left subtree, check the middle subtree
     else if(m_MIDDLE_ID_Tree->find(contestantID) != nullptr){
