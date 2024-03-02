@@ -300,10 +300,6 @@ Country* Team::getCountry() const{
     return m_country;
 }
 
-// TODO: use these functions in the implementation of Team::insertContestant() // O(log n)
-//               draftingTeam->updateTeamStrength; // O(log n)
-//               draftingTeam->updateAusterity();  // O(log n)
-
 StatusType Team::insertContestant(Contestant* contestantToRegister){// O(log n)
     assert (contestantToRegister != nullptr);
 
@@ -409,7 +405,6 @@ void Team::balanceTrees(){ // (1)
     int middle_size = m_MIDDLE_ID_Tree->getSize();
     int right_size = m_RIGHT_ID_Tree->getSize();
 
-    // TODO: add cases of empty subTrees
     if (left_size - middle_size == 1 && left_size - right_size == 2){
 //          transfer largest in left tree to middle:
         moveLargestIDFromTree1ToTree2(m_LEFT_ID_Tree,
@@ -837,8 +832,6 @@ int Team::calculateAusterity(){
                 m_size++;
                 this->balanceTrees();
 
-                // TODO: when debugging, check if the tree returned to original state
-
 //              second case: the smallest Strength in the group that's left without the border ID.
 
                 // Since tree has returned to original state, we need to remove the weakest strength in right/left tree again
@@ -924,8 +917,6 @@ void Team::delete_i_from_LeftTree(Contestant** LEFT_removedContestants, int i){
     }
     for (int t = 0; t < i; t++){
         Strength* removedStrength = m_LEFT_Strength_Tree->find_Minimum_In_Subtree(); // O(log(n))
-
-        // TODO: what to do if we want to remove more contestants than we have?
         if (removedStrength == nullptr){
             break;
         }

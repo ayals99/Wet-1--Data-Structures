@@ -276,9 +276,6 @@ public:
         return m_id == other.m_id;
     }
 
-// TODO: implement the following functions in the cpp file! otherwise it will be a circular include and we can't access members of Team
-//    bool isInTeam(int teamID); // Checks if registered in a specific team
-//    bool registeredInATeam();
     void registerWithTeam(Team* team);
 
     void unregisterWithTeam(int teamID);

@@ -1,11 +1,5 @@
 #include "Olympicsa1.h"
 
-//TODO: deleet this
-static int hitCount = 1;
-static int counter2 = 1;
-static int uniteCounter = 1;
-static int removeContestantFromTeam = 1;
-
 static const int MINIMUM_AUSTERITY_TEAM_SIZE = 3;
 
 
@@ -144,9 +138,6 @@ StatusType Olympics::remove_team(int teamId) { // O(log m)
         teamToDelete->getCountry()->decrementTeamCounter(); // O(1)
         m_teamTree->remove(teamToDelete); // O(log m)
 
-//        TODO: Make sure we do need to delete the team
-//        delete teamToDelete;
-
         return StatusType::SUCCESS;
     }
     catch (std::bad_alloc& e){
@@ -249,7 +240,6 @@ StatusType Olympics::remove_contestant(int contestantId){ // O(log n)
 //      return StatusType::SUCCESS;
 
 StatusType Olympics::add_contestant_to_team(int teamId,int contestantId){ // O(log n + log m)
-    counter2++;
     if (teamId <= ZERO || contestantId <= ZERO){
         return StatusType::INVALID_INPUT;
     }
@@ -310,7 +300,6 @@ StatusType Olympics::add_contestant_to_team(int teamId,int contestantId){ // O(l
 //       	        return StatusType::FAILURE;
 
 StatusType Olympics::remove_contestant_from_team(int teamId,int contestantId) { // O(log n + log m)
-    removeContestantFromTeam++;
     if (teamId <= ZERO || contestantId <= ZERO) {
         return StatusType::INVALID_INPUT;
     }
@@ -361,7 +350,6 @@ StatusType Olympics::remove_contestant_from_team(int teamId,int contestantId) { 
 void removeContestantFromAllTeamSubtrees(Contestant* contestant){ // O(log n)
     for (int i = 0; i < NUMBER_OF_TEAMS_ALLOWED_PER_PLAYER; i++){ // constant amount of iterations
         if (contestant->getTeam(i) != nullptr){
-            //TODO: we need to implement removeContestant in Team.cpp
             //removeContestantFromSubtrees should remove the data and then remove the node and balance the tree
             contestant->getTeam(i)->removeContestantFromSubtrees(contestant); // O(log n)
             contestant->getTeam(i)->decrementSize();
@@ -474,7 +462,6 @@ output_t<int> Olympics::get_medals(int countryId){ // O(log k)
 //    If allocation failed, return output_t<int>(StatusType::FAILURE).
 
 output_t<int> Olympics::get_team_strength(int teamId){ // O(log m)
-    hitCount++;
     if (teamId <= ZERO){
         return StatusType::INVALID_INPUT;
     }
@@ -492,7 +479,6 @@ output_t<int> Olympics::get_team_strength(int teamId){ // O(log m)
 
 
 StatusType Olympics::unite_teams(int teamId1,int teamId2) { // O(log m + n_team_ID1 + n_team_ID2)
-    uniteCounter++;
     if (teamId1 <= ZERO || teamId2 <= ZERO || teamId1 == teamId2) {
         return StatusType::INVALID_INPUT;
     }

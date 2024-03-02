@@ -374,7 +374,6 @@ public:
     }
 
     T* find_Minimum_In_Subtree(){
-        // TODO: add a check if the tree is empty
         return AUX_find_Minimum_In_Subtree(m_root)->getData();
     }
 
