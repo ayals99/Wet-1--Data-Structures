@@ -2,7 +2,6 @@
 
 static const int MINIMUM_AUSTERITY_TEAM_SIZE = 3;
 
-
 Olympics::Olympics(){ //O(1)
     m_countryTree = new AVL_Tree<Country>(); // O(1)
     m_teamTree = new AVL_Tree<Team>(); // O(1)
@@ -61,7 +60,7 @@ StatusType Olympics::remove_country(int countryId){ // O(log k)
         if (countryToDelete->getTeamCounter() != ZERO || countryToDelete->getContestantCounter() != ZERO){ // O(1)
             return StatusType::FAILURE;
         }
-//        delete countryToDelete;
+
         m_countryTree->remove(countryToDelete); // O(log k)
         return StatusType::SUCCESS;
     }
@@ -219,10 +218,6 @@ StatusType Olympics::remove_contestant(int contestantId){ // O(log n)
         catch (std::bad_alloc& e){
             return StatusType::ALLOCATION_ERROR;
         }
-
-        //        AYAL: I don't think we need this option of return FAILURE:
-        //        return StatusType::FAILURE;
-
 }
 
 //     Pseudocode:

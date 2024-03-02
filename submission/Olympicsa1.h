@@ -14,9 +14,10 @@
 
 #ifndef STREAMINGDBA1_H_
 #define STREAMINGDBA1_H_
-#include "Contestant_Country_ID_Strength_Team.h"
 
+#include "Contestant_Country_ID_Strength_Team.h"
 #include "wet1util.h"
+
 class Olympics {
 private:
     AVL_Tree<Country>* m_countryTree;

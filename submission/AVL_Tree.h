@@ -2,8 +2,7 @@
 #define WET_1_DATA_STRUCTURES_AVL_TREE_H
 
 #include "AVL_Node.h"
-#include "../wet1util.h"
-#include <cassert>
+#include "wet1util.h"
 #include <iostream>
 
 
@@ -20,8 +19,6 @@ private:
     /**Rotation Utility Functions **/
 
     AVL_Node<T>* rightRotation(AVL_Node<T>* originalRoot){
-        assert(originalRoot != nullptr);
-        assert(originalRoot->getLeft() != nullptr);
 
         AVL_Node<T>* newRoot = originalRoot->getLeft();
         originalRoot->setLeftChild(newRoot->getRight());
@@ -32,9 +29,6 @@ private:
     }
 
     AVL_Node<T>* leftRotation(AVL_Node<T>* originalRoot){
-        assert(originalRoot != nullptr);
-        assert(originalRoot->getRight() != nullptr);
-
         AVL_Node<T>* newRoot = originalRoot->getRight();
         originalRoot->setRightChild(newRoot->getLeft());
         newRoot->setLeftChild(originalRoot);
@@ -44,25 +38,16 @@ private:
     }
 
     AVL_Node<T>* LR_Rotation(AVL_Node<T>* originalRoot){
-        assert(originalRoot != nullptr);
-        assert(originalRoot->getLeft() != nullptr);
-        assert(originalRoot->getLeft()->getRight() != nullptr);
-
         originalRoot->setLeftChild( leftRotation(originalRoot->getLeft()) );
         return rightRotation(originalRoot);
     }
 
     AVL_Node<T>* RL_Rotation(AVL_Node<T>* originalRoot){
-        assert(originalRoot != nullptr);
-        assert(originalRoot->getRight() != nullptr);
-        assert(originalRoot->getRight()->getLeft() != nullptr);
-
         originalRoot->setRightChild( rightRotation(originalRoot->getRight()) );
         return leftRotation(originalRoot);
     }
 
     AVL_Node<T>* balance_Node(AVL_Node<T>* root){
-        assert(root != nullptr);
 
         if(root->getBalanceFactor() == LEFT_IMBALANCE){
             if(root->getLeft()->getBalanceFactor() >= ZERO){
@@ -94,8 +79,6 @@ private:
             return array;
         }
 
-        assert (*index < m_size);
-
         AUX_inOrderToArray(root->getLeft(), array, index);
         array[*index] = root->getData();
 
@@ -110,8 +93,7 @@ private:
         if(currentNode == nullptr){
             return nullptr;
         }
-        assert(currentNode->getData() != nullptr);
-        assert(dataToFind != nullptr);
+
         if( *(dataToFind) == *(currentNode->getData())){
             return currentNode;
         }
@@ -315,7 +297,6 @@ public:
     }
 
     T* find(const T* dataToFind) const{
-        assert(dataToFind != nullptr);
         if (AUX_find(m_root, dataToFind) == nullptr){
             return nullptr;
         }
@@ -347,8 +328,6 @@ public:
     }
 
     StatusType insert(T* dataToInsert){
-        assert (dataToInsert != nullptr);
-
         // if data already exists (country/team/contestant are already in tree)
         if (exists_In_Tree(dataToInsert)){
             return StatusType::FAILURE;
@@ -419,7 +398,6 @@ public:
         }
         int* index = new int(ZERO);
         array = AUX_inOrderToArray(m_root, array, index);
-        assert( *index == m_size );
         delete index;
     }
 

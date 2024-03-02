@@ -215,7 +215,6 @@ AVL_Tree<ID>* createEmptyTree(int numberOfElements){
     newTree->setSize(fullBinaryTreeSize);
 
     deleteSpareNodes<ID>(newTree , nullptr, newTree->getRoot(), height, numberOfElements);// O(n)
-    assert(newTree->getSize() == numberOfElements);
     return newTree;
 }
 
@@ -237,7 +236,6 @@ AVL_Tree<Strength>* createEmptyStrengthTree(int numberOfElements){
     newTree->setSize(fullBinaryTreeSize);
 
     deleteSpareNodes<Strength>(newTree , nullptr, newTree->getRoot(), height, numberOfElements);// O(n)
-    assert(newTree->getSize() == numberOfElements);
     return newTree;
 }
 
@@ -301,8 +299,6 @@ Country* Team::getCountry() const{
 }
 
 StatusType Team::insertContestant(Contestant* contestantToRegister){// O(log n)
-    assert (contestantToRegister != nullptr);
-
     Strength* strength = new Strength(contestantToRegister, UNASSIGNED);
     ID* id = new ID(contestantToRegister, strength);
     assignInSubtrees(id, strength); // a lot of if statements
@@ -313,10 +309,6 @@ StatusType Team::insertContestant(Contestant* contestantToRegister){// O(log n)
 }
 
 void Team::assignInSubtrees(ID* id, Strength* strength) {
-//       Pseudo-code:
-    assert (id != nullptr);
-    assert (strength != nullptr);
-
     int max_left_ID = NOT_FOUND;
     if(m_LEFT_ID_Tree->find_Maximum_In_Subtree() == nullptr || m_MIDDLE_ID_Tree->find_Maximum_In_Subtree() == nullptr){ // O(log n)
         m_LEFT_ID_Tree->insert(id);
@@ -707,10 +699,6 @@ StatusType Team::mergeTeams(Team* team2) {
         m_LEFT_Strength_Tree = new_LEFT_Strength_Tree;
         m_MIDDLE_Strength_Tree = new_MIDDLE_Strength_Tree;
         m_RIGHT_Strength_Tree = new_RIGHT_Strength_Tree;
-
-        assert(m_LEFT_ID_Tree->getSize() == m_LEFT_Strength_Tree->getSize());
-        assert(m_MIDDLE_ID_Tree->getSize() == m_MIDDLE_Strength_Tree->getSize());
-        assert(m_RIGHT_ID_Tree->getSize() == m_RIGHT_Strength_Tree->getSize());
 
         setSize(m_LEFT_ID_Tree->getSize() + m_MIDDLE_ID_Tree->getSize() + m_RIGHT_ID_Tree->getSize()); // O(1)
         this->updateTeamStrength(); // O(log n)
