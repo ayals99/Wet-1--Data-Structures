@@ -1,3 +1,0 @@
-C:/Users/ayals/OneDrive/Documents/GitHub/Wet-1--Data-Structures/Tests/Rank-AVL-Tree-Tester-main/cmake-build-debug/CMakeFiles/Rank_AVL_Tree_Tester_main.dir
-C:/Users/ayals/OneDrive/Documents/GitHub/Wet-1--Data-Structures/Tests/Rank-AVL-Tree-Tester-main/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/ayals/OneDrive/Documents/GitHub/Wet-1--Data-Structures/Tests/Rank-AVL-Tree-Tester-main/cmake-build-debug/CMakeFiles/rebuild_cache.dir
